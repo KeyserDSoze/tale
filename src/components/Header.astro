@@ -1,0 +1,153 @@
+---
+import { SITE_TITLE } from '../consts';
+import HeaderLink from './HeaderLink.astro';
+import ThemeToggle from './ThemeToggle.astro';
+import { createLangUrl } from '../utils/urls';
+
+// Accept lang prop for multilingual support
+const { lang = 'it' } = Astro.props;
+---
+
+<header>
+	<nav>
+		<h2>
+			<a href={createLangUrl(lang)} class="logo-link">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="40" height="40" class="logo">
+					<g fill="none" stroke="currentColor" stroke-width="4">
+						<!-- Cerchio esterno (pallone) -->
+						<circle cx="100" cy="60" r="40"/>
+						<!-- Pattern pallone -->
+						<polygon points="100,40 90,55 100,70 110,55" fill="currentColor"/>
+						<polygon points="75,55 85,70 75,85 65,70" fill="currentColor"/>
+						<polygon points="125,55 135,70 125,85 115,70" fill="currentColor"/>
+						<polygon points="100,90 85,85 90,100 110,100 115,85" fill="currentColor"/>
+						<!-- Arco lucchetto -->
+						<path d="M70 90 v20 h60 v-20 a30 30 0 0 0 -60 0" fill="none"/>
+						<!-- Corpo lucchetto -->
+						<rect x="60" y="110" width="80" height="60" fill="currentColor"/>
+						<!-- Foro chiave -->
+						<circle cx="100" cy="140" r="6" fill="var(--logo-bg)"/>
+						<rect x="97" y="140" width="6" height="15" fill="var(--logo-bg)"/>
+					</g>
+				</svg>
+				<span class="logo-text">Catenaccio</span>
+			</a>
+		</h2>
+		<div class="internal-links">
+			<HeaderLink href={createLangUrl(lang)}>
+				{lang === 'it' ? 'Home' : lang === 'es' ? 'Inicio' : 'Home'}
+			</HeaderLink>
+			<HeaderLink href={createLangUrl(lang, '/about')}>
+				{lang === 'it' ? 'Chi siamo' : lang === 'es' ? 'Acerca de' : 'About'}
+			</HeaderLink>
+		</div>
+		<div class="nav-controls">
+			<ThemeToggle />
+		</div>
+	</nav>
+</header>
+<style>
+	header {
+		margin: 0;
+		padding: 0 1em;
+		background: white;
+		box-shadow: 0 2px 8px rgba(var(--black), 5%);
+		transition: background-color 0.3s ease, box-shadow 0.3s ease;
+	}
+	
+	/* Dark mode styles */
+	:global(.dark) header {
+		background: rgb(17, 24, 39);
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+	}
+	
+	h2 {
+		margin: 0;
+		font-size: 1em;
+	}
+
+	h2 a,
+	h2 a.active {
+		text-decoration: none;
+		color: rgb(var(--black));
+		transition: color 0.3s ease;
+	}
+	
+	:global(.dark) h2 a {
+		color: white;
+	}
+	
+	/* Logo styles */
+	.logo-link {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.5rem 0;
+		transition: opacity 0.3s ease;
+	}
+	
+	.logo-link:hover {
+		opacity: 0.8;
+	}
+	
+	.logo {
+		color: rgb(var(--black));
+		--logo-bg: white;
+		transition: color 0.3s ease;
+	}
+	
+	:global(.dark) .logo {
+		color: rgb(229, 231, 235);
+		--logo-bg: rgb(17, 24, 39);
+	}
+	
+	.logo-text {
+		font-weight: bold;
+		font-size: 1.2rem;
+	}
+	
+	@media (max-width: 720px) {
+		.logo-text {
+			display: none;
+		}
+		
+		.logo-link {
+			gap: 0;
+		}
+	}
+	
+	nav {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	
+	nav a {
+		padding: 1em 0.5em;
+		color: rgb(var(--black));
+		border-bottom: 4px solid transparent;
+		text-decoration: none;
+		transition: color 0.3s ease, border-bottom-color 0.3s ease;
+	}
+	
+	:global(.dark) nav a {
+		color: rgb(229, 231, 235);
+	}
+	
+	nav a.active {
+		text-decoration: none;
+		border-bottom-color: var(--accent);
+	}
+	
+	.nav-controls {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+	
+	@media (max-width: 720px) {
+		.nav-controls {
+			gap: 0.5rem;
+		}
+	}
+</style>

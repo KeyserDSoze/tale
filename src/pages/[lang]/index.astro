@@ -1,0 +1,161 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import FormattedDate from "../../components/FormattedDate.astro";
+import { t, LOCALES } from "../../i18n";
+import { getCollection } from 'astro:content';
+import { createLangUrl } from "../../utils/urls";
+
+export function getStaticPaths() {
+  return LOCALES.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const _ = (k) => t(lang, k);
+
+// Get all posts for this language and sort by date
+const allPosts = await getCollection('blog', ({ data }) => data.lang === lang);
+const sortedPosts = allPosts.sort((a, b) => 
+  new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+// Get latest posts for preview section (limit to 3)
+const latestPosts = sortedPosts.slice(0, 3);
+---
+
+<BaseLayout 
+  title={`${_('home.hero.title')} — Catenaccio`}
+  description={_('home.hero.description')}
+  lang={lang}
+>
+  <Header lang={lang} />
+
+  <!-- Language Switcher -->
+  <div class="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
+      <div class="flex justify-end space-x-4">
+        <a href={createLangUrl('it')} class={`text-sm transition-colors duration-200 ${lang === 'it' ? 'font-bold text-blue-600 dark:text-blue-400' : 'text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'}`}>
+          🇮🇹 Italiano
+        </a>
+        <a href={createLangUrl('en')} class={`text-sm transition-colors duration-200 ${lang === 'en' ? 'font-bold text-blue-600 dark:text-blue-400' : 'text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'}`}>
+          🇬🇧 English
+        </a>
+        <a href={createLangUrl('es')} class={`text-sm transition-colors duration-200 ${lang === 'es' ? 'font-bold text-blue-600 dark:text-blue-400' : 'text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'}`}>
+          🇪🇸 Español
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main class="bg-white dark:bg-gray-900 transition-colors duration-300">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-green-600 to-blue-600 dark:from-green-700 dark:to-blue-700 text-white py-24 transition-colors duration-300">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="max-w-4xl mx-auto">
+          <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+            {_('home.hero.title')}
+          </h1>
+          <p class="text-xl md:text-2xl mb-6 text-green-100">
+            {_('home.hero.subtitle')}
+          </p>
+          <p class="text-lg mb-8 text-blue-100 leading-relaxed">
+            {_('home.hero.description')}
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href={createLangUrl(lang, '/about')} class="inline-block bg-white text-blue-600 font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors">
+              {_('nav.about')}
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest Articles Section -->
+    <section class="py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4 transition-colors duration-300">
+            {lang === 'it' ? 'Le Nostre Analisi' : 
+             lang === 'es' ? 'Nuestros Análisis' :
+             'Our Analysis'}
+          </h2>
+          <p class="text-lg text-gray-600 dark:text-gray-300 transition-colors duration-300">
+            {lang === 'it' ? 'Le nostre ultime analisi e approfondimenti' : 
+             lang === 'es' ? 'Nuestros últimos análisis y perspectivas' :
+             'Our latest analysis and insights'}
+          </p>
+        </div>
+        
+        {latestPosts.length > 0 ? (
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {latestPosts.map((post) => (
+              <article class="bg-white dark:bg-gray-700 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden">
+                <div class="p-6">
+                  <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-3 transition-colors duration-300">
+                    <FormattedDate date={post.data.date} />
+                  </div>
+                  <h3 class="text-xl font-semibold mb-3 line-clamp-2">
+                    <a href={createLangUrl(lang, `/blog/${post.data.id || post.slug}`)} class="text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">
+                      {post.data.title}
+                    </a>
+                  </h3>
+                  {post.data.description && (
+                    <p class="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3 transition-colors duration-300">
+                      {post.data.description}
+                    </p>
+                  )}
+                  <a 
+                    href={createLangUrl(lang, `/blog/${post.data.id || post.slug}`)}
+                    class="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium transition-colors duration-200"
+                  >
+                    {_('common.readMore')}
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div class="text-center py-12">
+            <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg p-12 max-w-lg mx-auto transition-colors duration-300">
+              <div class="text-6xl mb-6">⚽</div>
+              <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3 transition-colors duration-300">
+                {lang === 'it' ? 'Nessun articolo ancora' : 
+                 lang === 'es' ? 'Aún no hay artículos' :
+                 'No articles yet'}
+              </h3>
+              <p class="text-gray-500 dark:text-gray-400 transition-colors duration-300">
+                {lang === 'it' ? 'Torna presto per le nostre analisi tattiche' : 
+                 lang === 'es' ? 'Vuelve pronto para nuestros análisis tácticos' :
+                 'Come back soon for our tactical analysis'}
+              </p>
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+
+    
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

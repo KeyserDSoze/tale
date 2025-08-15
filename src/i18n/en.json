@@ -1,0 +1,44 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "blog": "Blog",
+    "analyses": "Analyses"
+  },
+  "common": {
+    "tagline": "Advanced football analysis",
+    "readMore": "Read more",
+    "seeMore": "See more",
+    "shareOn": "Share on"
+  },
+  "home": {
+    "hero": {
+      "title": "Catenaccio",
+      "subtitle": "Your source for professional football analysis",
+      "description": "Discover tactics, team movements and in-depth data analysis from the world of football"
+    },
+    "features": {
+      "title": "What We Offer",
+      "tactical": {
+        "title": "Tactical Analysis",
+        "description": "Detailed breakdown of game strategies and team movements"
+      },
+      "data": {
+        "title": "Data Analysis",
+        "description": "Advanced statistics and interactive visualizations of performance"
+      },
+      "multilang": {
+        "title": "Multilingual Content",
+        "description": "Articles and analysis available in Italian and English"
+      }
+    },
+    "about": {
+      "title": "Our Mission",
+      "description": "Catenaccio is a platform dedicated to professional football analysis. We offer in-depth content on tactics, team movements and player performance, using advanced data and interactive visualizations to take football analysis to the next level."
+    },
+    "latestNews": {
+      "title": "Latest News",
+      "noArticles": "No articles available in this language."
+    }
+  }
+}

@@ -1,0 +1,306 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Header from "../../../components/Header.astro";
+import Footer from "../../../components/Footer.astro";
+import FormattedDate from "../../../components/FormattedDate.astro";
+import SocialShare from "../../../components/SocialShare.astro";
+import { t, LOCALES } from "../../../i18n";
+import { getCollection, render } from 'astro:content';
+import { createLangUrl } from "../../../utils/urls";
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection('blog');
+  
+  // Create paths for each language and each post
+  const paths = [];
+  
+  for (const lang of LOCALES) {
+    const postsInLang = allPosts.filter(post => post.data.lang === lang);
+    
+    for (const post of postsInLang) {
+      // Use id if available, otherwise use slug
+      const id = post.data.id || post.slug;
+      
+      // Skip if no valid id/slug
+      if (!id) {
+        console.warn(`Post ${post.id} has no id or slug, skipping...`);
+        continue;
+      }
+      
+      paths.push({
+        params: { lang, id },
+        props: { } // We'll find the post using params instead
+      });
+    }
+  }
+  
+  return paths;
+}
+
+const { lang, id } = Astro.params;
+const _ = (k) => t(lang, k);
+
+// Get the actual post object from the collection
+const allPosts = await getCollection('blog');
+// Find post by matching the id parameter with either the custom id or slug
+const post = allPosts.find(p => {
+  const postId = p.data.id || p.slug;
+  return postId === id && p.data.lang === lang;
+});
+
+if (!post) {
+  return Astro.redirect('/404');
+}
+
+// Find posts with the same ID in other languages for language switching
+const currentId = post.data.id || post.slug;
+const relatedPosts = allPosts.filter(p => (p.data.id || p.slug) === currentId);
+
+const { Content } = await render(post);
+
+// Costruisci l'URL completo dell'articolo per la condivisione social
+const currentUrl = new URL(Astro.request.url);
+const fullArticleUrl = `${currentUrl.origin}${createLangUrl(lang, `/blog/${id}`)}`;
+---
+
+<BaseLayout 
+  title={`${post.data.title} — Catenaccio`} 
+  description={post.data.description}
+  lang={lang}
+>
+  <Header lang={lang} />
+  
+  <!-- Language Switcher -->
+  <div class="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
+      <div class="flex justify-end space-x-4">
+        {LOCALES.map(l => {
+          const relatedPost = relatedPosts.find(p => p.data.lang === l);
+          const href = relatedPost ? createLangUrl(l, `/blog/${relatedPost.data.id || relatedPost.slug}`) : createLangUrl(l, '/blog');
+          const flag = l === 'it' ? '🇮🇹' : l === 'es' ? '🇪🇸' : '🇬🇧';
+          const label = l === 'it' ? 'Italiano' : l === 'es' ? 'Español' : 'English';
+          
+          return (
+            <a 
+              href={href} 
+              class={`text-sm transition-colors duration-200 ${lang === l ? 'font-bold text-blue-600 dark:text-blue-400' : 'text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'}`}
+            >
+              {flag} {label}
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </div>
+
+  <!-- Breadcrumb -->
+  <div class="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 transition-colors duration-300 overflow-hidden">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <nav class="overflow-hidden" aria-label="Breadcrumb">
+        <ol class="flex items-center space-x-4 overflow-x-auto scrollbar-hide min-w-0">
+          <li class="flex-shrink-0">
+            <a href={createLangUrl(lang)} class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors duration-200 whitespace-nowrap">
+              {_('nav.home')}
+            </a>
+          </li>
+          <li class="flex-shrink-0">
+            <svg class="flex-shrink-0 h-5 w-5 text-gray-400 dark:text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+            </svg>
+          </li>
+          <li class="flex-shrink-0">
+            <a href={createLangUrl(lang, '/blog')} class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors duration-200 whitespace-nowrap">
+              {_('nav.blog')}
+            </a>
+          </li>
+          <li class="flex-shrink-0">
+            <svg class="flex-shrink-0 h-5 w-5 text-gray-400 dark:text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+            </svg>
+          </li>
+          <li class="text-gray-900 dark:text-gray-100 font-medium min-w-0 flex-shrink-0">
+            <span class="whitespace-nowrap" title={post.data.title}>
+              {post.data.title}
+            </span>
+          </li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <main class="py-12 bg-white dark:bg-gray-900 transition-colors duration-300">
+    <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Article Header -->
+      <header class="mb-8">
+        <div class="text-center mb-8 max-w-3xl mx-auto">
+          <div class="flex items-center justify-center text-sm text-gray-500 dark:text-gray-400 mb-4 space-x-4">
+            <div class="flex items-center">
+              <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+              </svg>
+              <span>{post.data.author}</span>
+            </div>
+            <div class="flex items-center">
+              <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+              </svg>
+              <FormattedDate date={post.data.date} />
+            </div>
+          </div>
+          <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6 leading-tight transition-colors duration-300">
+            {post.data.title}
+          </h1>
+          {post.data.description && (
+            <p class="text-xl text-gray-600 dark:text-gray-300 leading-relaxed transition-colors duration-300">
+              {post.data.description}
+            </p>
+          )}
+        </div>
+      </header>
+
+      <!-- Article Content -->
+      <div class="prose prose-lg prose-blue dark:prose-invert max-w-3xl mx-auto transition-colors duration-300 prose-headings:text-gray-900 dark:prose-headings:text-white prose-strong:text-gray-900 dark:prose-strong:text-white prose-em:text-gray-800 dark:prose-em:text-gray-100 prose-code:text-gray-900 dark:prose-code:text-white prose-pre:bg-gray-100 dark:prose-pre:bg-gray-800 prose-blockquote:text-gray-700 dark:prose-blockquote:text-gray-200 prose-p:text-gray-900 dark:prose-p:text-gray-100 prose-li:text-gray-900 dark:prose-li:text-gray-100">
+        <Content />
+      </div>
+
+      <!-- Article Footer -->
+      <footer class="mt-8 pt-6">
+        <!-- Social Share -->
+        <SocialShare 
+          title={post.data.title}
+          description={post.data.description}
+          url={fullArticleUrl}
+          lang={lang}
+        />
+        
+        <!-- Back to Blog -->
+        <div class="flex items-center justify-center mt-8">
+          <a 
+            href={createLangUrl(lang, '/')}
+            class="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium transition-colors duration-200"
+          >
+            ← {lang === 'it' ? 'Torna al blog' : 
+                 lang === 'es' ? 'Volver al blog' :
+                 'Back to blog'}
+          </a>
+        </div>
+      </footer>
+    </article>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* Prevenzione overflow generale */
+  body {
+    overflow-x: hidden;
+  }
+  
+  /* Testo ben leggibile ma più morbido in dark mode */
+  .dark .prose {
+    color: rgb(243 244 246) !important; /* text-gray-100 - più grigio */
+  }
+  
+  .dark .prose * {
+    color: rgb(243 244 246) !important; /* Tutti gli elementi figli */
+  }
+  
+  .dark .prose strong {
+    color: rgb(255 255 255) !important; /* text-white per il grassetto - più contrasto */
+    font-weight: 700;
+  }
+  
+  .dark .prose em {
+    color: rgb(243 244 246) !important; /* text-gray-100 */
+  }
+  
+  .dark .prose h1,
+  .dark .prose h2,
+  .dark .prose h3,
+  .dark .prose h4,
+  .dark .prose h5,
+  .dark .prose h6 {
+    color: rgb(255 255 255) !important; /* text-white per le intestazioni - più contrasto */
+  }
+  
+  .dark .prose p {
+    color: rgb(243 244 246) !important; /* text-gray-100 */
+  }
+  
+  .dark .prose li {
+    color: rgb(243 244 246) !important; /* text-gray-100 */
+  }
+  
+  .dark .prose span {
+    color: rgb(243 244 246) !important; /* text-gray-100 */
+  }
+  
+  .dark .prose div {
+    color: rgb(243 244 246) !important; /* text-gray-100 */
+  }
+  
+  .dark .prose blockquote {
+    color: rgb(243 244 246); /* text-gray-100 - distinguibile ma leggibile */
+    border-left-color: rgb(75 85 99); /* border-gray-600 */
+  }
+  
+  .dark .prose code {
+    color: rgb(255 255 255); /* text-white */
+    background-color: rgb(55 65 81); /* bg-gray-700 */
+    padding: 0.125rem 0.25rem;
+    border-radius: 0.25rem;
+  }
+  
+  .dark .prose pre {
+    background-color: rgb(31 41 55); /* bg-gray-800 */
+    color: rgb(255 255 255); /* text-white */
+  }
+  
+  .dark .prose pre code {
+    background-color: transparent;
+    padding: 0;
+  }
+  
+  .dark .prose table {
+    color: rgb(255 255 255); /* text-white */
+  }
+  
+  .dark .prose thead {
+    color: rgb(255 255 255); /* text-white */
+    border-bottom-color: rgb(75 85 99); /* border-gray-600 */
+  }
+  
+  .dark .prose tbody tr {
+    border-bottom-color: rgb(75 85 99); /* border-gray-600 */
+  }
+  
+  .dark .prose a {
+    color: rgb(96 165 250); /* text-blue-400 */
+  }
+  
+  .dark .prose a:hover {
+    color: rgb(147 197 253); /* text-blue-300 */
+  }
+  
+  /* Breadcrumb mobile-friendly styles */
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+  }
+  
+  /* Assicurati che tutti i contenitori non causino overflow */
+  .max-w-4xl, .max-w-7xl {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Prevenzione overflow per elementi con padding/margin */
+  * {
+    box-sizing: border-box;
+  }
+</style>

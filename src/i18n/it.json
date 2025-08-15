@@ -1,0 +1,44 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "Chi siamo",
+    "blog": "Blog",
+    "analyses": "Analisi"
+  },
+  "common": {
+    "tagline": "Analisi calcistica avanzata",
+    "readMore": "Leggi di più",
+    "seeMore": "Vedi altro",
+    "shareOn": "Condividi su"
+  },
+  "home": {
+    "hero": {
+      "title": "Catenaccio",
+      "subtitle": "La tua fonte per analisi calcistiche professionali",
+      "description": "Scopri tattiche, movimenti di squadra e analisi dati approfondite del mondo del calcio"
+    },
+    "features": {
+      "title": "Cosa Offriamo",
+      "tactical": {
+        "title": "Analisi Tattiche",
+        "description": "Scomposizione dettagliata delle strategie di gioco e dei movimenti delle squadre"
+      },
+      "data": {
+        "title": "Analisi Dati",
+        "description": "Statistiche avanzate e visualizzazioni interattive delle prestazioni"
+      },
+      "multilang": {
+        "title": "Contenuti Multilingua",
+        "description": "Articoli e analisi disponibili in italiano e inglese"
+      }
+    },
+    "about": {
+      "title": "La Nostra Missione",
+      "description": "Catenaccio è una piattaforma dedicata all'analisi calcistica professionale. Offriamo contenuti approfonditi su tattiche, movimenti di squadra e performance dei giocatori, utilizzando dati avanzati e visualizzazioni interattive per portare l'analisi calcistica a un nuovo livello."
+    },
+    "latestNews": {
+      "title": "Ultime Notizie",
+      "noArticles": "Nessun articolo disponibile in questa lingua."
+    }
+  }
+}
