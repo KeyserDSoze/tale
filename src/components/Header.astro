@@ -1,44 +1,41 @@
 ---
-import { SITE_TITLE } from '../consts';
+import { t } from '../i18n';
 import HeaderLink from './HeaderLink.astro';
 import ThemeToggle from './ThemeToggle.astro';
 import { createLangUrl } from '../utils/urls';
 
 // Accept lang prop for multilingual support
 const { lang = 'it' } = Astro.props;
+const _ = (k) => t(lang, k);
 ---
 
 <header>
 	<nav>
 		<h2>
 			<a href={createLangUrl(lang)} class="logo-link">
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="40" height="40" class="logo">
-					<g fill="none" stroke="currentColor" stroke-width="4">
-						<!-- Cerchio esterno (pallone) -->
-						<circle cx="100" cy="60" r="40"/>
-						<!-- Pattern pallone -->
-						<polygon points="100,40 90,55 100,70 110,55" fill="currentColor"/>
-						<polygon points="75,55 85,70 75,85 65,70" fill="currentColor"/>
-						<polygon points="125,55 135,70 125,85 115,70" fill="currentColor"/>
-						<polygon points="100,90 85,85 90,100 110,100 115,85" fill="currentColor"/>
-						<!-- Arco lucchetto -->
-						<path d="M70 90 v20 h60 v-20 a30 30 0 0 0 -60 0" fill="none"/>
-						<!-- Corpo lucchetto -->
-						<rect x="60" y="110" width="80" height="60" fill="currentColor"/>
-						<!-- Foro chiave -->
-						<circle cx="100" cy="140" r="6" fill="var(--logo-bg)"/>
-						<rect x="97" y="140" width="6" height="15" fill="var(--logo-bg)"/>
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 64" width="40" height="18" class="logo" role="img" aria-labelledby="t">
+					<title id="t">Logo: Penna & Parentesi Francesi Compatte</title>
+					<!-- Parentesi francesi -->
+					<text x="65" y="38" font-size="28" text-anchor="middle" font-family="serif" fill="currentColor">«</text>
+					<!-- Penna -->
+					<g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M90 8 104 22 90 56 76 22Z"/>
+						<circle cx="90" cy="28" r="3.5" fill="currentColor" stroke="none"/>
 					</g>
+					<text x="115" y="38" font-size="28" text-anchor="middle" font-family="serif" fill="currentColor">»</text>
 				</svg>
-				<span class="logo-text">Catenaccio</span>
+				<span class="logo-text">Tale</span>
 			</a>
 		</h2>
 		<div class="internal-links">
 			<HeaderLink href={createLangUrl(lang)}>
-				{lang === 'it' ? 'Home' : lang === 'es' ? 'Inicio' : 'Home'}
+				{_('nav.home')}
 			</HeaderLink>
 			<HeaderLink href={createLangUrl(lang, '/about')}>
-				{lang === 'it' ? 'Chi siamo' : lang === 'es' ? 'Acerca de' : 'About'}
+				{_('nav.about')}
+			</HeaderLink>
+			<HeaderLink href={createLangUrl(lang, '/blog')}>
+				{_('nav.blog')}
 			</HeaderLink>
 		</div>
 		<div class="nav-controls">

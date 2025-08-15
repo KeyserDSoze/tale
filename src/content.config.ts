@@ -14,7 +14,7 @@ const blog = defineCollection({
 			pubDate: z.coerce.date().optional(),
 			updatedDate: z.coerce.date().optional(),
 			heroImage: image().optional(),
-			lang: z.enum(['it', 'en', 'es', 'fr', 'de']).default('en'),
+			lang: z.enum(['it', 'en', 'es', 'fr', 'de', 'zh', 'ja']).default('en'),
 			// Custom ID for consistent routing across languages
 			id: z.string().optional(),
 			// Author information

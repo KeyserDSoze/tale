@@ -1,0 +1,44 @@
+{
+  "nav": {
+    "home": "首页",
+    "about": "关于我",
+    "blog": "故事",
+    "stories": "传说"
+  },
+  "common": {
+    "tagline": "故事、传说和思考",
+    "readMore": "阅读完整故事",
+    "seeMore": "查看更多故事",
+    "shareOn": "分享到"
+  },
+  "home": {
+    "hero": {
+      "title": "Tale",
+      "subtitle": "我的个人故事空间，各种类型的故事",
+      "description": "欢迎来到我的故事世界，在这里我分享故事、思考和从想象与经验中诞生的反思"
+    },
+    "features": {
+      "title": "您将在这里找到什么",
+      "stories": {
+        "title": "原创故事",
+        "description": "奇幻故事、戏剧、喜剧和用热情写成的个人反思"
+      },
+      "serialized": {
+        "title": "连载故事",
+        "description": "较长的故事分为章节，提供引人入胜的阅读体验"
+      },
+      "multilang": {
+        "title": "多语言内容",
+        "description": "故事提供意大利语、英语、西班牙语、法语、德语、中文和日语版本"
+      }
+    },
+    "about": {
+      "title": "关于我",
+      "description": "我是一个喜欢讲故事的作家。在这个空间里，我分享各种类型的故事：从奇幻到现实，从戏剧到喜剧。每个故事都源于探索生活在我想象中的情感、情况和角色的渴望。"
+    },
+    "latestStories": {
+      "title": "最新故事",
+      "noStories": "此语言暂无故事。"
+    }
+  }
+}

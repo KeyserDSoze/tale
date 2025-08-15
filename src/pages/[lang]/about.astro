@@ -23,7 +23,7 @@ const _ = (k) => t(lang, k);
   <!-- Language Switcher -->
   <div class="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
-      <div class="flex justify-end space-x-4">
+      <div class="flex justify-end space-x-4 flex-wrap">
         <a href={createLangUrl('it', '/about')} class={`text-sm transition-colors duration-200 ${lang === 'it' ? 'font-bold text-purple-600 dark:text-purple-400' : 'text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400'}`}>
           🇮🇹 Italiano
         </a>
@@ -38,6 +38,12 @@ const _ = (k) => t(lang, k);
         </a>
         <a href={createLangUrl('de', '/about')} class={`text-sm transition-colors duration-200 ${lang === 'de' ? 'font-bold text-purple-600 dark:text-purple-400' : 'text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400'}`}>
           🇩🇪 Deutsch
+        </a>
+        <a href={createLangUrl('zh', '/about')} class={`text-sm transition-colors duration-200 ${lang === 'zh' ? 'font-bold text-purple-600 dark:text-purple-400' : 'text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400'}`}>
+          🇨🇳 中文
+        </a>
+        <a href={createLangUrl('ja', '/about')} class={`text-sm transition-colors duration-200 ${lang === 'ja' ? 'font-bold text-purple-600 dark:text-purple-400' : 'text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400'}`}>
+          🇯🇵 日本語
         </a>
       </div>
     </div>
@@ -60,6 +66,8 @@ const _ = (k) => t(lang, k);
                lang === 'es' ? 'Ver Relatos' : 
                lang === 'fr' ? 'Voir Récits' :
                lang === 'de' ? 'Erzählungen Ansehen' :
+               lang === 'zh' ? '查看故事' :
+               lang === 'ja' ? 'ストーリーを見る' :
                'See Stories'}
             </a>
           </div>
