@@ -1,44 +1,44 @@
 {
   "nav": {
     "home": "Home",
-    "about": "Chi siamo",
-    "blog": "Blog",
-    "analyses": "Analisi"
+    "about": "Chi sono",
+    "blog": "Racconti",
+    "stories": "Storie"
   },
   "common": {
-    "tagline": "Analisi calcistica avanzata",
-    "readMore": "Leggi di più",
-    "seeMore": "Vedi altro",
+    "tagline": "Racconti, storie e pensieri",
+    "readMore": "Leggi tutto",
+    "seeMore": "Vedi altri racconti",
     "shareOn": "Condividi su"
   },
   "home": {
     "hero": {
-      "title": "Catenaccio",
-      "subtitle": "La tua fonte per analisi calcistiche professionali",
-      "description": "Scopri tattiche, movimenti di squadra e analisi dati approfondite del mondo del calcio"
+      "title": "Tale",
+      "subtitle": "Il mio spazio personale per racconti di ogni genere",
+      "description": "Benvenuto nel mio mondo di storie, dove condivido racconti, pensieri e riflessioni che nascono dalla fantasia e dall'esperienza"
     },
     "features": {
-      "title": "Cosa Offriamo",
-      "tactical": {
-        "title": "Analisi Tattiche",
-        "description": "Scomposizione dettagliata delle strategie di gioco e dei movimenti delle squadre"
+      "title": "Cosa Trovi Qui",
+      "stories": {
+        "title": "Racconti Originali",
+        "description": "Storie di fantasia, drammi, commedie e riflessioni personali scritte con passione"
       },
-      "data": {
-        "title": "Analisi Dati",
-        "description": "Statistiche avanzate e visualizzazioni interattive delle prestazioni"
+      "serialized": {
+        "title": "Storie a Puntate",
+        "description": "Racconti più lunghi divisi in capitoli per un'esperienza di lettura coinvolgente"
       },
       "multilang": {
         "title": "Contenuti Multilingua",
-        "description": "Articoli e analisi disponibili in italiano e inglese"
+        "description": "Racconti disponibili in italiano, inglese, spagnolo, francese e tedesco"
       }
     },
     "about": {
-      "title": "La Nostra Missione",
-      "description": "Catenaccio è una piattaforma dedicata all'analisi calcistica professionale. Offriamo contenuti approfonditi su tattiche, movimenti di squadra e performance dei giocatori, utilizzando dati avanzati e visualizzazioni interattive per portare l'analisi calcistica a un nuovo livello."
+      "title": "Chi Sono",
+      "description": "Sono uno scrittore che ama raccontare storie. In questo spazio condivido i miei racconti di ogni genere: dalla fantasia alla realtà, dal dramma alla commedia. Ogni storia nasce dalla voglia di esplorare emozioni, situazioni e personaggi che vivono nella mia immaginazione."
     },
-    "latestNews": {
-      "title": "Ultime Notizie",
-      "noArticles": "Nessun articolo disponibile in questa lingua."
+    "latestStories": {
+      "title": "Ultimi Racconti",
+      "noStories": "Nessun racconto disponibile in questa lingua."
     }
   }
 }

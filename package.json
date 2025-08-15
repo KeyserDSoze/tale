@@ -1,7 +1,8 @@
 {
-  "name": "catenaccio",
+  "name": "tale",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "description": "A personal blog for stories and tales on tale.ws",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",

@@ -1,0 +1,44 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos de moi",
+    "blog": "Récits",
+    "stories": "Histoires"
+  },
+  "common": {
+    "tagline": "Récits, histoires et pensées",
+    "readMore": "Lire l'histoire complète",
+    "seeMore": "Voir plus de récits",
+    "shareOn": "Partager sur"
+  },
+  "home": {
+    "hero": {
+      "title": "Tale",
+      "subtitle": "Mon espace personnel pour des récits de tous genres",
+      "description": "Bienvenue dans mon monde d'histoires, où je partage des récits, des pensées et des réflexions nées de l'imagination et de l'expérience"
+    },
+    "features": {
+      "title": "Ce Que Vous Trouverez Ici",
+      "stories": {
+        "title": "Récits Originaux",
+        "description": "Contes de fantaisie, drames, comédies et réflexions personnelles écrites avec passion"
+      },
+      "serialized": {
+        "title": "Histoires en Épisodes",
+        "description": "Récits plus longs divisés en chapitres pour une expérience de lecture captivante"
+      },
+      "multilang": {
+        "title": "Contenu Multilingue",
+        "description": "Récits disponibles en italien, anglais, espagnol, français et allemand"
+      }
+    },
+    "about": {
+      "title": "À Propos de Moi",
+      "description": "Je suis un écrivain qui aime raconter des histoires. Dans cet espace, je partage mes récits de tous genres : de la fantaisie à la réalité, du drame à la comédie. Chaque histoire naît du désir d'explorer des émotions, des situations et des personnages qui vivent dans mon imagination."
+    },
+    "latestStories": {
+      "title": "Derniers Récits",
+      "noStories": "Aucun récit disponible dans cette langue."
+    }
+  }
+}

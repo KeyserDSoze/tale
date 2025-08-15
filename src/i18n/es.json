@@ -1,44 +1,44 @@
 {
   "nav": {
     "home": "Inicio",
-    "about": "Acerca de",
-    "blog": "Blog",
-    "analyses": "Análisis"
+    "about": "Sobre mí",
+    "blog": "Relatos",
+    "stories": "Historias"
   },
   "common": {
-    "tagline": "Análisis futbolístico avanzado",
-    "readMore": "Leer más",
-    "seeMore": "Ver más",
+    "tagline": "Relatos, historias y pensamientos",
+    "readMore": "Leer historia completa",
+    "seeMore": "Ver más relatos",
     "shareOn": "Compartir en"
   },
   "home": {
     "hero": {
-      "title": "Catenaccio",
-      "subtitle": "Tu fuente de análisis futbolístico profesional",
-      "description": "Descubre tácticas, movimientos de equipo y análisis de datos en profundidad del mundo del fútbol"
+      "title": "Tale",
+      "subtitle": "Mi espacio personal para relatos de todo tipo",
+      "description": "Bienvenido a mi mundo de historias, donde comparto relatos, pensamientos y reflexiones nacidas de la imaginación y la experiencia"
     },
     "features": {
-      "title": "Lo Que Ofrecemos",
-      "tactical": {
-        "title": "Análisis Tácticos",
-        "description": "Desglose detallado de estrategias de juego y movimientos de equipo"
+      "title": "Lo Que Encontrarás Aquí",
+      "stories": {
+        "title": "Relatos Originales",
+        "description": "Cuentos de fantasía, dramas, comedias y reflexiones personales escritas con pasión"
       },
-      "data": {
-        "title": "Análisis de Datos",
-        "description": "Estadísticas avanzadas y visualizaciones interactivas del rendimiento"
+      "serialized": {
+        "title": "Historias por Entregas",
+        "description": "Relatos más largos divididos en capítulos para una experiencia de lectura envolvente"
       },
       "multilang": {
         "title": "Contenido Multiidioma",
-        "description": "Artículos y análisis disponibles en italiano, inglés y español"
+        "description": "Relatos disponibles en italiano, inglés, español, francés y alemán"
       }
     },
     "about": {
-      "title": "Nuestra Misión",
-      "description": "Catenaccio es una plataforma dedicada al análisis futbolístico profesional. Ofrecemos contenido en profundidad sobre tácticas, movimientos de equipo y rendimiento de jugadores, utilizando datos avanzados y visualizaciones interactivas para llevar el análisis futbolístico a un nuevo nivel."
+      "title": "Sobre Mí",
+      "description": "Soy un escritor que ama contar historias. En este espacio comparto mis relatos de todos los géneros: desde la fantasía hasta la realidad, del drama a la comedia. Cada historia nace del deseo de explorar emociones, situaciones y personajes que viven en mi imaginación."
     },
-    "latestNews": {
-      "title": "Últimas Noticias",
-      "noArticles": "No hay artículos disponibles en este idioma."
+    "latestStories": {
+      "title": "Últimos Relatos",
+      "noStories": "No hay relatos disponibles en este idioma."
     }
   }
 }

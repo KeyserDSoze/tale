@@ -1,44 +1,44 @@
 {
   "nav": {
     "home": "Home",
-    "about": "About",
-    "blog": "Blog",
-    "analyses": "Analyses"
+    "about": "About me",
+    "blog": "Stories",
+    "stories": "Tales"
   },
   "common": {
-    "tagline": "Advanced football analysis",
-    "readMore": "Read more",
-    "seeMore": "See more",
+    "tagline": "Stories, tales and thoughts",
+    "readMore": "Read full story",
+    "seeMore": "See more stories",
     "shareOn": "Share on"
   },
   "home": {
     "hero": {
-      "title": "Catenaccio",
-      "subtitle": "Your source for professional football analysis",
-      "description": "Discover tactics, team movements and in-depth data analysis from the world of football"
+      "title": "Tale",
+      "subtitle": "My personal space for stories of all kinds",
+      "description": "Welcome to my world of stories, where I share tales, thoughts and reflections born from imagination and experience"
     },
     "features": {
-      "title": "What We Offer",
-      "tactical": {
-        "title": "Tactical Analysis",
-        "description": "Detailed breakdown of game strategies and team movements"
+      "title": "What You'll Find Here",
+      "stories": {
+        "title": "Original Stories",
+        "description": "Fantasy tales, dramas, comedies and personal reflections written with passion"
       },
-      "data": {
-        "title": "Data Analysis",
-        "description": "Advanced statistics and interactive visualizations of performance"
+      "serialized": {
+        "title": "Serialized Stories",
+        "description": "Longer tales divided into chapters for an engaging reading experience"
       },
       "multilang": {
         "title": "Multilingual Content",
-        "description": "Articles and analysis available in Italian and English"
+        "description": "Stories available in Italian, English, Spanish, French and German"
       }
     },
     "about": {
-      "title": "Our Mission",
-      "description": "Catenaccio is a platform dedicated to professional football analysis. We offer in-depth content on tactics, team movements and player performance, using advanced data and interactive visualizations to take football analysis to the next level."
+      "title": "About Me",
+      "description": "I'm a writer who loves telling stories. In this space I share my tales of all genres: from fantasy to reality, from drama to comedy. Every story is born from the desire to explore emotions, situations and characters that live in my imagination."
     },
-    "latestNews": {
-      "title": "Latest News",
-      "noArticles": "No articles available in this language."
+    "latestStories": {
+      "title": "Latest Stories",
+      "noStories": "No stories available in this language."
     }
   }
 }

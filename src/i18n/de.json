@@ -1,0 +1,44 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "about": "Über mich",
+    "blog": "Erzählungen",
+    "stories": "Geschichten"
+  },
+  "common": {
+    "tagline": "Erzählungen, Geschichten und Gedanken",
+    "readMore": "Ganze Geschichte lesen",
+    "seeMore": "Weitere Erzählungen",
+    "shareOn": "Teilen auf"
+  },
+  "home": {
+    "hero": {
+      "title": "Tale",
+      "subtitle": "Mein persönlicher Raum für Erzählungen aller Art",
+      "description": "Willkommen in meiner Welt der Geschichten, wo ich Erzählungen, Gedanken und Reflexionen teile, die aus Fantasie und Erfahrung entstehen"
+    },
+    "features": {
+      "title": "Was Sie Hier Finden",
+      "stories": {
+        "title": "Originale Erzählungen",
+        "description": "Fantasy-Geschichten, Dramen, Komödien und persönliche Reflexionen mit Leidenschaft geschrieben"
+      },
+      "serialized": {
+        "title": "Mehrteilige Geschichten",
+        "description": "Längere Erzählungen in Kapiteln aufgeteilt für ein fesselndes Leseerlebnis"
+      },
+      "multilang": {
+        "title": "Mehrsprachige Inhalte",
+        "description": "Erzählungen verfügbar auf Italienisch, Englisch, Spanisch, Französisch und Deutsch"
+      }
+    },
+    "about": {
+      "title": "Über Mich",
+      "description": "Ich bin ein Schriftsteller, der es liebt, Geschichten zu erzählen. In diesem Raum teile ich meine Erzählungen aller Genres: von Fantasy bis Realität, von Drama bis Komödie. Jede Geschichte entsteht aus dem Wunsch, Emotionen, Situationen und Charaktere zu erkunden, die in meiner Fantasie leben."
+    },
+    "latestStories": {
+      "title": "Neueste Erzählungen",
+      "noStories": "Keine Erzählungen in dieser Sprache verfügbar."
+    }
+  }
+}

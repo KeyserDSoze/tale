@@ -14,7 +14,7 @@ const _ = (k) => t(lang, k);
 ---
 
 <BaseLayout 
-  title={`${_('nav.about')} — Catenaccio`} 
+  title={`${_('nav.about')} — Tale`} 
   description={_('home.about.description')}
   lang={lang}
 >
@@ -24,14 +24,20 @@ const _ = (k) => t(lang, k);
   <div class="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
       <div class="flex justify-end space-x-4">
-        <a href={createLangUrl('it', '/about')} class={`text-sm transition-colors duration-200 ${lang === 'it' ? 'font-bold text-blue-600 dark:text-blue-400' : 'text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'}`}>
+        <a href={createLangUrl('it', '/about')} class={`text-sm transition-colors duration-200 ${lang === 'it' ? 'font-bold text-purple-600 dark:text-purple-400' : 'text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400'}`}>
           🇮🇹 Italiano
         </a>
-        <a href={createLangUrl('en', '/about')} class={`text-sm transition-colors duration-200 ${lang === 'en' ? 'font-bold text-blue-600 dark:text-blue-400' : 'text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'}`}>
+        <a href={createLangUrl('en', '/about')} class={`text-sm transition-colors duration-200 ${lang === 'en' ? 'font-bold text-purple-600 dark:text-purple-400' : 'text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400'}`}>
           🇬🇧 English
         </a>
-        <a href={createLangUrl('es', '/about')} class={`text-sm transition-colors duration-200 ${lang === 'es' ? 'font-bold text-blue-600 dark:text-blue-400' : 'text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'}`}>
+        <a href={createLangUrl('es', '/about')} class={`text-sm transition-colors duration-200 ${lang === 'es' ? 'font-bold text-purple-600 dark:text-purple-400' : 'text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400'}`}>
           🇪🇸 Español
+        </a>
+        <a href={createLangUrl('fr', '/about')} class={`text-sm transition-colors duration-200 ${lang === 'fr' ? 'font-bold text-purple-600 dark:text-purple-400' : 'text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400'}`}>
+          🇫🇷 Français
+        </a>
+        <a href={createLangUrl('de', '/about')} class={`text-sm transition-colors duration-200 ${lang === 'de' ? 'font-bold text-purple-600 dark:text-purple-400' : 'text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400'}`}>
+          🇩🇪 Deutsch
         </a>
       </div>
     </div>
@@ -39,21 +45,22 @@ const _ = (k) => t(lang, k);
   
   <main class="bg-white dark:bg-gray-900 transition-colors duration-300">
     <!-- Hero Section -->
-    <section class="bg-gradient-to-br from-green-600 to-blue-600 dark:from-green-700 dark:to-blue-700 text-white py-24 transition-colors duration-300">
+    <section class="bg-gradient-to-br from-purple-600 to-indigo-600 dark:from-purple-700 dark:to-indigo-700 text-white py-24 transition-colors duration-300">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div class="max-w-4xl mx-auto">
           <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-            {_('home.hero.title')}
+            {_('nav.about')}
           </h1>
-          <p class="text-xl md:text-2xl mb-6 text-green-100">
+          <p class="text-xl md:text-2xl mb-6 text-purple-100">
             {_('home.hero.subtitle')}
           </p>
-          <p class="text-lg mb-8 text-blue-100 leading-relaxed">
-            {_('home.hero.description')}
-          </p>
           <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href={createLangUrl(lang, '/')} class="inline-block bg-white text-blue-600 font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors">
-              {lang === 'it' ? 'Vedi Articoli' : lang === 'es' ? 'Ver Artículos' : 'See Articles'}
+            <a href={createLangUrl(lang, '/')} class="inline-block bg-white text-purple-600 font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors">
+              {lang === 'it' ? 'Vedi Racconti' : 
+               lang === 'es' ? 'Ver Relatos' : 
+               lang === 'fr' ? 'Voir Récits' :
+               lang === 'de' ? 'Erzählungen Ansehen' :
+               'See Stories'}
             </a>
           </div>
         </div>
@@ -65,19 +72,18 @@ const _ = (k) => t(lang, k);
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
           <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4 transition-colors duration-300">
-            {_('nav.about')}
+            {_('home.about.title')}
           </h2>
         </div>
         
         <div class="prose prose-lg mx-auto dark:prose-invert transition-colors duration-300">
-          <p class="text-xl text-gray-600 dark:text-gray-300 leading-relaxed mb-8 transition-colors duration-300">
+          <div class="text-center mb-12">
+            <div class="text-8xl mb-6">📝</div>
+          </div>
+          
+          <p class="text-xl text-gray-600 dark:text-gray-300 leading-relaxed mb-8 transition-colors duration-300 text-center">
             {_('home.about.description')}
           </p>
-          
-          <h3 class="text-2xl font-semibold mb-6 text-gray-900 dark:text-gray-100 transition-colors duration-300">
-            {lang === 'it' ? 'I Nostri Valori' : 
-             lang === 'es' ? 'Nuestros Valores' : 
-             'Our Values'}
           </h3>
           
           <div class="space-y-8 mb-8">
