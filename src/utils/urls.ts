@@ -2,7 +2,7 @@
 
 /**
  * Get the base path for the current environment
- * Returns '/y' for GitHub Pages, '' for custom domain
+ * Returns '/tale' for GitHub Pages, '' for custom domain
  */
 export function getBasePath(): string {
   // Check if we're in the browser or server
@@ -10,19 +10,19 @@ export function getBasePath(): string {
     // Browser environment - check the current hostname
     const hostname = window.location.hostname;
     // If we're on the custom domain, don't use base path
-    if (hostname === 'catenaccio.net' || hostname === 'www.catenaccio.net') {
+    if (hostname === 'tale.ws' || hostname === 'www.tale.ws') {
       return '';
     }
     // If we're on GitHub Pages, use base path
     if (hostname.includes('github.io')) {
-      return '/y';
+      return '/tale';
     }
     // Default to no base path
     return '';
   } else {
     // Server environment - check environment variables
     const isGitHubPages = process.env.GITHUB_PAGES === 'true' || process.env.CI;
-    return isGitHubPages ? '/y' : '';
+    return isGitHubPages ? '/tale' : '';
   }
 }
 
