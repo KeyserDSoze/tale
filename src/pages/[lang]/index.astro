@@ -6,7 +6,7 @@ import FormattedDate from "../../components/FormattedDate.astro";
 import { t, LOCALES } from "../../i18n";
 import { getCollection } from 'astro:content';
 import { createLangUrl } from "../../utils/urls";
-import { getSeriesByLang, getStandaloneStoriesByLang } from "../../utils/series";
+import { getSeriesByLang, getStandaloneStoriesByLang, getComicSeries, getStandaloneComics } from "../../utils/series";
 
 export function getStaticPaths() {
   return LOCALES.map((lang) => ({ params: { lang } }));
@@ -15,14 +15,25 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 const _ = (k) => t(lang, k);
 
-// Get series and standalone stories for this language
-const series = await getSeriesByLang(lang);
-const standaloneStories = await getStandaloneStoriesByLang(lang);
+// Get series and standalone content for this language
+const storySeries = await getSeriesByLang(lang, 'story');
+const comicSeries = await getComicSeries(lang);
+const standaloneStories = await getStandaloneStoriesByLang(lang, 'story');
+const standaloneComics = await getStandaloneComics(lang);
 
 // Combine and sort by date for latest section (limit to 3)
 const allContent = [
-  ...series.map(s => ({ 
+  ...storySeries.map(s => ({ 
     type: 'series', 
+    contentType: 'story',
+    ...s, 
+    date: s.lastUpdated,
+    title: s.maintitle,
+    description: s.maindescription 
+  })),
+  ...comicSeries.map(s => ({ 
+    type: 'series', 
+    contentType: 'comic',
     ...s, 
     date: s.lastUpdated,
     title: s.maintitle,
@@ -30,6 +41,12 @@ const allContent = [
   })),
   ...standaloneStories.map(s => ({ 
     type: 'story', 
+    contentType: 'story',
+    ...s 
+  })),
+  ...standaloneComics.map(s => ({ 
+    type: 'story', 
+    contentType: 'comic',
     ...s 
   }))
 ].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, 3);
@@ -41,35 +58,6 @@ const allContent = [
   lang={lang}
 >
   <Header lang={lang} />
-
-  <!-- Language Switcher -->
-  <div class="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 transition-colors duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
-      <div class="flex justify-end space-x-4 flex-wrap">
-        <a href={createLangUrl('it')} class={`text-sm transition-colors duration-200 ${lang === 'it' ? 'font-bold text-purple-600 dark:text-purple-400' : 'text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400'}`}>
-          🇮🇹 Italiano
-        </a>
-        <a href={createLangUrl('en')} class={`text-sm transition-colors duration-200 ${lang === 'en' ? 'font-bold text-purple-600 dark:text-purple-400' : 'text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400'}`}>
-          🇬🇧 English
-        </a>
-        <a href={createLangUrl('es')} class={`text-sm transition-colors duration-200 ${lang === 'es' ? 'font-bold text-purple-600 dark:text-purple-400' : 'text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400'}`}>
-          🇪🇸 Español
-        </a>
-        <a href={createLangUrl('fr')} class={`text-sm transition-colors duration-200 ${lang === 'fr' ? 'font-bold text-purple-600 dark:text-purple-400' : 'text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400'}`}>
-          🇫🇷 Français
-        </a>
-        <a href={createLangUrl('de')} class={`text-sm transition-colors duration-200 ${lang === 'de' ? 'font-bold text-purple-600 dark:text-purple-400' : 'text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400'}`}>
-          🇩🇪 Deutsch
-        </a>
-        <a href={createLangUrl('zh')} class={`text-sm transition-colors duration-200 ${lang === 'zh' ? 'font-bold text-purple-600 dark:text-purple-400' : 'text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400'}`}>
-          🇨🇳 中文
-        </a>
-        <a href={createLangUrl('ja')} class={`text-sm transition-colors duration-200 ${lang === 'ja' ? 'font-bold text-purple-600 dark:text-purple-400' : 'text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400'}`}>
-          🇯🇵 日本語
-        </a>
-      </div>
-    </div>
-  </div>
 
   <main class="bg-white dark:bg-gray-900 transition-colors duration-300">
     <!-- Hero Section -->
@@ -86,11 +74,11 @@ const allContent = [
             {_('home.hero.description')}
           </p>
           <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href={createLangUrl(lang, '/about')} class="inline-block bg-white text-purple-600 font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors">
-              {_('nav.about')}
-            </a>
-            <a href={createLangUrl(lang, '/blog')} class="inline-block bg-transparent border-2 border-white text-white font-semibold px-8 py-3 rounded-lg hover:bg-white hover:text-purple-600 transition-colors">
+            <a href={createLangUrl(lang, '/stories')} class="inline-block bg-white text-purple-600 font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors">
               {_('nav.blog')}
+            </a>
+            <a href={createLangUrl(lang, '/comics')} class="inline-block bg-transparent border-2 border-white text-white font-semibold px-8 py-3 rounded-lg hover:bg-white hover:text-purple-600 transition-colors">
+              {_('nav.comics')}
             </a>
           </div>
         </div>
@@ -156,17 +144,26 @@ const allContent = [
                 <div class="p-6">
                   <div class="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400 mb-3 transition-colors duration-300">
                     <FormattedDate date={item.date} />
-                    {item.type === 'series' && (
-                      <span class="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 px-2 py-1 rounded-full text-xs font-medium">
-                        {item.totalChapters} {lang === 'it' ? 'capitoli' : lang === 'es' ? 'capítulos' : lang === 'fr' ? 'chapitres' : lang === 'de' ? 'Kapitel' : lang === 'zh' ? '章节' : lang === 'ja' ? '章' : 'chapters'}
-                      </span>
-                    )}
+                    <div class="flex items-center gap-2">
+                      {item.contentType === 'comic' && (
+                        <span class="bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 px-2 py-1 rounded-full text-xs font-medium">
+                          {lang === 'it' ? 'Fumetto' : lang === 'es' ? 'Cómic' : lang === 'fr' ? 'BD' : lang === 'de' ? 'Comic' : lang === 'zh' ? '漫画' : lang === 'ja' ? '漫画' : 'Comic'}
+                        </span>
+                      )}
+                      {item.type === 'series' && (
+                        <span class="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 px-2 py-1 rounded-full text-xs font-medium">
+                          {item.chapters?.length || 0} {lang === 'it' ? 'capitoli' : lang === 'es' ? 'capítulos' : lang === 'fr' ? 'chapitres' : lang === 'de' ? 'Kapitel' : lang === 'zh' ? '章节' : lang === 'ja' ? '章' : 'chapters'}
+                        </span>
+                      )}
+                    </div>
                   </div>
                   <h3 class="text-xl font-semibold mb-3 line-clamp-2">
                     <a 
                       href={item.type === 'series' 
                         ? createLangUrl(lang, `/series/${item.taleid}`) 
-                        : createLangUrl(lang, `/blog/${item.id}`)} 
+                        : (item.contentType === 'comic' 
+                          ? createLangUrl(lang, `/comics/${item.slug}`) 
+                          : createLangUrl(lang, `/stories/${item.slug}`))} 
                       class="text-gray-900 dark:text-gray-100 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200"
                     >
                       {item.title}
@@ -178,7 +175,9 @@ const allContent = [
                   <a 
                     href={item.type === 'series' 
                       ? createLangUrl(lang, `/series/${item.taleid}`) 
-                      : createLangUrl(lang, `/blog/${item.id}`)}
+                      : (item.contentType === 'comic' 
+                        ? createLangUrl(lang, `/comics/${item.slug}`) 
+                        : createLangUrl(lang, `/stories/${item.slug}`))}
                     class="inline-flex items-center text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium transition-colors duration-200"
                   >
                     {item.type === 'series' 

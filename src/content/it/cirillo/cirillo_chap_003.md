@@ -3,6 +3,7 @@ title: "Cirillo e il mercato dei sogni - capitolo 3"
 description: "Mamma Orsa, disperata, cerca il figlio tra le bancarelle; Cirillo resiste all’orso cattivo, finché la mamma lo ritrova, e lo stringe in un abbraccio pieno di sollievo e amore."
 date: "2025-08-15"
 lang: "it"
+type: story
 id: "cirillo-chap-003"
 taleid: "cirillo"
 chapter: 3

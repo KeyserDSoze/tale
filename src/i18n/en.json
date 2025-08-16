@@ -2,7 +2,8 @@
   "nav": {
     "home": "Home",
     "blog": "Stories",
-    "stories": "Stories"
+    "stories": "Stories",
+    "comics": "Comics"
   },
   "common": {
     "tagline": "Stories, tales and thoughts",

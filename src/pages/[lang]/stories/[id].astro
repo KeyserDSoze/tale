@@ -60,7 +60,7 @@ const { Content } = await render(post);
 
 // Costruisci l'URL completo dell'articolo per la condivisione social
 const currentUrl = new URL(Astro.request.url);
-const fullArticleUrl = `${currentUrl.origin}${createLangUrl(lang, `/blog/${id}`)}`;
+const fullArticleUrl = `${currentUrl.origin}${createLangUrl(lang, `/stories/${id}`)}`;
 ---
 
 <BaseLayout 

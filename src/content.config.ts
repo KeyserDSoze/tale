@@ -19,6 +19,8 @@ const stories = defineCollection({
 			id: z.string().optional(),
 			// Author information
 			author: z.string().optional().default('Tale'),
+			// Content type: story or comic
+			type: z.enum(['story', 'comic']).default('story'),
 			// Series/Multi-chapter story support
 			taleid: z.string().optional(), // ID for grouping chapters
 			chapter: z.number().optional(), // Chapter number

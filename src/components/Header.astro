@@ -2,6 +2,7 @@
 import { t } from '../i18n';
 import HeaderLink from './HeaderLink.astro';
 import ThemeToggle from './ThemeToggle.astro';
+import LanguageSwitcher from './LanguageSwitcher.astro';
 import { createLangUrl } from '../utils/urls';
 
 // Accept lang prop for multilingual support
@@ -31,11 +32,25 @@ const _ = (k) => t(lang, k);
 			<HeaderLink href={createLangUrl(lang)}>
 				{_('nav.home')}
 			</HeaderLink>
-			<HeaderLink href={createLangUrl(lang, '/blog')}>
-				{_('nav.blog')}
-			</HeaderLink>
+			<div class="dropdown">
+				<button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+					{_('nav.stories')}
+					<svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+						<path d="M6 8.5L2.5 5h7L6 8.5z"/>
+					</svg>
+				</button>
+				<div class="dropdown-menu">
+					<a href={createLangUrl(lang, '/stories')} class="dropdown-item">
+						{_('nav.blog')}
+					</a>
+					<a href={createLangUrl(lang, '/comics')} class="dropdown-item">
+						{_('nav.comics')}
+					</a>
+				</div>
+			</div>
 		</div>
 		<div class="nav-controls">
+			<LanguageSwitcher lang={lang} />
 			<ThemeToggle />
 		</div>
 	</nav>
@@ -144,4 +159,153 @@ const _ = (k) => t(lang, k);
 			gap: 0.5rem;
 		}
 	}
+
+	/* Dropdown styles */
+	.dropdown {
+		position: relative;
+		display: inline-block;
+	}
+
+	.dropdown-toggle {
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+		padding: 1em 0.5em;
+		color: rgb(var(--black));
+		background: none;
+		border: none;
+		border-bottom: 4px solid transparent;
+		cursor: pointer;
+		font-size: inherit;
+		font-family: inherit;
+		text-decoration: none;
+		transition: color 0.3s ease, border-bottom-color 0.3s ease;
+	}
+
+	:global(.dark) .dropdown-toggle {
+		color: rgb(229, 231, 235);
+	}
+
+	.dropdown-toggle:hover {
+		color: var(--accent);
+	}
+
+	.dropdown-toggle[aria-expanded="true"] {
+		border-bottom-color: var(--accent);
+	}
+
+	.dropdown-arrow {
+		transition: transform 0.2s ease;
+	}
+
+	.dropdown-toggle[aria-expanded="true"] .dropdown-arrow {
+		transform: rotate(180deg);
+	}
+
+	.dropdown-menu {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		background: white;
+		border: 1px solid rgb(229, 231, 235);
+		border-radius: 0.5rem;
+		box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+		min-width: 160px;
+		z-index: 50;
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(-10px);
+		transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+	}
+
+	:global(.dark) .dropdown-menu {
+		background: rgb(31, 41, 55);
+		border-color: rgb(75, 85, 99);
+	}
+
+	.dropdown.open .dropdown-menu {
+		opacity: 1;
+		visibility: visible;
+		transform: translateY(0);
+	}
+
+	.dropdown-item {
+		display: block;
+		padding: 0.75rem 1rem;
+		color: rgb(var(--black));
+		text-decoration: none;
+		transition: background-color 0.2s ease, color 0.2s ease;
+	}
+
+	:global(.dark) .dropdown-item {
+		color: rgb(229, 231, 235);
+	}
+
+	.dropdown-item:hover {
+		background-color: rgb(243, 244, 246);
+		color: var(--accent);
+	}
+
+	:global(.dark) .dropdown-item:hover {
+		background-color: rgb(55, 65, 81);
+	}
+
+	.dropdown-item:first-child {
+		border-radius: 0.5rem 0.5rem 0 0;
+	}
+
+	.dropdown-item:last-child {
+		border-radius: 0 0 0.5rem 0.5rem;
+	}
+
+	@media (max-width: 720px) {
+		.dropdown-menu {
+			right: 0;
+			left: auto;
+		}
+	}
 </style>
+
+<script>
+	// Dropdown functionality
+	document.addEventListener('DOMContentLoaded', function() {
+		const dropdown = document.querySelector('.dropdown');
+		const toggle = document.querySelector('.dropdown-toggle');
+		
+		if (dropdown && toggle) {
+			// Toggle dropdown on click
+			toggle.addEventListener('click', function(e) {
+				e.preventDefault();
+				const isOpen = dropdown.classList.contains('open');
+				
+				// Close all other dropdowns first
+				document.querySelectorAll('.dropdown.open').forEach(d => {
+					d.classList.remove('open');
+					d.querySelector('.dropdown-toggle')?.setAttribute('aria-expanded', 'false');
+				});
+				
+				// Toggle current dropdown
+				if (!isOpen) {
+					dropdown.classList.add('open');
+					toggle.setAttribute('aria-expanded', 'true');
+				}
+			});
+			
+			// Close dropdown when clicking outside
+			document.addEventListener('click', function(e) {
+				if (e.target && !dropdown.contains(e.target as Node)) {
+					dropdown.classList.remove('open');
+					toggle.setAttribute('aria-expanded', 'false');
+				}
+			});
+			
+			// Close dropdown on escape key
+			document.addEventListener('keydown', function(e) {
+				if (e.key === 'Escape') {
+					dropdown.classList.remove('open');
+					toggle.setAttribute('aria-expanded', 'false');
+				}
+			});
+		}
+	});
+</script>

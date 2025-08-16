@@ -25,10 +25,10 @@ export interface SeriesInfo {
   lastUpdated: Date;
 }
 
-export async function getSeriesByLang(lang: string): Promise<SeriesInfo[]> {
+export async function getSeriesByLang(lang: string, type?: 'story' | 'comic'): Promise<SeriesInfo[]> {
   // First, get all posts that have taleid (series posts)
   const allSeriesPosts = await getCollection('stories', ({ data }) => 
-    data.lang === lang && data.taleid
+    data.lang === lang && data.taleid && (type ? data.type === type : true)
   );
 
   // Group posts by taleid
@@ -81,9 +81,9 @@ export async function getSeriesByLang(lang: string): Promise<SeriesInfo[]> {
   return series.sort((a, b) => b.lastUpdated.getTime() - a.lastUpdated.getTime());
 }
 
-export async function getStandaloneStoriesByLang(lang: string) {
+export async function getStandaloneStoriesByLang(lang: string, type?: 'story' | 'comic') {
   const allPosts = await getCollection('stories', ({ data }) => 
-    data.lang === lang && !data.taleid
+    data.lang === lang && !data.taleid && (type ? data.type === type : true)
   );
 
   return allPosts
@@ -97,7 +97,24 @@ export async function getStandaloneStoriesByLang(lang: string) {
     }));
 }
 
-export async function getSeriesById(taleid: string, lang: string): Promise<SeriesInfo | null> {
-  const series = await getSeriesByLang(lang);
+export async function getSeriesById(taleid: string, lang: string, type?: 'story' | 'comic'): Promise<SeriesInfo | null> {
+  const series = await getSeriesByLang(lang, type);
   return series.find(s => s.taleid === taleid) || null;
+}
+
+// Helper functions for specific content types
+export async function getStorySeries(lang: string): Promise<SeriesInfo[]> {
+  return getSeriesByLang(lang, 'story');
+}
+
+export async function getComicSeries(lang: string): Promise<SeriesInfo[]> {
+  return getSeriesByLang(lang, 'comic');
+}
+
+export async function getStandaloneStories(lang: string) {
+  return getStandaloneStoriesByLang(lang, 'story');
+}
+
+export async function getStandaloneComics(lang: string) {
+  return getStandaloneStoriesByLang(lang, 'comic');
 }

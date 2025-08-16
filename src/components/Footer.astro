@@ -10,34 +10,13 @@ const _ = (k) => t(lang, k);
 <footer class="bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 transition-colors duration-300">
 	<div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
 		<div class="text-center">
-			<!-- Logo e nome -->
-			<div class="flex justify-center items-center mb-4">
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 64" width="40" height="18" class="text-purple-600 dark:text-purple-400" role="img" aria-labelledby="footer-logo">
-					<title id="footer-logo">Tale Logo</title>
-					<text x="65" y="38" font-size="28" text-anchor="middle" font-family="serif" fill="currentColor">«</text>
-					<g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-						<path d="M90 8 104 22 90 56 76 22Z"/>
-						<circle cx="90" cy="28" r="3.5" fill="currentColor" stroke="none"/>
-					</g>
-					<text x="115" y="38" font-size="28" text-anchor="middle" font-family="serif" fill="currentColor">»</text>
-				</svg>
-				<span class="ml-2 text-xl font-bold text-gray-900 dark:text-gray-100 transition-colors duration-300">Tale</span>
-			</div>
-			
-			<!-- Descrizione breve -->
-			<p class="text-gray-600 dark:text-gray-400 mb-4 transition-colors duration-300">
-				{_('footer.description')}
-			</p>
-			
-			<!-- Copyright -->
-			<div class="border-t border-gray-200 dark:border-gray-700 pt-4">
-				<p class="text-gray-500 dark:text-gray-400 text-sm transition-colors duration-300">
+			  	<p class="text-gray-500 dark:text-gray-400 text-sm transition-colors duration-300">
 					&copy; {today.getFullYear()} {_('footer.copyright')}
 				</p>
 				<p class="text-gray-400 dark:text-gray-500 text-xs mt-1 transition-colors duration-300">
 					{_('footer.madeWith')}
 				</p>
-			</div>
+			
 		</div>
 	</div>
 </footer>

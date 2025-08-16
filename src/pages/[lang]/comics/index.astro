@@ -1,0 +1,214 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Header from "../../../components/Header.astro";
+import Footer from "../../../components/Footer.astro";
+import FormattedDate from "../../../components/FormattedDate.astro";
+import { t, LOCALES } from "../../../i18n";
+import { getComicSeries, getStandaloneComics } from "../../../utils/series";
+
+export function getStaticPaths() {
+  return LOCALES.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const _ = (k) => t(lang, k);
+
+// Get comic series and standalone comics for this language
+const comicSeries = await getComicSeries(lang);
+const standaloneComics = await getStandaloneComics(lang);
+---
+
+<BaseLayout 
+  title={`${_('nav.comics')} — Tale`} 
+  description={lang === 'it' ? 'I miei fumetti e storie illustrate' : 
+               lang === 'es' ? 'Mis cómics e historias ilustradas' :
+               lang === 'fr' ? 'Mes bandes dessinées et histoires illustrées' :
+               lang === 'de' ? 'Meine Comics und illustrierten Geschichten' :
+               lang === 'zh' ? '我的漫画和插图故事' :
+               lang === 'ja' ? '私の漫画とイラスト付きストーリー' :
+               'My comics and illustrated stories'}
+  lang={lang}
+>
+  <Header lang={lang} />
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-purple-600 via-purple-700 to-indigo-800 dark:from-purple-800 dark:via-purple-900 dark:to-gray-900 transition-colors duration-300">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-10">
+      <svg class="w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="comicPattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+            <rect x="2" y="2" width="16" height="16" fill="none" stroke="currentColor" stroke-width="0.5" rx="2"/>
+            <path d="M6,8 Q10,4 14,8 Q10,12 6,8" fill="currentColor" opacity="0.3"/>
+          </pattern>
+        </defs>
+        <rect x="0" y="0" width="100" height="100" fill="url(#comicPattern)"/>
+      </svg>
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div class="text-center">
+        <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+          {_('nav.comics')}
+        </h1>
+        <p class="text-xl md:text-2xl text-purple-100 dark:text-purple-200 max-w-3xl mx-auto leading-relaxed">
+          {lang === 'it' ? 'Un mondo di storie illustrate, fumetti e avventure visive' :
+           lang === 'es' ? 'Un mundo de historias ilustradas, cómics y aventuras visuales' :
+           lang === 'fr' ? 'Un monde d\'histoires illustrées, de bandes dessinées et d\'aventures visuelles' :
+           lang === 'de' ? 'Eine Welt illustrierter Geschichten, Comics und visueller Abenteuer' :
+           lang === 'zh' ? '一个充满插图故事、漫画和视觉冒险的世界' :
+           lang === 'ja' ? 'イラスト付きストーリー、漫画、視覚的冒険の世界' :
+           'A world of illustrated stories, comics and visual adventures'}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <!-- Comic Series -->
+    {comicSeries.length > 0 && (
+      <section class="mb-20">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-12 text-center">
+          {lang === 'it' ? 'Serie di Fumetti' :
+           lang === 'es' ? 'Series de Cómics' :
+           lang === 'fr' ? 'Séries de Bandes Dessinées' :
+           lang === 'de' ? 'Comic-Serien' :
+           lang === 'zh' ? '漫画系列' :
+           lang === 'ja' ? '漫画シリーズ' :
+           'Comic Series'}
+        </h2>
+        <div class="grid gap-8 md:gap-12">
+          {comicSeries.map((series) => (
+            <article class="group bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-700">
+              <div class="p-8 md:p-10">
+                <div class="flex flex-col md:flex-row gap-6">
+                  <div class="flex-1">
+                    <div class="flex items-center gap-3 mb-4">
+                      <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200">
+                        {series.totalChapters} {lang === 'it' ? 'capitoli' :
+                                                lang === 'es' ? 'capítulos' :
+                                                lang === 'fr' ? 'chapitres' :
+                                                lang === 'de' ? 'Kapitel' :
+                                                lang === 'zh' ? '章节' :
+                                                lang === 'ja' ? '章' :
+                                                'chapters'}
+                      </span>
+                      <time class="text-sm text-gray-500 dark:text-gray-400">
+                        <FormattedDate date={series.lastUpdated} />
+                      </time>
+                    </div>
+                    
+                    <h3 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300">
+                      <a href={`/${lang}/series/${series.taleid}/`} class="hover:underline">
+                        {series.maintitle}
+                      </a>
+                    </h3>
+                    
+                    <p class="text-gray-600 dark:text-gray-300 mb-6 text-lg leading-relaxed">
+                      {series.maindescription}
+                    </p>
+                    
+                    <a 
+                      href={`/${lang}/series/${series.taleid}/`}
+                      class="inline-flex items-center text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-semibold transition-colors duration-300 text-lg"
+                    >
+                      {lang === 'it' ? 'Leggi la serie' :
+                       lang === 'es' ? 'Leer la serie' :
+                       lang === 'fr' ? 'Lire la série' :
+                       lang === 'de' ? 'Serie lesen' :
+                       lang === 'zh' ? '阅读系列' :
+                       lang === 'ja' ? 'シリーズを読む' :
+                       'Read series'}
+                      <svg class="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Standalone Comics -->
+    {standaloneComics.length > 0 && (
+      <section>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-12 text-center">
+          {lang === 'it' ? 'Fumetti Singoli' :
+           lang === 'es' ? 'Cómics Individuales' :
+           lang === 'fr' ? 'Bandes Dessinées Individuelles' :
+           lang === 'de' ? 'Einzelne Comics' :
+           lang === 'zh' ? '单篇漫画' :
+           lang === 'ja' ? '単発漫画' :
+           'Individual Comics'}
+        </h2>
+        <div class="grid gap-8 lg:grid-cols-2">
+          {standaloneComics.map((comic) => (
+            <article class="group bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-700">
+              <div class="p-6">
+                <time class="text-sm text-gray-500 dark:text-gray-400 mb-3 block">
+                  <FormattedDate date={comic.date} />
+                </time>
+                <h3 class="text-xl font-bold mb-3 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300">
+                  <a href={`/${lang}/comics/${comic.id}/`} class="text-gray-900 dark:text-gray-100 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-300">
+                    {comic.title}
+                  </a>
+                </h3>
+                {comic.description && (
+                  <p class="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3 transition-colors duration-300">
+                    {comic.description}
+                  </p>
+                )}
+                <a 
+                  href={`/${lang}/comics/${comic.id}/`}
+                  class="inline-flex items-center text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium transition-colors duration-300"
+                >
+                  {_('common.readMore')}
+                  <svg class="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Empty State -->
+    {comicSeries.length === 0 && standaloneComics.length === 0 && (
+      <div class="text-center py-20">
+        <div class="max-w-md mx-auto">
+          <div class="w-20 h-20 mx-auto mb-6 text-gray-400 dark:text-gray-600">
+            <svg fill="currentColor" viewBox="0 0 24 24">
+              <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
+            {lang === 'it' ? 'Nessun fumetto ancora' :
+             lang === 'es' ? 'Aún no hay cómics' :
+             lang === 'fr' ? 'Aucune bande dessinée pour le moment' :
+             lang === 'de' ? 'Noch keine Comics' :
+             lang === 'zh' ? '还没有漫画' :
+             lang === 'ja' ? 'まだ漫画はありません' :
+             'No comics yet'}
+          </h3>
+          <p class="text-gray-600 dark:text-gray-400">
+            {lang === 'it' ? 'I fumetti arriveranno presto!' :
+             lang === 'es' ? '¡Los cómics llegarán pronto!' :
+             lang === 'fr' ? 'Les bandes dessinées arrivent bientôt !' :
+             lang === 'de' ? 'Comics kommen bald!' :
+             lang === 'zh' ? '漫画即将到来！' :
+             lang === 'ja' ? '漫画はもうすぐ来ます！' :
+             'Comics coming soon!'}
+          </p>
+        </div>
+      </div>
+    )}
+  </main>
+
+  <Footer lang={lang} />
+</BaseLayout>

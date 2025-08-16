@@ -2,7 +2,8 @@
   "nav": {
     "home": "Inicio",
     "blog": "Historias",
-    "stories": "Historias"
+    "stories": "Historias",
+    "comics": "Cómics"
   },
   "common": {
     "tagline": "Relatos, historias y pensamientos",
