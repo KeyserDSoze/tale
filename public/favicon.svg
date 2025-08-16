@@ -1,8 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 64">
-    <text x="65" y="38" font-size="28" text-anchor="middle" font-family="serif" fill="currentColor">«</text>
-    <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <title>Tale Logo</title>
+    <!-- Parentesi francesi -->
+    <text x="65" y="38" font-size="28" text-anchor="middle" font-family="serif" fill="#000">«</text>
+    <!-- Penna -->
+    <g fill="none" stroke="#000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
         <path d="M90 8 104 22 90 56 76 22Z"/>
-        <circle cx="90" cy="28" r="3.5" fill="currentColor" stroke="none"/>
+        <circle cx="90" cy="28" r="3.5" fill="#000" stroke="none"/>
     </g>
-    <text x="115" y="38" font-size="28" text-anchor="middle" font-family="serif" fill="currentColor">»</text>
+    <text x="115" y="38" font-size="28" text-anchor="middle" font-family="serif" fill="#000">»</text>
 </svg>
