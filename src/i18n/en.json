@@ -48,6 +48,10 @@
     "groupBySeries": "Group by series",
     "clearFilters": "Clear filters"
   },
+  "site": {
+    "name": "Tale",
+    "description": "Stories, tales and thoughts"
+  },
   "genres": {
     "all": "All genres",
     "fantasy": "Fantasy",

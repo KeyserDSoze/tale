@@ -48,6 +48,10 @@
     "groupBySeries": "シリーズごとにグループ化",
     "clearFilters": "フィルターをクリア"
   },
+  "site": {
+    "name": "Tale",
+    "description": "物語、物語、そして思索"
+  },
   "genres": {
     "all": "すべてのジャンル",
     "fantasy": "ファンタジー",

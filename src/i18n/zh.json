@@ -48,6 +48,10 @@
     "groupBySeries": "按系列分组",
     "clearFilters": "清除过滤器"
   },
+  "site": {
+    "name": "Tale",
+    "description": "故事、传说与思考"
+  },
   "genres": {
     "all": "所有类型",
     "fantasy": "奇幻",

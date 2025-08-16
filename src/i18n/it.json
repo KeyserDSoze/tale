@@ -48,6 +48,10 @@
     "groupBySeries": "Raggruppa per serie",
     "clearFilters": "Pulisci filtri"
   },
+  "site": {
+    "name": "Tale",
+    "description": "Storie, racconti e pensieri"
+  },
   "genres": {
     "all": "Tutti i generi",
     "fantasy": "Fantasy",

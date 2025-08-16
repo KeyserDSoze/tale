@@ -1,11 +1,12 @@
 ---
 import { createLangUrl } from '../utils/urls';
+import { t } from '../i18n';
 
 const {
-  title = 'Tale',
-  description = 'Storie, racconti e pensieri',
   lang = 'en',
-  alternates = ['en', 'it', 'es'],
+  title = t(lang as any, 'site.name'),
+  description = t(lang as any, 'site.description'),
+  alternates = ['it', 'en', 'es', 'fr', 'de', 'zh', 'ja'],
 } = Astro.props;
 
 const siteUrl = Astro.site?.origin || 'http://localhost:4321';
@@ -18,16 +19,35 @@ const basePath = import.meta.env.BASE_URL || '';
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Tale" />
+    <meta name="language" content={lang} />
+    <meta name="theme-color" content="#1f2937" />
+    <meta name="msapplication-TileColor" content="#1f2937" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={`${siteUrl}${Astro.url.pathname}`} />
     
     <!-- SEO Meta Tags -->
     <title>{title}</title>
+    
+    <!-- Open Graph Meta Tags -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Tale" />
+    <meta property="og:url" content={`${siteUrl}${Astro.url.pathname}`} />
+    <meta property="og:site_name" content={t(lang as any, 'site.name')} />
+    <meta property="og:locale" content={lang} />
+    {alternates.filter(l => l !== lang).map((l) => (
+      <meta property="og:locale:alternate" content={l} />
+    ))}
+    
+    <!-- X (Twitter) Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:site" content="@tale" />
+    <meta name="twitter:creator" content="@tale" />
     
     <!-- Hreflang for SEO -->
     {alternates.map((l) => (
@@ -41,6 +61,27 @@ const basePath = import.meta.env.BASE_URL || '';
     <!-- Fonts -->
     <link rel="preload" href={`${basePath}/fonts/atkinson-regular.woff`} as="font" type="font/woff" crossorigin />
     <link rel="preload" href={`${basePath}/fonts/atkinson-bold.woff`} as="font" type="font/woff" crossorigin />
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Tale",
+        "alternateName": "Tale - Stories and Thoughts",
+        "url": `${siteUrl}`,
+        "description": `${description}`,
+        "inLanguage": `${lang}`,
+        "author": {
+          "@type": "Person",
+          "name": "Tale"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Tale"
+        }
+      }
+    </script>
     
     <!-- Dark mode script - must run before body renders -->
     <script is:inline>
