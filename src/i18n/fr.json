@@ -6,7 +6,8 @@
     "comics": "Bandes dessinées",
     "backToStories": "Retour aux histoires",
     "backToSeries": "Retour aux séries",
-    "backToComics": "Retour aux bandes dessinées"
+    "backToComics": "Retour aux bandes dessinées",
+    "backToHome": "Retour à l'accueil"
   },
   "common": {
     "tagline": "Histoires, contes et réflexions",
@@ -29,7 +30,24 @@
     "comeBackSoonComics": "Revenez bientôt pour découvrir de nouvelles bandes dessinées !",
     "noResults": "Aucun résultat trouvé",
     "tryAdjustingFilters": "Essayez de modifier vos filtres de recherche",
-    "comingSoon": "Histoires bientôt disponibles..."
+    "comingSoon": "Histoires à venir...",
+    "shareArticle": "Partager cet article",
+    "copyLink": "Copier le lien",
+    "linkCopied": "Lien copié !",
+    "close": "Fermer"
+  },
+  "genres": {
+    "fantasy": "Fantasy",
+    "sciencefiction": "Science-Fiction",
+    "horror": "Horreur",
+    "thriller": "Thriller",
+    "mystery": "Mystère",
+    "crime": "Crime",
+    "adventure": "Aventure",
+    "romance": "Romance",
+    "comedy": "Comédie",
+    "drama": "Drame",
+    "children": "Enfants"
   },
   "home": {
     "hero": {
@@ -59,6 +77,15 @@
     "latestStories": {
       "title": "Dernières histoires",
       "noStories": "Aucune histoire disponible dans cette langue."
+    }
+  },
+  "pages": {
+    "stories": {
+      "description": "Mes récits et histoires narratives"
+    },
+    "comics": {
+      "description": "Mes bandes dessinées et histoires illustrées",
+      "intro": "Explorez ma collection de bandes dessinées. Filtrez par genre, recherchez par titre ou auteur, et découvrez des histoires illustrées qui vous transporteront vers des mondes visuels."
     }
   },
   "footer": {

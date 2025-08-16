@@ -1,4 +1,6 @@
 ---
+import { t } from '../i18n';
+
 export interface Props {
   title: string;
   description?: string;
@@ -7,6 +9,7 @@ export interface Props {
 }
 
 const { title, description, url, lang } = Astro.props;
+const _ = (k: string) => t(lang as any, k);
 
 // Encode for URL sharing
 const encodedTitle = encodeURIComponent(title);
@@ -35,34 +38,13 @@ const shareUrls = {
   telegram: `https://t.me/share/url?url=${encodedUrl}&text=${encodedTitle}`
 };
 
-// Labels based on language
-const getLabels = (lang: string) => {
-  switch (lang) {
-    case 'it':
-      return {
-        share: 'Condividi questo articolo',
-        copy: 'Copia link',
-        copied: 'Link copiato!',
-        close: 'Chiudi'
-      };
-    case 'es':
-      return {
-        share: 'Comparte este artículo',
-        copy: 'Copiar enlace',
-        copied: '¡Enlace copiado!',
-        close: 'Cerrar'
-      };
-    default:
-      return {
-        share: 'Share this article',
-        copy: 'Copy link',
-        copied: 'Link copied!',
-        close: 'Close'
-      };
-  }
+// Labels from centralized translations
+const labels = {
+  share: _('common.shareArticle'),
+  copy: _('common.copyLink'),
+  copied: _('common.linkCopied'),
+  close: _('common.close')
 };
-
-const labels = getLabels(lang);
 ---
 
 <div class="social-share border-t border-gray-200 dark:border-gray-700 pt-6 mt-8">

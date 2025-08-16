@@ -6,7 +6,8 @@
     "comics": "漫画",
     "backToStories": "返回故事列表",
     "backToSeries": "返回系列",
-    "backToComics": "返回漫画列表"
+    "backToComics": "返回漫画列表",
+    "backToHome": "返回首页"
   },
   "common": {
     "tagline": "故事、传说与思考",
@@ -29,7 +30,24 @@
     "comeBackSoonComics": "敬请期待更多新漫画！",
     "noResults": "未找到结果",
     "tryAdjustingFilters": "请尝试调整搜索条件",
-    "comingSoon": "故事即将上线..."
+    "comingSoon": "故事即将上线...",
+    "shareArticle": "分享这篇文章",
+    "copyLink": "复制链接",
+    "linkCopied": "链接已复制！",
+    "close": "关闭"
+  },
+  "genres": {
+    "fantasy": "奇幻",
+    "sciencefiction": "科幻",
+    "horror": "恐怖",
+    "thriller": "惊悚",
+    "mystery": "悬疑",
+    "crime": "犯罪",
+    "adventure": "冒险",
+    "romance": "言情",
+    "comedy": "喜剧",
+    "drama": "剧情",
+    "children": "儿童"
   },
   "home": {
     "hero": {
@@ -59,6 +77,15 @@
     "latestStories": {
       "title": "最新故事",
       "noStories": "该语言暂无可用故事。"
+    }
+  },
+  "pages": {
+    "stories": {
+      "description": "我的故事和叙述作品"
+    },
+    "comics": {
+      "description": "我的漫画和插图故事",
+      "intro": "探索我的漫画集。按类型筛选，按标题或作者搜索，发现将带你进入视觉世界的插图故事。"
     }
   },
   "footer": {

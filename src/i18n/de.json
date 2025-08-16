@@ -6,7 +6,8 @@
     "comics": "Comics",
     "backToStories": "Zurück zu den Geschichten",
     "backToSeries": "Zurück zu den Serien",
-    "backToComics": "Zurück zu den Comics"
+    "backToComics": "Zurück zu den Comics",
+    "backToHome": "Zurück zur Startseite"
   },
   "common": {
     "tagline": "Geschichten, Erzählungen und Gedanken",
@@ -29,7 +30,24 @@
     "comeBackSoonComics": "Kommen Sie bald wieder für neue Comics!",
     "noResults": "Keine Ergebnisse gefunden",
     "tryAdjustingFilters": "Versuchen Sie, Ihre Suchfilter anzupassen",
-    "comingSoon": "Geschichten bald verfügbar..."
+    "comingSoon": "Geschichten kommen bald...",
+    "shareArticle": "Diesen Artikel teilen",
+    "copyLink": "Link kopieren",
+    "linkCopied": "Link kopiert!",
+    "close": "Schließen"
+  },
+  "genres": {
+    "fantasy": "Fantasy",
+    "sciencefiction": "Science-Fiction",
+    "horror": "Horror",
+    "thriller": "Thriller",
+    "mystery": "Mystery",
+    "crime": "Krimi",
+    "adventure": "Abenteuer",
+    "romance": "Romance",
+    "comedy": "Komödie",
+    "drama": "Drama",
+    "children": "Kinder"
   },
   "home": {
     "hero": {
@@ -59,6 +77,15 @@
     "latestStories": {
       "title": "Neueste Geschichten",
       "noStories": "Keine Geschichten in dieser Sprache verfügbar."
+    }
+  },
+  "pages": {
+    "stories": {
+      "description": "Meine Erzählungen und narrativen Geschichten"
+    },
+    "comics": {
+      "description": "Meine Comics und illustrierten Geschichten",
+      "intro": "Entdecke meine Comic-Sammlung. Filtere nach Genre, suche nach Titel oder Autor und entdecke illustrierte Geschichten, die dich in visuelle Welten entführen."
     }
   },
   "footer": {

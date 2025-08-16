@@ -6,7 +6,8 @@
     "comics": "Fumetti",
     "backToStories": "Torna alle storie",
     "backToSeries": "Torna alle serie",
-    "backToComics": "Torna ai fumetti"
+    "backToComics": "Torna ai fumetti",
+    "backToHome": "Torna alla Home"
   },
   "common": {
     "tagline": "Storie, racconti e riflessioni",
@@ -29,7 +30,24 @@
     "comeBackSoonComics": "Torna presto per nuovi fumetti!",
     "noResults": "Nessun risultato trovato",
     "tryAdjustingFilters": "Prova a modificare i filtri di ricerca",
-    "comingSoon": "Storie in arrivo..."
+    "comingSoon": "Storie in arrivo...",
+    "shareArticle": "Condividi questo articolo",
+    "copyLink": "Copia link",
+    "linkCopied": "Link copiato!",
+    "close": "Chiudi"
+  },
+  "genres": {
+    "fantasy": "Fantasy",
+    "sciencefiction": "Fantascienza",
+    "horror": "Horror",
+    "thriller": "Thriller",
+    "mystery": "Mistero",
+    "crime": "Crime",
+    "adventure": "Avventura",
+    "romance": "Romance",
+    "comedy": "Commedia",
+    "drama": "Drama",
+    "children": "Per bambini"
   },
   "home": {
     "hero": {
@@ -59,6 +77,15 @@
     "latestStories": {
       "title": "Ultime storie",
       "noStories": "Nessuna storia disponibile in questa lingua."
+    }
+  },
+  "pages": {
+    "stories": {
+      "description": "I miei racconti e storie narrative"
+    },
+    "comics": {
+      "description": "I miei fumetti e storie illustrate",
+      "intro": "Esplora la mia collezione di fumetti. Filtra per genere, cerca per titolo o autore, e scopri storie illustrate che ti trasporteranno in mondi visivi."
     }
   },
   "footer": {

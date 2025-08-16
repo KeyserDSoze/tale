@@ -43,13 +43,7 @@ const currentGrouped = searchParams.get('grouped') || 'true';
 
 <BaseLayout 
   title={`${_('nav.comics')} — Tale`} 
-  description={lang === 'it' ? 'I miei fumetti e storie illustrate' : 
-               lang === 'es' ? 'Mis cómics e historias ilustradas' :
-               lang === 'fr' ? 'Mes bandes dessinées et histoires illustrées' :
-               lang === 'de' ? 'Meine Comics und illustrierten Geschichten' :
-               lang === 'zh' ? '我的漫画和插图故事' :
-               lang === 'ja' ? '私の漫画とイラスト付きストーリー' :
-               'My comics and illustrated stories'}
+  description={_('pages.comics.description')}
   lang={lang}
 >
   <Header lang={lang} />
@@ -75,33 +69,15 @@ const currentGrouped = searchParams.get('grouped') || 'true';
           {_('nav.comics')}
         </h1>
         <p class="text-xl text-purple-100 mb-8 max-w-3xl mx-auto leading-relaxed">
-          {lang === 'it' ? 'Esplora la mia collezione di fumetti. Filtra per genere, cerca per titolo o autore, e scopri storie illustrate che ti trasporteranno in mondi visivi.' :
-           lang === 'es' ? 'Explora mi colección de cómics. Filtra por género, busca por título o autor, y descubre historias ilustradas que te transportarán a mundos visuales.' :
-           lang === 'fr' ? 'Explorez ma collection de bandes dessinées. Filtrez par genre, recherchez par titre ou auteur, et découvrez des histoires illustrées qui vous transporteront vers des mondes visuels.' :
-           lang === 'de' ? 'Entdecke meine Comic-Sammlung. Filtere nach Genre, suche nach Titel oder Autor und entdecke illustrierte Geschichten, die dich in visuelle Welten entführen.' :
-           lang === 'zh' ? '探索我的漫画集。按类型筛选，按标题或作者搜索，发现将带你进入视觉世界的插图故事。' :
-           lang === 'ja' ? '私の漫画コレクションをお探しください。ジャンルでフィルタリングし、タイトルや著者で検索し、視覚的な世界へと導く物語を発見してください。' :
-           'Explore my collection of comics. Filter by genre, search by title or author, and discover illustrated stories that will transport you to visual worlds.'}
+          {_('pages.comics.intro')}
         </p>
         <div class="flex justify-center">
           <div class="bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 text-white font-medium">
             <span id="comic-count">
-              {totalSeries} {lang === 'it' ? 'serie disponibili' :
-                            lang === 'es' ? 'series disponibles' :
-                            lang === 'fr' ? 'séries disponibles' :
-                            lang === 'de' ? 'verfügbare Serien' :
-                            lang === 'zh' ? '可用系列' :
-                            lang === 'ja' ? '利用可能なシリーズ' :
-                            'series available'}
+              {totalSeries} {_('common.seriesAvailable')}
             </span>
             <span id="comic-count-individual" style="display: none;">
-              {totalComics} {lang === 'it' ? 'fumetti disponibili' :
-                            lang === 'es' ? 'cómics disponibles' :
-                            lang === 'fr' ? 'bandes dessinées disponibles' :
-                            lang === 'de' ? 'verfügbare Comics' :
-                            lang === 'zh' ? '可用漫画' :
-                            lang === 'ja' ? '利用可能な漫画' :
-                            'comics available'}
+              {totalComics} {_('common.comicsAvailable')}
             </span>
           </div>
         </div>
@@ -136,22 +112,10 @@ const currentGrouped = searchParams.get('grouped') || 'true';
               <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
             </svg>
             <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100 mb-2">
-              {lang === 'it' ? 'Nessun fumetto disponibile' :
-               lang === 'es' ? 'No hay cómics disponibles' :
-               lang === 'fr' ? 'Aucune bande dessinée disponible' :
-               lang === 'de' ? 'Keine Comics verfügbar' :
-               lang === 'zh' ? '暂无漫画' :
-               lang === 'ja' ? '漫画がありません' :
-               'No comics available'}
+              {_('common.noComicsAvailable')}
             </h3>
             <p class="text-gray-500 dark:text-gray-400">
-              {lang === 'it' ? 'Torna presto per nuovi fumetti!' :
-               lang === 'es' ? '¡Vuelve pronto para nuevos cómics!' :
-               lang === 'fr' ? 'Revenez bientôt pour de nouvelles bandes dessinées!' :
-               lang === 'de' ? 'Kommen Sie bald wieder für neue Comics!' :
-               lang === 'zh' ? '请稍后回来查看新漫画！' :
-               lang === 'ja' ? '新しい漫画のためにまたお越しください！' :
-               'Check back soon for new comics!'}
+              {_('common.comeBackSoonComics')}
             </p>
           </div>
         </div>

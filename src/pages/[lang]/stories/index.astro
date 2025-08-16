@@ -43,13 +43,7 @@ const currentGrouped = searchParams.get('grouped') || 'true';
 
 <BaseLayout 
   title={`${_('nav.blog')} — Tale`} 
-  description={lang === 'it' ? 'I miei racconti e storie narrative' : 
-               lang === 'es' ? 'Mis relatos e historias narrativas' :
-               lang === 'fr' ? 'Mes récits et histoires narratives' :
-               lang === 'de' ? 'Meine Erzählungen und narrativen Geschichten' :
-               lang === 'zh' ? '我的故事和叙述作品' :
-               lang === 'ja' ? '私の物語とナラティブ作品' :
-               'My stories and narrative works'}
+  description={_('pages.stories.description')}
   lang={lang}
 >
   <Header lang={lang} />
@@ -77,22 +71,10 @@ const currentGrouped = searchParams.get('grouped') || 'true';
         <div class="flex justify-center">
           <div class="bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 text-white font-medium">
             <span id="story-count">
-              {totalSeries} {lang === 'it' ? 'serie disponibili' :
-                            lang === 'es' ? 'series disponibles' :
-                            lang === 'fr' ? 'séries disponibles' :
-                            lang === 'de' ? 'verfügbare Serien' :
-                            lang === 'zh' ? '可用系列' :
-                            lang === 'ja' ? '利用可能なシリーズ' :
-                            'series available'}
+              {totalSeries} {_('common.seriesAvailable')}
             </span>
             <span id="story-count-individual" style="display: none;">
-              {totalStories} {lang === 'it' ? 'racconti disponibili' :
-                             lang === 'es' ? 'relatos disponibles' :
-                             lang === 'fr' ? 'récits disponibles' :
-                             lang === 'de' ? 'verfügbare Geschichten' :
-                             lang === 'zh' ? '可用故事' :
-                             lang === 'ja' ? '利用可能なストーリー' :
-                             'stories available'}
+              {totalStories} {_('common.storiesAvailable')}
             </span>
           </div>
         </div>
@@ -127,22 +109,10 @@ const currentGrouped = searchParams.get('grouped') || 'true';
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
             </svg>
             <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100 mb-2">
-              {lang === 'it' ? 'Nessun racconto disponibile' :
-               lang === 'es' ? 'No hay relatos disponibles' :
-               lang === 'fr' ? 'Aucun récit disponible' :
-               lang === 'de' ? 'Keine Geschichten verfügbar' :
-               lang === 'zh' ? '暂无故事' :
-               lang === 'ja' ? 'ストーリーがありません' :
-               'No stories available'}
+              {_('common.noStoriesAvailable')}
             </h3>
             <p class="text-gray-500 dark:text-gray-400">
-              {lang === 'it' ? 'Torna presto per nuovi racconti!' :
-               lang === 'es' ? '¡Vuelve pronto para nuevos relatos!' :
-               lang === 'fr' ? 'Revenez bientôt pour de nouveaux récits!' :
-               lang === 'de' ? 'Kommen Sie bald wieder für neue Geschichten!' :
-               lang === 'zh' ? '请稍后回来查看新故事！' :
-               lang === 'ja' ? '新しいストーリーのためにまたお越しください！' :
-               'Check back soon for new stories!'}
+              {_('common.comeBackSoonStories')}
             </p>
           </div>
         </div>

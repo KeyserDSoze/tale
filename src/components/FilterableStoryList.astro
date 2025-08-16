@@ -59,20 +59,19 @@ for (const group of groupedStories.values()) {
   });
 }
 
-// Genre labels (simplified for display)
+// Genre labels from centralized translations
 const genreLabels: Record<string, string> = {
-  fantasy: lang === 'it' ? 'Fantasy' : 'Fantasy',
-  sciencefiction: lang === 'it' ? 'Fantascienza' : 'Sci-Fi',
-  horror: lang === 'it' ? 'Horror' : 'Horror',
-  thriller: lang === 'it' ? 'Thriller' : 'Thriller',
-  mystery: lang === 'it' ? 'Mistero' : 'Mystery',
-  crime: lang === 'it' ? 'Crime' : 'Crime',
-  adventure: lang === 'it' ? 'Avventura' : 'Adventure',
-  romance: lang === 'it' ? 'Romance' : 'Romance',
-  comedy: lang === 'it' ? 'Commedia' : 'Comedy',
-  drama: lang === 'it' ? 'Drama' : 'Drama',
-  children: lang === 'it' ? 'Per bambini' : 'Children',
-  // Add more as needed
+  fantasy: _('genres.fantasy'),
+  sciencefiction: _('genres.sciencefiction'),
+  horror: _('genres.horror'),
+  thriller: _('genres.thriller'),
+  mystery: _('genres.mystery'),
+  crime: _('genres.crime'),
+  adventure: _('genres.adventure'),
+  romance: _('genres.romance'),
+  comedy: _('genres.comedy'),
+  drama: _('genres.drama'),
+  children: _('genres.children'),
 };
 ---
 
@@ -121,13 +120,13 @@ const genreLabels: Record<string, string> = {
           
           <div class="story-footer">
             <span class="story-author">
-              {lang === 'it' ? 'di' : lang === 'es' ? 'por' : 'by'} {group.series.data.author || 'Tale'}
+              {_('common.by')} {group.series.data.author || 'Tale'}
             </span>
             <a 
               href={createLangUrl(lang, `/series/${group.series.data.taleid || group.series.id}`)}
               class="read-more"
             >
-              {lang === 'it' ? 'Leggi la serie' : lang === 'es' ? 'Leer serie' : 'Read series'}
+              {_('common.readSeries')}
               <svg class="read-more-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M9 18l6-6-6-6"/>
               </svg>
@@ -154,12 +153,12 @@ const genreLabels: Record<string, string> = {
             <div class="story-badges">
               {story.data.chapter && (
                 <span class="badge badge-chapter">
-                  {lang === 'it' ? 'Cap.' : lang === 'es' ? 'Cap.' : 'Ch.'} {story.data.chapter}
+                  {_('common.chapterAbbr')} {story.data.chapter}
                 </span>
               )}
               {story.data.type === 'comic' && (
                 <span class="badge badge-comic">
-                  {lang === 'it' ? 'Fumetto' : lang === 'es' ? 'Cómic' : 'Comic'}
+                  {_('common.comic')}
                 </span>
               )}
               {story.data.genre && (
@@ -190,13 +189,13 @@ const genreLabels: Record<string, string> = {
           
           <div class="story-footer">
             <span class="story-author">
-              {lang === 'it' ? 'di' : lang === 'es' ? 'por' : 'by'} {story.data.author || 'Tale'}
+              {_('common.by')} {story.data.author || 'Tale'}
             </span>
             <a 
               href={createLangUrl(lang, `/${story.data.type === 'comic' ? 'comics' : 'stories'}/${story.id}`)}
               class="read-more"
             >
-              {lang === 'it' ? 'Leggi tutto' : lang === 'es' ? 'Leer más' : 'Read more'}
+              {_('common.readMore')}
               <svg class="read-more-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M9 18l6-6-6-6"/>
               </svg>
@@ -214,8 +213,8 @@ const genreLabels: Record<string, string> = {
       <circle cx="11" cy="11" r="8"></circle>
       <path d="m21 21-4.35-4.35"></path>
     </svg>
-    <h3>{lang === 'it' ? 'Nessun risultato trovato' : lang === 'es' ? 'No se encontraron resultados' : 'No results found'}</h3>
-    <p>{lang === 'it' ? 'Prova a modificare i filtri di ricerca' : lang === 'es' ? 'Intenta modificar los filtros de búsqueda' : 'Try adjusting your search filters'}</p>
+    <h3>{_('common.noResults')}</h3>
+    <p>{_('common.tryAdjustingFilters')}</p>
   </div>
 </div>
 

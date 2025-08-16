@@ -6,7 +6,8 @@
     "comics": "Comics",
     "backToStories": "Back to stories",
     "backToSeries": "Back to series",
-    "backToComics": "Back to comics"
+    "backToComics": "Back to comics",
+    "backToHome": "Back to Home"
   },
   "common": {
     "tagline": "Stories, tales and thoughts",
@@ -29,7 +30,24 @@
     "comeBackSoonComics": "Come back soon for new comics!",
     "noResults": "No results found",
     "tryAdjustingFilters": "Try adjusting your search filters",
-    "comingSoon": "Stories coming soon..."
+    "comingSoon": "Stories coming soon...",
+    "shareArticle": "Share this article",
+    "copyLink": "Copy link",
+    "linkCopied": "Link copied!",
+    "close": "Close"
+  },
+  "genres": {
+    "fantasy": "Fantasy",
+    "sciencefiction": "Sci-Fi",
+    "horror": "Horror",
+    "thriller": "Thriller",
+    "mystery": "Mystery",
+    "crime": "Crime",
+    "adventure": "Adventure",
+    "romance": "Romance",
+    "comedy": "Comedy",
+    "drama": "Drama",
+    "children": "Children"
   },
   "home": {
     "hero": {
@@ -59,6 +77,15 @@
     "latestStories": {
       "title": "Latest Stories",
       "noStories": "No stories available in this language."
+    }
+  },
+  "pages": {
+    "stories": {
+      "description": "My tales and narrative stories"
+    },
+    "comics": {
+      "description": "My comics and illustrated stories",
+      "intro": "Explore my collection of comics. Filter by genre, search by title or author, and discover illustrated stories that will transport you to visual worlds."
     }
   },
   "footer": {

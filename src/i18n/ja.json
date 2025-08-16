@@ -6,7 +6,8 @@
     "comics": "コミック",
     "backToStories": "ストーリー一覧に戻る",
     "backToSeries": "シリーズに戻る",
-    "backToComics": "コミック一覧に戻る"
+    "backToComics": "コミック一覧に戻る",
+    "backToHome": "ホームに戻る"
   },
   "common": {
     "tagline": "物語、物語、そして思索",
@@ -29,7 +30,24 @@
     "comeBackSoonComics": "新しいコミックをお楽しみに！",
     "noResults": "結果が見つかりませんでした",
     "tryAdjustingFilters": "検索条件を調整してみてください",
-    "comingSoon": "ストーリー近日公開..."
+    "comingSoon": "ストーリーは近日公開...",
+    "shareArticle": "この記事をシェア",
+    "copyLink": "リンクをコピー",
+    "linkCopied": "リンクをコピーしました！",
+    "close": "閉じる"
+  },
+  "genres": {
+    "fantasy": "ファンタジー",
+    "sciencefiction": "SF",
+    "horror": "ホラー",
+    "thriller": "スリラー",
+    "mystery": "ミステリー",
+    "crime": "クライム",
+    "adventure": "アドベンチャー",
+    "romance": "ロマンス",
+    "comedy": "コメディ",
+    "drama": "ドラマ",
+    "children": "子供向け"
   },
   "home": {
     "hero": {
@@ -59,6 +77,15 @@
     "latestStories": {
       "title": "最新のストーリー",
       "noStories": "この言語では利用可能なストーリーがありません。"
+    }
+  },
+  "pages": {
+    "stories": {
+      "description": "私の物語とナラティブストーリー"
+    },
+    "comics": {
+      "description": "私の漫画とイラスト付きストーリー",
+      "intro": "私の漫画コレクションをお探しください。ジャンルでフィルタリングし、タイトルや著者で検索し、視覚的な世界へと導く物語を発見してください。"
     }
   },
   "footer": {

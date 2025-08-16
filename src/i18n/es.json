@@ -6,7 +6,8 @@
     "comics": "Cómics",
     "backToStories": "Volver a las historias",
     "backToSeries": "Volver a las series",
-    "backToComics": "Volver a los cómics"
+    "backToComics": "Volver a los cómics",
+    "backToHome": "Volver al Inicio"
   },
   "common": {
     "tagline": "Historias, cuentos y reflexiones",
@@ -29,7 +30,24 @@
     "comeBackSoonComics": "¡Vuelve pronto para más cómics!",
     "noResults": "No se encontraron resultados",
     "tryAdjustingFilters": "Intenta ajustar los filtros de búsqueda",
-    "comingSoon": "Historias próximamente..."
+    "comingSoon": "Historias próximamente...",
+    "shareArticle": "Comparte este artículo",
+    "copyLink": "Copiar enlace",
+    "linkCopied": "¡Enlace copiado!",
+    "close": "Cerrar"
+  },
+  "genres": {
+    "fantasy": "Fantasía",
+    "sciencefiction": "Ciencia Ficción",
+    "horror": "Horror",
+    "thriller": "Thriller",
+    "mystery": "Misterio",
+    "crime": "Crimen",
+    "adventure": "Aventura",
+    "romance": "Romance",
+    "comedy": "Comedia",
+    "drama": "Drama",
+    "children": "Infantil"
   },
   "home": {
     "hero": {
@@ -59,6 +77,15 @@
     "latestStories": {
       "title": "Últimas historias",
       "noStories": "No hay historias disponibles en este idioma."
+    }
+  },
+  "pages": {
+    "stories": {
+      "description": "Mis relatos e historias narrativas"
+    },
+    "comics": {
+      "description": "Mis cómics e historias ilustradas",
+      "intro": "Explora mi colección de cómics. Filtra por género, busca por título o autor, y descubre historias ilustradas que te transportarán a mundos visuales."
     }
   },
   "footer": {
