@@ -98,9 +98,11 @@ const genreLabels: Record<string, string> = {
                 </span>
               )}
               {group.series.data.genre && (
-                <span class="badge badge-genre">
-                  {genreLabels[group.series.data.genre] || group.series.data.genre}
-                </span>
+                group.series.data.genre.split(',').map(genre => (
+                  <span class="badge badge-genre">
+                    {genreLabels[genre.trim()] || genre.trim()}
+                  </span>
+                ))
               )}
             </div>
           </div>
@@ -159,9 +161,11 @@ const genreLabels: Record<string, string> = {
                 </span>
               )}
               {story.data.genre && (
-                <span class="badge badge-genre">
-                  {genreLabels[story.data.genre] || story.data.genre}
-                </span>
+                story.data.genre.split(',').map(genre => (
+                  <span class="badge badge-genre">
+                    {genreLabels[genre.trim()] || genre.trim()}
+                  </span>
+                ))
               )}
             </div>
           </div>

@@ -96,8 +96,8 @@ const stories = defineCollection({
 			author: z.string().optional().default('Tale'),
 			// Content type: story or comic
 			type: z.enum(['story', 'comic']).default('story'),
-			// Genre classification
-			genre: z.enum(storyGenres).optional(),
+			// Genre classification - can be a single genre or multiple genres separated by comma
+			genre: z.string().optional(),
 			// Series/Multi-chapter story support
 			taleid: z.string().optional(), // ID for grouping chapters
 			chapter: z.number().optional(), // Chapter number

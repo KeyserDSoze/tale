@@ -3,7 +3,10 @@
     "home": "Home",
     "blog": "Racconti",
     "stories": "Storie",
-    "comics": "Fumetti"
+    "comics": "Fumetti",
+    "backToStories": "Torna ai racconti",
+    "backToSeries": "Torna alla serie",
+    "backToComics": "Torna ai fumetti"
   },
   "common": {
     "tagline": "Racconti, storie e pensieri",

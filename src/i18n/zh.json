@@ -3,7 +3,10 @@
     "home": "首页",
     "blog": "故事",
     "stories": "故事",
-    "comics": "漫画"
+    "comics": "漫画",
+    "backToStories": "返回故事",
+    "backToSeries": "返回系列",
+    "backToComics": "返回漫画"
   },
   "common": {
     "tagline": "故事、传说和思考",

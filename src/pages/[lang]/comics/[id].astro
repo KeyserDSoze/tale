@@ -56,6 +56,35 @@ if (!post) {
   });
 }
 
+// If this post is part of a series, find the first chapter to get maintitle and maindescription
+let seriesMainTitle = post.data.maintitle;
+let seriesMainDescription = post.data.maindescription;
+
+if (post.data.taleid && !seriesMainTitle) {
+  // Find the first chapter of the series (lowest chapter number, or earliest date if no chapter)
+  const allStoriesPosts = await getCollection('stories');
+  const seriesChapters = allStoriesPosts.filter(p => 
+    p.data.taleid === post.data.taleid && 
+    p.data.lang === lang &&
+    p.data.type === post.data.type
+  );
+  
+  const firstChapter = seriesChapters.sort((a, b) => {
+    // Sort by chapter number if available, otherwise by date
+    const aChapter = a.data.chapter || 0;
+    const bChapter = b.data.chapter || 0;
+    if (aChapter !== bChapter) {
+      return aChapter - bChapter;
+    }
+    return a.data.date.getTime() - b.data.date.getTime();
+  })[0];
+  
+  if (firstChapter) {
+    seriesMainTitle = firstChapter.data.maintitle || post.data.taleid;
+    seriesMainDescription = firstChapter.data.maindescription;
+  }
+}
+
 const { Content } = await render(post);
 
 // Breadcrumb construction
@@ -83,6 +112,20 @@ const fullArticleUrl = new URL(Astro.url.pathname, Astro.site).href;
               {_('nav.comics')}
             </a>
           </li>
+          {post.data.taleid && (
+            <>
+              <li class="flex-shrink-0">
+                <svg class="flex-shrink-0 h-5 w-5 text-gray-400 dark:text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                </svg>
+              </li>
+              <li class="flex-shrink-0">
+                <a href={createLangUrl(lang, `/series/${post.data.taleid}`)} class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors duration-200 whitespace-nowrap">
+                  {seriesMainTitle || post.data.taleid}
+                </a>
+              </li>
+            </>
+          )}
           <li class="flex-shrink-0">
             <svg class="flex-shrink-0 h-5 w-5 text-gray-400 dark:text-gray-500" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
@@ -150,15 +193,21 @@ const fullArticleUrl = new URL(Astro.url.pathname, Astro.site).href;
           lang={lang}
         />
         
-        <!-- Back to Comics -->
-        <div class="flex items-center justify-center mt-8">
+        <!-- Navigation Links -->
+        <div class="flex items-center justify-center mt-8 space-x-6">
+          {post.data.taleid && (
+            <a 
+              href={createLangUrl(lang, `/series/${post.data.taleid}`)}
+              class="inline-flex items-center text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 font-medium transition-colors duration-200"
+            >
+              ← {_('nav.backToSeries')}
+            </a>
+          )}
           <a 
             href={createLangUrl(lang, '/comics')}
             class="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium transition-colors duration-200"
           >
-            ← {lang === 'it' ? 'Torna ai fumetti' : 
-                 lang === 'es' ? 'Volver a los cómics' :
-                 'Back to comics'}
+            ← {_('nav.backToComics')}
           </a>
         </div>
       </footer>

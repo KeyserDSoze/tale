@@ -3,7 +3,10 @@
     "home": "ホーム",
     "blog": "物語",
     "stories": "物語",
-    "comics": "漫画"
+    "comics": "漫画",
+    "backToStories": "物語に戻る",
+    "backToSeries": "シリーズに戻る",
+    "backToComics": "漫画に戻る"
   },
   "common": {
     "tagline": "物語、ストーリー、そして思考",

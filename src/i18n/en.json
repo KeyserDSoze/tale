@@ -3,7 +3,10 @@
     "home": "Home",
     "blog": "Stories",
     "stories": "Stories",
-    "comics": "Comics"
+    "comics": "Comics",
+    "backToStories": "Back to stories",
+    "backToSeries": "Back to series",
+    "backToComics": "Back to comics"
   },
   "common": {
     "tagline": "Stories, tales and thoughts",

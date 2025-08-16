@@ -3,7 +3,10 @@
     "home": "Accueil",
     "blog": "Récits",
     "stories": "Histoires",
-    "comics": "Bandes dessinées"
+    "comics": "Bandes dessinées",
+    "backToStories": "Retour aux histoires",
+    "backToSeries": "Retour à la série",
+    "backToComics": "Retour aux bandes dessinées"
   },
   "common": {
     "tagline": "Récits, histoires et pensées",

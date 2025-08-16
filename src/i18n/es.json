@@ -3,7 +3,10 @@
     "home": "Inicio",
     "blog": "Historias",
     "stories": "Historias",
-    "comics": "Cómics"
+    "comics": "Cómics",
+    "backToStories": "Volver a las historias",
+    "backToSeries": "Volver a la serie",
+    "backToComics": "Volver a los cómics"
   },
   "common": {
     "tagline": "Relatos, historias y pensamientos",
