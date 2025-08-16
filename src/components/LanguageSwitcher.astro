@@ -4,6 +4,10 @@ import { LOCALES } from '../i18n';
 
 const { lang } = Astro.props;
 
+// Get the current path without the language prefix
+const currentPath = Astro.url.pathname;
+const pathWithoutLang = currentPath.replace(/^\/[a-z]{2}(\/|$)/, '/').replace(/\/$/, '') || '/';
+
 const languages = [
   { code: 'it', flag: '🇮🇹', name: 'Italiano' },
   { code: 'en', flag: '🇬🇧', name: 'English' },
@@ -31,7 +35,7 @@ const languages = [
   <div id="language-menu" class="language-menu">
     {languages.map((language) => (
       <a 
-        href={createLangUrl(language.code)} 
+        href={createLangUrl(language.code, pathWithoutLang === '/' ? '' : pathWithoutLang)} 
         class={`language-option ${lang === language.code ? 'active' : ''}`}
         title={language.name}
       >

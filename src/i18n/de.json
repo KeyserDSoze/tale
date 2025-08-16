@@ -30,13 +30,26 @@
     "comeBackSoonComics": "Kommen Sie bald wieder für neue Comics!",
     "noResults": "Keine Ergebnisse gefunden",
     "tryAdjustingFilters": "Versuchen Sie, Ihre Suchfilter anzupassen",
-    "comingSoon": "Geschichten kommen bald...",
+    "comingSoon": "Geschichten bald verfügbar...",
     "shareArticle": "Diesen Artikel teilen",
     "copyLink": "Link kopieren",
     "linkCopied": "Link kopiert!",
     "close": "Schließen"
   },
+  "sort": {
+    "date": "Datum",
+    "title": "Titel",
+    "author": "Autor"
+  },
+  "filters": {
+    "searchPlaceholder": "Nach Titel oder Autor suchen...",
+    "genre": "Genre:",
+    "sortBy": "Sortieren nach:",
+    "groupBySeries": "Nach Serie gruppieren",
+    "clearFilters": "Filter löschen"
+  },
   "genres": {
+    "all": "Alle Genres",
     "fantasy": "Fantasy",
     "sciencefiction": "Science-Fiction",
     "horror": "Horror",
@@ -44,16 +57,65 @@
     "mystery": "Mystery",
     "crime": "Krimi",
     "adventure": "Abenteuer",
-    "romance": "Romance",
+    "romance": "Romantik",
+    "historicalfiction": "Historische Fiktion",
+    "contemporaryfiction": "Zeitgenössische Fiktion",
+    "satire": "Satire",
     "comedy": "Komödie",
     "drama": "Drama",
-    "children": "Kinder"
+    "fairytale": "Märchen",
+    "allegory": "Allegorie",
+    "children": "Kinder",
+    "middlegrade": "Mittelstufe",
+    "youngadult": "Jugendbuch",
+    "newadult": "New Adult",
+    "adult": "Erwachsene",
+    "biography": "Biografie",
+    "autobiography": "Autobiografie",
+    "memoir": "Memoiren",
+    "essay": "Essay",
+    "philosophy": "Philosophie",
+    "science": "Wissenschaft",
+    "history": "Geschichte",
+    "politics": "Politik",
+    "selfhelp": "Ratgeber",
+    "manual": "Handbuch",
+    "poetry": "Poesie",
+    "diary": "Tagebuch",
+    "epistolary": "Briefroman",
+    "superhero": "Superheld",
+    "graphicnovel": "Graphic Novel",
+    "sliceoflife": "Alltagsgeschichten",
+    "comedycomic": "Comedy-Comic",
+    "satiricalcomic": "Satirischer Comic",
+    "historicalcomic": "Historischer Comic",
+    "fantasycomic": "Fantasy-Comic",
+    "scificomic": "Sci-Fi-Comic",
+    "mysterycomic": "Mystery-Comic",
+    "horrorcomic": "Horror-Comic",
+    "adventurecomic": "Abenteuer-Comic",
+    "romancecomic": "Romantik-Comic",
+    "psychological": "Psychologisch",
+    "dark": "Düster",
+    "experimental": "Experimentell",
+    "realistic": "Realistisch",
+    "surreal": "Surreal",
+    "dystopian": "Dystopisch",
+    "utopian": "Utopisch",
+    "postapocalyptic": "Postapokalyptisch",
+    "cyberpunk": "Cyberpunk",
+    "steampunk": "Steampunk",
+    "anthology": "Anthologie",
+    "shortstory": "Kurzgeschichte",
+    "flashfiction": "Flash-Fiction",
+    "lightnovel": "Light Novel",
+    "webcomic": "Webcomic"
   },
   "home": {
     "hero": {
       "title": "Tale",
       "subtitle": "Mein persönlicher Raum für Geschichten aller Art",
-      "description": "Willkommen in meiner Welt der Geschichten, in der ich Erzählungen, Gedanken und Reflexionen teile, die aus Fantasie und Erfahrung entstanden sind"
+      "description": "Willkommen in meiner Welt der Geschichten, in der ich Erzählungen, Gedanken und Reflexionen teile, die aus Fantasie und Erfahrung entstanden sind."
     },
     "features": {
       "title": "Was Sie hier finden werden",
@@ -81,11 +143,11 @@
   },
   "pages": {
     "stories": {
-      "description": "Meine Erzählungen und narrativen Geschichten"
+      "description": "Meine Erzählungen und Geschichten"
     },
     "comics": {
       "description": "Meine Comics und illustrierten Geschichten",
-      "intro": "Entdecke meine Comic-Sammlung. Filtere nach Genre, suche nach Titel oder Autor und entdecke illustrierte Geschichten, die dich in visuelle Welten entführen."
+      "intro": "Entdecken Sie meine Comics-Sammlung. Filtern Sie nach Genre, suchen Sie nach Titel oder Autor und entdecken Sie illustrierte Geschichten, die Sie in visuelle Welten entführen."
     }
   },
   "footer": {
