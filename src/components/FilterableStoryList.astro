@@ -1,6 +1,7 @@
 ---
 import FormattedDate from './FormattedDate.astro';
 import { createLangUrl } from '../utils/urls';
+import { t } from '../i18n';
 import type { CollectionEntry } from 'astro:content';
 
 interface Props {
@@ -10,6 +11,7 @@ interface Props {
 }
 
 const { stories, lang, showType = 'all' } = Astro.props;
+const _ = (k: string) => t(lang as any, k);
 
 // Filter stories by type if specified
 let filteredStories = stories;
@@ -90,11 +92,11 @@ const genreLabels: Record<string, string> = {
             <FormattedDate date={group.chapters[group.chapters.length - 1].data.date} />
             <div class="story-badges">
               <span class="badge badge-chapters">
-                {group.chapters.length} {lang === 'it' ? 'capitoli' : lang === 'es' ? 'capítulos' : 'chapters'}
+                {group.chapters.length} {_('common.chapters')}
               </span>
               {group.series.data.type === 'comic' && (
                 <span class="badge badge-comic">
-                  {lang === 'it' ? 'Fumetto' : lang === 'es' ? 'Cómic' : 'Comic'}
+                  {_('common.comic')}
                 </span>
               )}
               {group.series.data.genre && (

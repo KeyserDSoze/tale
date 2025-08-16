@@ -85,6 +85,34 @@ if (post.data.taleid && !seriesMainTitle) {
   }
 }
 
+// Check if this is the last chapter in the series
+let isLastChapter = false;
+if (post.data.taleid) {
+  const allStoriesPosts = await getCollection('stories');
+  const seriesChapters = allStoriesPosts.filter((p: any) => 
+    p.data.taleid === post.data.taleid && 
+    p.data.lang === lang &&
+    p.data.type === post.data.type
+  );
+  
+  const sortedChapters = seriesChapters.sort((a: any, b: any) => {
+    const aChapter = a.data.chapter || 0;
+    const bChapter = b.data.chapter || 0;
+    if (aChapter !== bChapter) {
+      return aChapter - bChapter;
+    }
+    return a.data.date.getTime() - b.data.date.getTime();
+  });
+  
+  const currentIndex = sortedChapters.findIndex((story: any) => {
+    const storyId = story.data.id || story.id;
+    const currentId = post.data.id || post.id;
+    return storyId === currentId;
+  });
+  
+  isLastChapter = currentIndex === sortedChapters.length - 1;
+}
+
 const { Content } = await render(post);
 
 // Breadcrumb construction
@@ -195,7 +223,7 @@ const fullArticleUrl = new URL(Astro.url.pathname, Astro.site).href;
         
         <!-- Navigation Links -->
         <div class="flex items-center justify-center mt-8 space-x-6">
-          {post.data.taleid && (
+          {post.data.taleid && !isLastChapter && (
             <a 
               href={createLangUrl(lang, `/series/${post.data.taleid}`)}
               class="inline-flex items-center text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 font-medium transition-colors duration-200"

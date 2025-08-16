@@ -5,49 +5,64 @@
     "stories": "Historias",
     "comics": "Cómics",
     "backToStories": "Volver a las historias",
-    "backToSeries": "Volver a la serie",
+    "backToSeries": "Volver a las series",
     "backToComics": "Volver a los cómics"
   },
   "common": {
-    "tagline": "Relatos, historias y pensamientos",
-    "readMore": "Leer historia completa",
-    "seeMore": "Ver más relatos",
+    "tagline": "Historias, cuentos y reflexiones",
+    "readMore": "Leer la historia completa",
+    "seeMore": "Ver más historias",
     "shareOn": "Compartir en",
     "chapters": "Capítulos",
-    "chapter": "Capítulo"
+    "chapter": "Capítulo",
+    "comic": "Cómic",
+    "by": "por",
+    "readSeries": "Leer la serie",
+    "chapterAbbr": "Cap.",
+    "seriesAvailable": "series disponibles",
+    "storiesAvailable": "historias disponibles",
+    "comicsAvailable": "cómics disponibles",
+    "noStoriesAvailable": "No hay historias disponibles",
+    "noComicsAvailable": "No hay cómics disponibles",
+    "comeBackSoon": "¡Vuelve pronto para más contenido!",
+    "comeBackSoonStories": "¡Vuelve pronto para más historias!",
+    "comeBackSoonComics": "¡Vuelve pronto para más cómics!",
+    "noResults": "No se encontraron resultados",
+    "tryAdjustingFilters": "Intenta ajustar los filtros de búsqueda",
+    "comingSoon": "Historias próximamente..."
   },
   "home": {
     "hero": {
       "title": "Tale",
-      "subtitle": "Mi espacio personal para relatos de todo tipo",
-      "description": "Bienvenido a mi mundo de historias, donde comparto relatos, pensamientos y reflexiones nacidas de la imaginación y la experiencia"
+      "subtitle": "Mi espacio personal para historias de todo tipo",
+      "description": "Bienvenido a mi mundo de historias, donde comparto cuentos, pensamientos y reflexiones nacidos de la imaginación y la experiencia."
     },
     "features": {
-      "title": "Lo Que Encontrarás Aquí",
+      "title": "Lo que encontrarás aquí",
       "stories": {
-        "title": "Relatos Originales",
-        "description": "Cuentos de fantasía, dramas, comedias y reflexiones personales escritas con pasión"
+        "title": "Historias originales",
+        "description": "Cuentos de fantasía, dramas, comedias y reflexiones personales escritos con pasión"
       },
       "serialized": {
-        "title": "Historias por Entregas",
+        "title": "Historias seriadas",
         "description": "Relatos más largos divididos en capítulos para una experiencia de lectura envolvente"
       },
       "multilang": {
-        "title": "Contenido Multiidioma",
-        "description": "Relatos disponibles en italiano, inglés, español, francés y alemán"
+        "title": "Contenido multilingüe",
+        "description": "Historias disponibles en italiano, inglés, español, francés y alemán"
       }
     },
     "about": {
-      "title": "Sobre Mí",
-      "description": "Soy un escritor que ama contar historias. En este espacio comparto mis relatos de todos los géneros: desde la fantasía hasta la realidad, del drama a la comedia. Cada historia nace del deseo de explorar emociones, situaciones y personajes que viven en mi imaginación."
+      "title": "Sobre mí",
+      "description": "Soy un escritor que ama contar historias. En este espacio comparto mis relatos de todos los géneros: de la fantasía a la realidad, del drama a la comedia. Cada historia nace del deseo de explorar emociones, situaciones y personajes que viven en mi imaginación."
     },
     "latestStories": {
-      "title": "Últimos Relatos",
-      "noStories": "No hay relatos disponibles en este idioma."
+      "title": "Últimas historias",
+      "noStories": "No hay historias disponibles en este idioma."
     }
   },
   "footer": {
-    "description": "Relatos e historias escritas con pasión",
+    "description": "Historias y cuentos escritos con pasión",
     "copyright": "Tale. Todos los derechos reservados.",
     "madeWith": "Hecho con ❤️"
   }

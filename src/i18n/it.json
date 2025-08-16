@@ -1,54 +1,69 @@
 {
   "nav": {
     "home": "Home",
-    "blog": "Racconti",
+    "blog": "Storie",
     "stories": "Storie",
     "comics": "Fumetti",
-    "backToStories": "Torna ai racconti",
-    "backToSeries": "Torna alla serie",
+    "backToStories": "Torna alle storie",
+    "backToSeries": "Torna alle serie",
     "backToComics": "Torna ai fumetti"
   },
   "common": {
-    "tagline": "Racconti, storie e pensieri",
-    "readMore": "Leggi tutto",
-    "seeMore": "Vedi altri racconti",
+    "tagline": "Storie, racconti e riflessioni",
+    "readMore": "Leggi l’intera storia",
+    "seeMore": "Vedi altre storie",
     "shareOn": "Condividi su",
     "chapters": "Capitoli",
-    "chapter": "Capitolo"
+    "chapter": "Capitolo",
+    "comic": "Fumetto",
+    "by": "di",
+    "readSeries": "Leggi la serie",
+    "chapterAbbr": "Cap.",
+    "seriesAvailable": "serie disponibili",
+    "storiesAvailable": "storie disponibili",
+    "comicsAvailable": "fumetti disponibili",
+    "noStoriesAvailable": "Nessuna storia disponibile",
+    "noComicsAvailable": "Nessun fumetto disponibile",
+    "comeBackSoon": "Torna presto per nuovi contenuti!",
+    "comeBackSoonStories": "Torna presto per nuove storie!",
+    "comeBackSoonComics": "Torna presto per nuovi fumetti!",
+    "noResults": "Nessun risultato trovato",
+    "tryAdjustingFilters": "Prova a modificare i filtri di ricerca",
+    "comingSoon": "Storie in arrivo..."
   },
   "home": {
     "hero": {
       "title": "Tale",
-      "subtitle": "Il mio spazio personale per racconti di ogni genere",
-      "description": "Benvenuto nel mio mondo di storie, dove condivido racconti, pensieri e riflessioni che nascono dalla fantasia e dall'esperienza"
+      "subtitle": "Il mio spazio personale per storie di ogni genere",
+      "description": "Benvenuto nel mio mondo di storie, dove condivido racconti, pensieri e riflessioni nati dall’immaginazione e dall’esperienza."
     },
     "features": {
-      "title": "Cosa Trovi Qui",
+      "title": "Cosa troverai qui",
       "stories": {
-        "title": "Racconti Originali",
-        "description": "Storie di fantasia, drammi, commedie e riflessioni personali scritte con passione"
+        "title": "Storie originali",
+        "description": "Racconti fantasy, drammi, commedie e riflessioni personali scritti con passione"
       },
       "serialized": {
-        "title": "Storie a Puntate",
-        "description": "Racconti più lunghi divisi in capitoli per un'esperienza di lettura coinvolgente"
+        "title": "Storie a puntate",
+        "description": "Racconti più lunghi suddivisi in capitoli per un’esperienza di lettura coinvolgente"
       },
       "multilang": {
-        "title": "Contenuti Multilingua",
-        "description": "Racconti disponibili in italiano, inglese, spagnolo, francese e tedesco"
+        "title": "Contenuti multilingue",
+        "description": "Storie disponibili in italiano, inglese, spagnolo, francese e tedesco"
       }
     },
     "about": {
-      "title": "Chi Sono",
-      "description": "Sono uno scrittore che ama raccontare storie. In questo spazio condivido i miei racconti di ogni genere: dalla fantasia alla realtà, dal dramma alla commedia. Ogni storia nasce dalla voglia di esplorare emozioni, situazioni e personaggi che vivono nella mia immaginazione."
+      "title": "Chi sono",
+      "description": "Sono uno scrittore che ama raccontare storie. In questo spazio condivido i miei racconti di ogni genere: dalla fantasia alla realtà, dal dramma alla commedia. Ogni storia nasce dal desiderio di esplorare emozioni, situazioni e personaggi che vivono nella mia immaginazione."
     },
     "latestStories": {
-      "title": "Ultimi Racconti",
-      "noStories": "Nessun racconto disponibile in questa lingua."
+      "title": "Ultime storie",
+      "noStories": "Nessuna storia disponibile in questa lingua."
     }
   },
   "footer": {
-    "description": "Racconti e storie scritte con passione",
+    "description": "Storie e racconti scritti con passione",
     "copyright": "Tale. Tutti i diritti riservati.",
-    "madeWith": "Fatto con ❤️"
+    "madeWith": "Creato con ❤️"
   }
 }

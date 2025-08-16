@@ -1,53 +1,68 @@
 {
   "nav": {
     "home": "Accueil",
-    "blog": "Récits",
+    "blog": "Histoires",
     "stories": "Histoires",
     "comics": "Bandes dessinées",
     "backToStories": "Retour aux histoires",
-    "backToSeries": "Retour à la série",
+    "backToSeries": "Retour aux séries",
     "backToComics": "Retour aux bandes dessinées"
   },
   "common": {
-    "tagline": "Récits, histoires et pensées",
-    "readMore": "Lire l'histoire complète",
-    "seeMore": "Voir plus de récits",
+    "tagline": "Histoires, contes et réflexions",
+    "readMore": "Lire l’histoire complète",
+    "seeMore": "Voir plus d’histoires",
     "shareOn": "Partager sur",
     "chapters": "Chapitres",
-    "chapter": "Chapitre"
+    "chapter": "Chapitre",
+    "comic": "Bande dessinée",
+    "by": "par",
+    "readSeries": "Lire la série",
+    "chapterAbbr": "Ch.",
+    "seriesAvailable": "séries disponibles",
+    "storiesAvailable": "histoires disponibles",
+    "comicsAvailable": "bandes dessinées disponibles",
+    "noStoriesAvailable": "Aucune histoire disponible",
+    "noComicsAvailable": "Aucune bande dessinée disponible",
+    "comeBackSoon": "Revenez bientôt pour découvrir du nouveau contenu !",
+    "comeBackSoonStories": "Revenez bientôt pour découvrir de nouvelles histoires !",
+    "comeBackSoonComics": "Revenez bientôt pour découvrir de nouvelles bandes dessinées !",
+    "noResults": "Aucun résultat trouvé",
+    "tryAdjustingFilters": "Essayez de modifier vos filtres de recherche",
+    "comingSoon": "Histoires bientôt disponibles..."
   },
   "home": {
     "hero": {
       "title": "Tale",
-      "subtitle": "Mon espace personnel pour des récits de tous genres",
-      "description": "Bienvenue dans mon monde d'histoires, où je partage des récits, des pensées et des réflexions nées de l'imagination et de l'expérience"
+      "subtitle": "Mon espace personnel pour des histoires de tous genres",
+      "description": "Bienvenue dans mon univers d’histoires, où je partage des contes, des pensées et des réflexions nés de l’imagination et de l’expérience"
     },
     "features": {
-      "title": "Ce Que Vous Trouverez Ici",
+      "title": "Ce que vous trouverez ici",
       "stories": {
-        "title": "Récits Originaux",
-        "description": "Contes de fantaisie, drames, comédies et réflexions personnelles écrites avec passion"
+        "title": "Histoires originales",
+        "description": "Contes fantastiques, drames, comédies et réflexions personnelles écrits avec passion"
       },
       "serialized": {
-        "title": "Histoires en Épisodes",
-        "description": "Récits plus longs divisés en chapitres pour une expérience de lecture captivante"
+        "title": "Histoires sérialisées",
+        "description": "Des récits plus longs divisés en chapitres pour une expérience de lecture captivante"
       },
       "multilang": {
-        "title": "Contenu Multilingue",
-        "description": "Récits disponibles en italien, anglais, espagnol, français et allemand"
+        "title": "Contenu multilingue",
+        "description": "Histoires disponibles en italien, anglais, espagnol, français et allemand"
       }
     },
     "about": {
-      "title": "À Propos de Moi",
-      "description": "Je suis un écrivain qui aime raconter des histoires. Dans cet espace, je partage mes récits de tous genres : de la fantaisie à la réalité, du drame à la comédie. Chaque histoire naît du désir d'explorer des émotions, des situations et des personnages qui vivent dans mon imagination."
+      "title": "À propos de moi",
+      "description": "Je suis un écrivain passionné par la narration. Dans cet espace, je partage mes histoires de tous genres : de la fantaisie à la réalité, du drame à la comédie. Chaque récit naît du désir d’explorer des émotions, des situations et des personnages qui vivent dans mon imagination."
     },
     "latestStories": {
-      "title": "Derniers Récits",
-      "noStories": "Aucun récit disponible dans cette langue."
+      "title": "Dernières histoires",
+      "noStories": "Aucune histoire disponible dans cette langue."
     }
   },
   "footer": {
-    "description": "Récits et histoires écrits avec passion",
+    "description": "Histoires et contes écrits avec passion",
     "copyright": "Tale. Tous droits réservés.",
     "madeWith": "Fait avec ❤️"
   }

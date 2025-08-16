@@ -1,54 +1,69 @@
 {
   "nav": {
     "home": "ホーム",
-    "blog": "物語",
-    "stories": "物語",
-    "comics": "漫画",
-    "backToStories": "物語に戻る",
+    "blog": "ストーリー",
+    "stories": "ストーリー",
+    "comics": "コミック",
+    "backToStories": "ストーリー一覧に戻る",
     "backToSeries": "シリーズに戻る",
-    "backToComics": "漫画に戻る"
+    "backToComics": "コミック一覧に戻る"
   },
   "common": {
-    "tagline": "物語、ストーリー、そして思考",
-    "readMore": "完全なストーリーを読む",
-    "seeMore": "他のストーリーを見る",
-    "shareOn": "共有する",
+    "tagline": "物語、物語、そして思索",
+    "readMore": "全文を読む",
+    "seeMore": "もっとストーリーを見る",
+    "shareOn": "共有",
     "chapters": "章",
-    "chapter": "第"
+    "chapter": "章",
+    "comic": "コミック",
+    "by": "作：",
+    "readSeries": "シリーズを読む",
+    "chapterAbbr": "第",
+    "seriesAvailable": "利用可能なシリーズ",
+    "storiesAvailable": "利用可能なストーリー",
+    "comicsAvailable": "利用可能なコミック",
+    "noStoriesAvailable": "利用可能なストーリーはありません",
+    "noComicsAvailable": "利用可能なコミックはありません",
+    "comeBackSoon": "新しいコンテンツをお楽しみに！",
+    "comeBackSoonStories": "新しいストーリーをお楽しみに！",
+    "comeBackSoonComics": "新しいコミックをお楽しみに！",
+    "noResults": "結果が見つかりませんでした",
+    "tryAdjustingFilters": "検索条件を調整してみてください",
+    "comingSoon": "ストーリー近日公開..."
   },
   "home": {
     "hero": {
       "title": "Tale",
-      "subtitle": "あらゆるジャンルのストーリーのための個人的なスペース",
-      "description": "私のストーリーの世界へようこそ。ここでは想像力と経験から生まれた物語、思考、反省を共有しています"
+      "subtitle": "あらゆるジャンルの物語を綴る私の個人的な空間",
+      "description": "私の物語の世界へようこそ。ここでは、想像力と経験から生まれた物語、思索、そして感情を共有しています。"
     },
     "features": {
-      "title": "ここで見つけられるもの",
+      "title": "ここで見つかるもの",
       "stories": {
         "title": "オリジナルストーリー",
-        "description": "ファンタジー、ドラマ、コメディ、そして情熱を込めて書かれた個人的な反省"
+        "description": "ファンタジー、ドラマ、コメディ、そして情熱を込めた個人的な思索"
       },
       "serialized": {
         "title": "連載ストーリー",
-        "description": "魅力的な読書体験のために章に分けられた長い物語"
+        "description": "章ごとに分かれた長編物語で、没入感ある読書体験を提供します"
       },
       "multilang": {
         "title": "多言語コンテンツ",
-        "description": "イタリア語、英語、スペイン語、フランス語、ドイツ語、中国語、日本語で利用可能なストーリー"
+        "description": "イタリア語、英語、スペイン語、フランス語、ドイツ語で利用可能なストーリー"
       }
     },
     "about": {
-      "title": "私について",
-      "description": "私は物語を語るのが好きな作家です。このスペースで、あらゆるジャンルのストーリーを共有しています：ファンタジーから現実まで、ドラマからコメディまで。すべてのストーリーは、私の想像力の中に生きる感情、状況、キャラクターを探求したいという願望から生まれています。"
+      "title": "自己紹介",
+      "description": "物語を語ることが大好きな作家です。この空間では、ファンタジーから現実まで、ドラマからコメディまで、あらゆるジャンルの物語を共有しています。すべての物語は、私の想像の中で生きる感情、状況、キャラクターを探求したいという思いから生まれました。"
     },
     "latestStories": {
       "title": "最新のストーリー",
-      "noStories": "この言語ではストーリーはありません。"
+      "noStories": "この言語では利用可能なストーリーがありません。"
     }
   },
   "footer": {
-    "description": "情熱を込めて書かれたストーリーと物語",
-    "copyright": "Tale. 全著作権所有。",
-    "madeWith": "❤️で作られました"
+    "description": "情熱を込めて綴った物語とストーリー",
+    "copyright": "Tale. 無断転載禁止。",
+    "madeWith": "❤️ を込めて制作"
   }
 }

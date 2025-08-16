@@ -147,12 +147,12 @@ const allContent = [
                     <div class="flex items-center gap-2">
                       {item.contentType === 'comic' && (
                         <span class="bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 px-2 py-1 rounded-full text-xs font-medium">
-                          {lang === 'it' ? 'Fumetto' : lang === 'es' ? 'Cómic' : lang === 'fr' ? 'BD' : lang === 'de' ? 'Comic' : lang === 'zh' ? '漫画' : lang === 'ja' ? '漫画' : 'Comic'}
+                          {_('common.comic')}
                         </span>
                       )}
                       {item.type === 'series' && (
                         <span class="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 px-2 py-1 rounded-full text-xs font-medium">
-                          {item.chapters?.length || 0} {lang === 'it' ? 'capitoli' : lang === 'es' ? 'capítulos' : lang === 'fr' ? 'chapitres' : lang === 'de' ? 'Kapitel' : lang === 'zh' ? '章节' : lang === 'ja' ? '章' : 'chapters'}
+                          {item.chapters?.length || 0} {_('common.chapters')}
                         </span>
                       )}
                     </div>
@@ -181,7 +181,7 @@ const allContent = [
                     class="inline-flex items-center text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium transition-colors duration-200"
                   >
                     {item.type === 'series' 
-                      ? (lang === 'it' ? 'Leggi la serie' : lang === 'es' ? 'Leer la serie' : lang === 'fr' ? 'Lire la série' : lang === 'de' ? 'Serie lesen' : lang === 'zh' ? '阅读系列' : lang === 'ja' ? 'シリーズを読む' : 'Read series')
+                      ? _('common.readSeries')
                       : _('common.readMore')
                     }
                     <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -200,13 +200,7 @@ const allContent = [
                 {_('home.latestStories.noStories')}
               </h3>
               <p class="text-gray-500 dark:text-gray-400 transition-colors duration-300">
-                {lang === 'it' ? 'I racconti arriveranno presto...' : 
-                 lang === 'es' ? 'Los relatos llegarán pronto...' :
-                 lang === 'fr' ? 'Les récits arriveront bientôt...' :
-                 lang === 'de' ? 'Die Erzählungen kommen bald...' :
-                 lang === 'zh' ? '故事即将到来...' :
-                 lang === 'ja' ? 'ストーリーは近日公開...' :
-                 'Stories coming soon...'}
+                {_('common.comingSoon')}
               </p>
             </div>
           </div>

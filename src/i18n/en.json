@@ -14,7 +14,22 @@
     "seeMore": "See more stories",
     "shareOn": "Share on",
     "chapters": "Chapters",
-    "chapter": "Chapter"
+    "chapter": "Chapter",
+    "comic": "Comic",
+    "by": "by",
+    "readSeries": "Read series",
+    "chapterAbbr": "Ch.",
+    "seriesAvailable": "series available",
+    "storiesAvailable": "stories available",
+    "comicsAvailable": "comics available",
+    "noStoriesAvailable": "No stories available",
+    "noComicsAvailable": "No comics available",
+    "comeBackSoon": "Come back soon for new content!",
+    "comeBackSoonStories": "Come back soon for new stories!",
+    "comeBackSoonComics": "Come back soon for new comics!",
+    "noResults": "No results found",
+    "tryAdjustingFilters": "Try adjusting your search filters",
+    "comingSoon": "Stories coming soon..."
   },
   "home": {
     "hero": {

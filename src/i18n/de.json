@@ -1,53 +1,68 @@
 {
   "nav": {
     "home": "Startseite",
-    "blog": "Erzählungen",
+    "blog": "Geschichten",
     "stories": "Geschichten",
     "comics": "Comics",
     "backToStories": "Zurück zu den Geschichten",
-    "backToSeries": "Zurück zur Serie",
+    "backToSeries": "Zurück zu den Serien",
     "backToComics": "Zurück zu den Comics"
   },
   "common": {
-    "tagline": "Erzählungen, Geschichten und Gedanken",
+    "tagline": "Geschichten, Erzählungen und Gedanken",
     "readMore": "Ganze Geschichte lesen",
-    "seeMore": "Weitere Erzählungen",
+    "seeMore": "Mehr Geschichten ansehen",
     "shareOn": "Teilen auf",
     "chapters": "Kapitel",
-    "chapter": "Kapitel"
+    "chapter": "Kapitel",
+    "comic": "Comic",
+    "by": "von",
+    "readSeries": "Serie lesen",
+    "chapterAbbr": "Kap.",
+    "seriesAvailable": "Serien verfügbar",
+    "storiesAvailable": "Geschichten verfügbar",
+    "comicsAvailable": "Comics verfügbar",
+    "noStoriesAvailable": "Keine Geschichten verfügbar",
+    "noComicsAvailable": "Keine Comics verfügbar",
+    "comeBackSoon": "Kommen Sie bald wieder für neue Inhalte!",
+    "comeBackSoonStories": "Kommen Sie bald wieder für neue Geschichten!",
+    "comeBackSoonComics": "Kommen Sie bald wieder für neue Comics!",
+    "noResults": "Keine Ergebnisse gefunden",
+    "tryAdjustingFilters": "Versuchen Sie, Ihre Suchfilter anzupassen",
+    "comingSoon": "Geschichten bald verfügbar..."
   },
   "home": {
     "hero": {
       "title": "Tale",
-      "subtitle": "Mein persönlicher Raum für Erzählungen aller Art",
-      "description": "Willkommen in meiner Welt der Geschichten, wo ich Erzählungen, Gedanken und Reflexionen teile, die aus Fantasie und Erfahrung entstehen"
+      "subtitle": "Mein persönlicher Raum für Geschichten aller Art",
+      "description": "Willkommen in meiner Welt der Geschichten, in der ich Erzählungen, Gedanken und Reflexionen teile, die aus Fantasie und Erfahrung entstanden sind"
     },
     "features": {
-      "title": "Was Sie Hier Finden",
+      "title": "Was Sie hier finden werden",
       "stories": {
-        "title": "Originale Erzählungen",
-        "description": "Fantasy-Geschichten, Dramen, Komödien und persönliche Reflexionen mit Leidenschaft geschrieben"
+        "title": "Originalgeschichten",
+        "description": "Fantastische Erzählungen, Dramen, Komödien und persönliche Reflexionen, mit Leidenschaft geschrieben"
       },
       "serialized": {
-        "title": "Mehrteilige Geschichten",
-        "description": "Längere Erzählungen in Kapiteln aufgeteilt für ein fesselndes Leseerlebnis"
+        "title": "Fortsetzungsgeschichten",
+        "description": "Längere Erzählungen, aufgeteilt in Kapitel für ein fesselndes Leseerlebnis"
       },
       "multilang": {
         "title": "Mehrsprachige Inhalte",
-        "description": "Erzählungen verfügbar auf Italienisch, Englisch, Spanisch, Französisch und Deutsch"
+        "description": "Geschichten verfügbar auf Italienisch, Englisch, Spanisch, Französisch und Deutsch"
       }
     },
     "about": {
-      "title": "Über Mich",
-      "description": "Ich bin ein Schriftsteller, der es liebt, Geschichten zu erzählen. In diesem Raum teile ich meine Erzählungen aller Genres: von Fantasy bis Realität, von Drama bis Komödie. Jede Geschichte entsteht aus dem Wunsch, Emotionen, Situationen und Charaktere zu erkunden, die in meiner Fantasie leben."
+      "title": "Über mich",
+      "description": "Ich bin ein Schriftsteller, der das Erzählen von Geschichten liebt. In diesem Raum teile ich meine Erzählungen aller Genres: von Fantasie bis Realität, von Drama bis Komödie. Jede Geschichte entsteht aus dem Wunsch, Emotionen, Situationen und Charaktere zu erforschen, die in meiner Vorstellung leben."
     },
     "latestStories": {
-      "title": "Neueste Erzählungen",
-      "noStories": "Keine Erzählungen in dieser Sprache verfügbar."
+      "title": "Neueste Geschichten",
+      "noStories": "Keine Geschichten in dieser Sprache verfügbar."
     }
   },
   "footer": {
-    "description": "Erzählungen und Geschichten mit Leidenschaft geschrieben",
+    "description": "Geschichten und Erzählungen mit Leidenschaft geschrieben",
     "copyright": "Tale. Alle Rechte vorbehalten.",
     "madeWith": "Gemacht mit ❤️"
   }
