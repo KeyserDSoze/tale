@@ -6,6 +6,7 @@ import StoryFilter from "../../../components/StoryFilter.astro";
 import FilterableStoryList from "../../../components/FilterableStoryList.astro";
 import { t, LOCALES } from "../../../i18n";
 import { getCollection } from 'astro:content';
+import { getSeriesMetadataFromItalian } from "../../../utils/series.ts";
 
 export function getStaticPaths() {
   return LOCALES.map((lang) => ({ params: { lang } }));
@@ -19,9 +20,33 @@ const allComics = await getCollection('stories', (entry) =>
   entry.data.lang === lang && entry.data.type === 'comic'
 );
 
+// Enrich comics with metadata from Italian chapter 1
+const enrichedComics = await Promise.all(
+  allComics.map(async (comic) => {
+    if (comic.data.taleid) {
+      // For series comics, get metadata from Italian chapter 1 (author, type, genre)
+      // and localized titles from current language
+      const metadata = await getSeriesMetadataFromItalian(comic.data.taleid, lang);
+      return {
+        ...comic,
+        data: {
+          ...comic.data,
+          author: metadata.author,
+          genre: metadata.genre,
+          maintitle: metadata.maintitle,
+          maindescription: metadata.maindescription,
+          type: metadata.type
+        }
+      };
+    }
+    // For standalone comics, keep original data
+    return comic;
+  })
+);
+
 // Group comics by series (taleid) for counting
 const seriesGroups = new Map<string, any[]>();
-for (const comic of allComics) {
+for (const comic of enrichedComics) {
   const taleid = comic.data.taleid || comic.id;
   if (!seriesGroups.has(taleid)) {
     seriesGroups.set(taleid, []);
@@ -30,7 +55,7 @@ for (const comic of allComics) {
 }
 
 const totalSeries = seriesGroups.size;
-const totalComics = allComics.length;
+const totalComics = enrichedComics.length;
 
 // Get URL parameters for initial filter state
 const url = Astro.url;
@@ -100,12 +125,12 @@ const currentGrouped = searchParams.get('grouped') || 'true';
 
       <!-- Comics List -->
       <FilterableStoryList 
-        stories={allComics}
+        stories={enrichedComics as any}
         lang={lang}
         showType="comics"
       />
 
-      {allComics.length === 0 && (
+      {enrichedComics.length === 0 && (
         <div class="text-center py-16">
           <div class="max-w-md mx-auto">
             <svg class="mx-auto h-16 w-16 text-gray-400 mb-6" fill="currentColor" viewBox="0 0 24 24">

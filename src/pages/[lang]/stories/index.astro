@@ -6,6 +6,7 @@ import StoryFilter from "../../../components/StoryFilter.astro";
 import FilterableStoryList from "../../../components/FilterableStoryList.astro";
 import { t, LOCALES } from "../../../i18n";
 import { getCollection } from 'astro:content';
+import { getSeriesMetadataFromItalian } from "../../../utils/series.ts";
 
 export function getStaticPaths() {
   return LOCALES.map((lang) => ({ params: { lang } }));
@@ -19,9 +20,33 @@ const allStories = await getCollection('stories', (entry) =>
   entry.data.lang === lang && entry.data.type === 'story'
 );
 
+// Enrich stories with metadata from Italian chapter 1
+const enrichedStories = await Promise.all(
+  allStories.map(async (story) => {
+    if (story.data.taleid) {
+      // For series stories, get metadata from Italian chapter 1 (author, type, genre) 
+      // and localized titles from current language
+      const metadata = await getSeriesMetadataFromItalian(story.data.taleid, lang);
+      return {
+        ...story,
+        data: {
+          ...story.data,
+          author: metadata.author,
+          genre: metadata.genre,
+          maintitle: metadata.maintitle,
+          maindescription: metadata.maindescription,
+          type: metadata.type
+        }
+      };
+    }
+    // For standalone stories, keep original data
+    return story;
+  })
+);
+
 // Group stories by series (taleid) for counting
 const seriesGroups = new Map<string, any[]>();
-for (const story of allStories) {
+for (const story of enrichedStories) {
   const taleid = story.data.taleid || story.id;
   if (!seriesGroups.has(taleid)) {
     seriesGroups.set(taleid, []);
@@ -30,7 +55,7 @@ for (const story of allStories) {
 }
 
 const totalSeries = seriesGroups.size;
-const totalStories = allStories.length;
+const totalStories = enrichedStories.length;
 
 // Get URL parameters for initial filter state
 const url = Astro.url;
@@ -97,12 +122,12 @@ const currentGrouped = searchParams.get('grouped') || 'true';
 
       <!-- Stories List -->
       <FilterableStoryList 
-        stories={allStories}
+        stories={enrichedStories as any}
         lang={lang}
         showType="stories"
       />
 
-      {allStories.length === 0 && (
+      {enrichedStories.length === 0 && (
         <div class="text-center py-16">
           <div class="max-w-md mx-auto">
             <svg class="mx-auto h-16 w-16 text-gray-400 mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -29,19 +29,99 @@ export interface SeriesInfo {
 }
 
 // Helper function to get metadata from Italian chapter 1
-async function getSeriesMetadataFromItalian(taleid: string) {
+export async function getStoryMetadataFromItalian(storyId: string, taleid: string, currentLang?: string) {
+  // Find the Italian story with the same ID
+  const italianStory = await getCollection('stories', ({ data }) => 
+    data.lang === 'it' && 
+    data.taleid === taleid && 
+    data.id === storyId
+  );
+
+  // Get genre from Italian chapter 1 (always)
   const italianChapter1 = await getCollection('stories', ({ data }) => 
     data.lang === 'it' && 
     data.taleid === taleid && 
     data.chapter === 1
   );
 
-  if (italianChapter1.length > 0) {
-    const metadata = italianChapter1[0].data;
+  // Get localized title and description from current language story (same ID)
+  let localizedData = null;
+  if (currentLang && currentLang !== 'it') {
+    const localStory = await getCollection('stories', ({ data }) => 
+      data.lang === currentLang && 
+      data.taleid === taleid && 
+      data.id === storyId
+    );
+    
+    localizedData = localStory.length > 0 ? localStory[0].data : null;
+  }
+
+  // Get maintitle and maindescription from current language chapter 1
+  let localizedChapter1Data = null;
+  if (currentLang && currentLang !== 'it') {
+    const localChapter1 = await getCollection('stories', ({ data }) => 
+      data.lang === currentLang && 
+      data.taleid === taleid && 
+      data.chapter === 1
+    );
+    
+    localizedChapter1Data = localChapter1.length > 0 ? localChapter1[0].data : null;
+  }
+
+  if (italianStory.length > 0) {
+    const italianMetadata = italianStory[0].data;
+    const sourceForTitles = localizedData || italianMetadata;
+    const genreSource = italianChapter1.length > 0 ? italianChapter1[0].data : italianMetadata;
+    const sourceForMainTitles = localizedChapter1Data || (italianChapter1.length > 0 ? italianChapter1[0].data : italianMetadata);
+    
     return {
-      author: metadata.author || 'Unknown',
-      type: metadata.type || 'story',
-      genre: metadata.genre || '',
+      author: italianMetadata.author || 'Unknown',
+      type: italianMetadata.type || 'story',
+      genre: genreSource.genre || '',
+      chapter: italianMetadata.chapter,
+      maintitle: sourceForMainTitles.maintitle || sourceForMainTitles.title,
+      maindescription: sourceForMainTitles.maindescription || sourceForMainTitles.description,
+      title: sourceForTitles.title,
+      description: sourceForTitles.description,
+    };
+  }
+
+  // Fallback if no Italian story found
+  return null;
+}
+
+export async function getSeriesMetadataFromItalian(taleid: string, currentLang?: string) {
+  // Get metadata from Italian chapter 1 for author, type, genre
+  const italianChapter1 = await getCollection('stories', ({ data }) => 
+    data.lang === 'it' && 
+    data.taleid === taleid && 
+    data.chapter === 1
+  );
+
+  // Get maintitle and maindescription from current language chapter 1
+  let localizedData = null;
+  if (currentLang && currentLang !== 'it') {
+    // Find chapter 1 in the current language
+    const localChapter1 = await getCollection('stories', ({ data }) => 
+      data.lang === currentLang && 
+      data.taleid === taleid && 
+      data.chapter === 1
+    );
+    
+    localizedData = localChapter1.length > 0 ? localChapter1[0].data : null;
+  }
+
+  if (italianChapter1.length > 0) {
+    const italianMetadata = italianChapter1[0].data;
+    const sourceForTitles = localizedData || italianMetadata;
+    
+    return {
+      author: italianMetadata.author || 'Unknown',
+      type: italianMetadata.type || 'story',
+      genre: italianMetadata.genre || '',
+      chapter: italianMetadata.chapter || 1,
+      maintitle: sourceForTitles.maintitle || sourceForTitles.title,
+      maindescription: sourceForTitles.maindescription || sourceForTitles.description,
     };
   }
 
@@ -50,6 +130,9 @@ async function getSeriesMetadataFromItalian(taleid: string) {
     author: 'Unknown',
     type: 'story',
     genre: '',
+    chapter: 1,
+    maintitle: '',
+    maindescription: '',
   };
 }
 
@@ -75,8 +158,8 @@ export async function getSeriesByLang(lang: string, type?: 'story' | 'comic'): P
   
   const processedSeries = await Promise.all(
     Array.from(seriesMap.entries()).map(async ([taleid, posts]) => {
-      // Get metadata from Italian chapter 1
-      const metadata = await getSeriesMetadataFromItalian(taleid);
+      // Get metadata from Italian chapter 1, with localized titles
+      const metadata = await getSeriesMetadataFromItalian(taleid, lang);
 
       // Sort chapters by chapter number
       const sortedChapters = posts

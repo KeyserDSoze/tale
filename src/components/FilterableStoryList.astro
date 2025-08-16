@@ -2,6 +2,7 @@
 import FormattedDate from './FormattedDate.astro';
 import { createLangUrl } from '../utils/urls';
 import { t } from '../i18n';
+import { getSeriesMetadataFromItalian, getStoryMetadataFromItalian } from '../utils/series';
 import type { CollectionEntry } from 'astro:content';
 
 interface Props {
@@ -25,6 +26,7 @@ if (showType === 'stories') {
 const groupedStories = new Map<string, {
   series: CollectionEntry<'stories'>;
   chapters: CollectionEntry<'stories'>[];
+  metadata?: any;
 }>();
 
 // First, collect all stories and group by taleid
@@ -34,7 +36,8 @@ for (const story of filteredStories) {
   if (!groupedStories.has(taleid)) {
     groupedStories.set(taleid, {
       series: story,
-      chapters: []
+      chapters: [],
+      metadata: null
     });
   }
   
@@ -48,6 +51,40 @@ for (const story of filteredStories) {
     group.series = story;
   }
 }
+
+// Enrich each series with centralized metadata
+for (const [taleid, group] of groupedStories.entries()) {
+  if (group.series.data.taleid) {
+    group.metadata = await getSeriesMetadataFromItalian(group.series.data.taleid, lang);
+  }
+}
+
+// Enrich individual stories with centralized metadata
+const enrichedIndividualStories = await Promise.all(
+  filteredStories.map(async (story) => {
+    if (story.data.taleid) {
+      const storyId = story.data.id || story.id;
+      const metadata = await getStoryMetadataFromItalian(storyId, story.data.taleid, lang);
+      if (metadata) {
+        return {
+          ...story,
+          data: {
+            ...story.data,
+            author: metadata.author,
+            genre: metadata.genre,
+            chapter: metadata.chapter,
+            maintitle: metadata.maintitle,
+            maindescription: metadata.maindescription,
+            type: metadata.type,
+            title: metadata.title,
+            description: metadata.description
+          }
+        };
+      }
+    }
+    return story;
+  })
+);
 
 // Sort chapters within each group
 for (const group of groupedStories.values()) {
@@ -78,13 +115,21 @@ const genreLabels: Record<string, string> = {
 <div id="stories-container">
   <!-- Grouped View (default) -->
   <div id="grouped-view" class="stories-grid">
-    {Array.from(groupedStories.values()).map((group) => (
+    {Array.from(groupedStories.values()).map((group) => {
+      const metadata = group.metadata || {};
+      const title = metadata.maintitle || group.series.data.maintitle || group.series.data.title;
+      const description = metadata.maindescription || group.series.data.maindescription || group.series.data.description;
+      const author = metadata.author || group.series.data.author || 'Tale';
+      const genre = metadata.genre || group.series.data.genre || '';
+      const type = metadata.type || group.series.data.type;
+      
+      return (
       <article class="story-card series-card" 
-               data-title={group.series.data.maintitle ? group.series.data.maintitle.toLowerCase() : group.series.data.title.toLowerCase()}
-               data-author={(group.series.data.author || '').toLowerCase()}
-               data-genre={group.series.data.genre || ''}
+               data-title={title.toLowerCase()}
+               data-author={author.toLowerCase()}
+               data-genre={genre}
                data-date={group.series.data.date?.getTime() || 0}
-               data-type={group.series.data.type}
+               data-type={type}
                data-taleid={group.series.data.taleid || group.series.id}>
         <div class="story-content">
           <div class="story-meta">
@@ -92,7 +137,7 @@ const genreLabels: Record<string, string> = {
               <span class="badge badge-chapters">
                 {group.chapters.length} {_('common.chapters')}
               </span>
-              {group.series.data.type === 'comic' && (
+              {type === 'comic' && (
                 <span class="badge badge-comic">
                   {_('common.comic')}
                 </span>
@@ -102,7 +147,7 @@ const genreLabels: Record<string, string> = {
           
           <h3 class="story-title">
             <a href={createLangUrl(lang, `/series/${group.series.data.taleid || group.series.id}`)}>
-              {group.series.data.maintitle || group.series.data.title}
+              {title}
             </a>
           </h3>
           
@@ -110,23 +155,23 @@ const genreLabels: Record<string, string> = {
             <FormattedDate date={group.chapters[group.chapters.length - 1].data.date} />
           </div>
           
-          {group.series.data.genre && (
+          {genre && (
             <div class="story-genres">
-              {group.series.data.genre.split(',').map(genre => (
+              {genre.split(',').map((g: string) => (
                 <span class="badge badge-genre">
-                  {genreLabels[genre.trim()] || genre.trim()}
+                  {genreLabels[g.trim()] || g.trim()}
                 </span>
               ))}
             </div>
           )}
           
           <p class="story-description">
-            {group.series.data.maindescription || group.series.data.description}
+            {description}
           </p>
           
           <div class="story-footer">
             <span class="story-author">
-              {_('common.by')} {group.series.data.author || 'Tale'}
+              {_('common.by')} {author}
             </span>
             <a 
               href={createLangUrl(lang, `/series/${group.series.data.taleid || group.series.id}`)}
@@ -140,12 +185,13 @@ const genreLabels: Record<string, string> = {
           </div>
         </div>
       </article>
-    ))}
+      );
+    })}
   </div>
 
   <!-- Individual View -->
   <div id="individual-view" class="stories-grid" style="display: none;">
-    {filteredStories.map((story) => (
+    {enrichedIndividualStories.map((story) => (
       <article class="story-card individual-card" 
                data-title={story.data.title.toLowerCase()} 
                data-author={(story.data.author || '').toLowerCase()}
@@ -187,7 +233,7 @@ const genreLabels: Record<string, string> = {
           
           {story.data.genre && (
             <div class="story-genres">
-              {story.data.genre.split(',').map(genre => (
+              {story.data.genre.split(',').map((genre: string) => (
                 <span class="badge badge-genre">
                   {genreLabels[genre.trim()] || genre.trim()}
                 </span>
