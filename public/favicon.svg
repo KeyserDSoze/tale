@@ -1,11 +1,40 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 64">
-    <title>Tale Logo</title>
-    <!-- Parentesi francesi -->
-    <text x="65" y="38" font-size="28" text-anchor="middle" font-family="serif" fill="#000">«</text>
-    <!-- Penna -->
-    <g fill="none" stroke="#000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M90 8 104 22 90 56 76 22Z"/>
-        <circle cx="90" cy="28" r="3.5" fill="#000" stroke="none"/>
-    </g>
-    <text x="115" y="38" font-size="28" text-anchor="middle" font-family="serif" fill="#000">»</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <title>Tale</title>
+    
+    <!-- Background per migliore visibilità -->
+    <rect x="0" y="0" width="32" height="32" />
+    
+    <!-- Logo semplificato per favicon -->
+    <g transform="translate(16,15)">
+	  <!-- parentesi « ridotta e spostata a sinistra -->
+	  <text x="-12" y="3" font-size="13" text-anchor="middle" font-family="serif" fill="#333">«</text>
+
+	  <!-- penna molto semplificata e centrata -->
+	  <g fill="none" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+		<path d="M0 -10 L6 0 L0 14 L-6 0 Z"/>
+		<circle cx="0" cy="1" r="2" fill="#333" stroke="none"/>
+	  </g>
+
+	  <!-- parentesi » ridotta e spostata a destra -->
+	  <text x="12" y="3" font-size="13" text-anchor="middle" font-family="serif" fill="#333">»</text>
+	</g>
+    
+    <style>
+        rect { 
+            fill: #ffffff; 
+            stroke: #333333; 
+        }
+        text, path, circle { 
+            fill: #333333; 
+            stroke: #333333; 
+        }
+        @media (prefers-color-scheme: dark) {
+            rect { 
+                fill: #1a1a1a; 
+            }
+            text, path, circle { 
+                stroke: #ffffff; 
+            }
+        }
+    </style>
 </svg>
