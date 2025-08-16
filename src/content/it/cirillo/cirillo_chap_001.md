@@ -1,5 +1,5 @@
 ---
-title: "Cirillo e il mercato dei sogni - capitolo 1"
+title: "Cirillo e il mercato dei sogni"
 description: "Un piccolo orsetto color miele, con sciarpa azzurra e cappellino, sogna di andare al mercato con la mamma, immaginando bancarelle piene di giochi e avventure."
 date: "2025-08-15"
 lang: "it"
@@ -12,8 +12,6 @@ maintitle: "Cirillo"
 maindescription: "La tenera avventura di Cirillo, un piccolo orsetto che, al mercato, si perde tra la folla e impara l’importanza di restare vicino alla mamma."
 author: "Alessandro Rapiti"
 ---
-
-# Cirillo e il Mercato dei Sogni
 
 ## Capitolo 1 – Il sogno di Cirillo
 

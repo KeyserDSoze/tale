@@ -1,5 +1,5 @@
 ---
-title: "Cirillo e il mercato dei sogni - capitolo 3"
+title: "Cirillo si è perso"
 description: "Mamma Orsa, disperata, cerca il figlio tra le bancarelle; Cirillo resiste all’orso cattivo, finché la mamma lo ritrova, e lo stringe in un abbraccio pieno di sollievo e amore."
 date: "2025-08-15"
 lang: "it"

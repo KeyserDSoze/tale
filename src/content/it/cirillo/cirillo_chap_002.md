@@ -1,5 +1,5 @@
 ---
-title: "Cirillo e il mercato dei sogni - Tra le bancarelle"
+title: "Cirillo tra le bancarelle"
 description: "Il mercato è un vortice di colori e profumi; Cirillo, attratto dai giocattoli, si stacca dalla mamma e si perde tra la folla, fino a incontrare un orso grande e dall’aria poco amichevole."
 date: "2025-08-15"
 lang: "it"
