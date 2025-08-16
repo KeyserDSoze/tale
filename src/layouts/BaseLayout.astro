@@ -4,10 +4,17 @@ import { t } from '../i18n';
 
 const {
   lang = 'en',
-  title = t(lang as any, 'site.name'),
+  title,
   description = t(lang as any, 'site.description'),
   alternates = ['it', 'en', 'es', 'fr', 'de', 'zh', 'ja'],
 } = Astro.props;
+
+// Logica per il titolo:
+// - Se non è fornito un titolo, usa solo "Tale"
+// - Se è fornito un titolo e contiene "—", lo usa così com'è
+// - Altrimenti usa solo "Tale"
+const siteName = t(lang as any, 'site.name'); // "Tale"
+const finalTitle = title ? (title.includes('—') ? title : title === siteName ? siteName : `${title} — ${siteName}`) : siteName;
 
 const siteUrl = Astro.site?.origin || 'http://localhost:4321';
 const basePath = import.meta.env.BASE_URL?.replace(/\/$/, '') || '';
@@ -30,28 +37,28 @@ const faviconUrl = `${basePath}/favicon.svg`;
     <link rel="canonical" href={`${siteUrl}${Astro.url.pathname}`} />
     
     <!-- SEO Meta Tags -->
-    <title>{title}</title>
+    <title>{finalTitle}</title>
     
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content={title} />
+    <meta property="og:title" content={finalTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={`${siteUrl}${Astro.url.pathname}`} />
     <meta property="og:site_name" content={t(lang as any, 'site.name')} />
     <meta property="og:locale" content={lang} />
-    {alternates.filter(l => l !== lang).map((l) => (
+    {alternates.filter((l: string) => l !== lang).map((l: string) => (
       <meta property="og:locale:alternate" content={l} />
     ))}
     
     <!-- X (Twitter) Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
+    <meta name="twitter:title" content={finalTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:site" content="@tale" />
     <meta name="twitter:creator" content="@tale" />
     
     <!-- Hreflang for SEO -->
-    {alternates.map((l) => (
+    {alternates.map((l: string) => (
       <link rel="alternate" hreflang={l} href={`${siteUrl}${createLangUrl(l)}`} />
     ))}
     <link rel="alternate" hreflang="x-default" href={`${siteUrl}${basePath}/`} />
