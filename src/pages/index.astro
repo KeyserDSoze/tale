@@ -105,9 +105,39 @@
 		<div class="loading-dots">●●●</div>
 	</div>
 
-	<script type="module">
-		// Import the client-side utilities
-		import { createLangUrl, detectBrowserLanguage } from '/js/client-utils.js';
+	<script>
+		// Client-side URL utilities (inline per evitare problemi di path)
+		function createLangUrl(lang, path = '') {
+			const baseUrl = window.location.origin;
+			const isGitHubPages = window.location.hostname.includes('github.io');
+			
+			if (isGitHubPages) {
+				return `${baseUrl}/tale/${lang}${path}`;
+			} else {
+				return `${baseUrl}/${lang}${path}`;
+			}
+		}
+
+		function detectBrowserLanguage() {
+			const supportedLanguages = ['it', 'en', 'es', 'fr', 'de', 'zh', 'ja'];
+			const defaultLanguage = 'en';
+			
+			// Get browser languages
+			const browserLanguages = navigator.languages || [navigator.language];
+			
+			// Check each browser language against supported languages
+			for (const browserLang of browserLanguages) {
+				// Get the primary language code (e.g., 'en' from 'en-US')
+				const langCode = browserLang.split('-')[0].toLowerCase();
+				
+				if (supportedLanguages.includes(langCode)) {
+					return langCode;
+				}
+			}
+			
+			// If no supported language found, return default
+			return defaultLanguage;
+		}
 
 		function redirect() {
 			const targetLang = detectBrowserLanguage();
@@ -116,7 +146,7 @@
 			// Redirect after a short delay for the loading animation
 			setTimeout(() => {
 				window.location.href = targetUrl;
-			}, 1500);
+			}, 0);
 		}
 
 		// Start the redirect process
