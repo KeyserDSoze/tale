@@ -4,6 +4,7 @@ import Header from "../../../components/Header.astro";
 import Footer from "../../../components/Footer.astro";
 import FormattedDate from "../../../components/FormattedDate.astro";
 import SocialShare from "../../../components/SocialShare.astro";
+import ChapterNavigation from "../../../components/ChapterNavigation.astro";
 import { t, LOCALES } from "../../../i18n";
 import { getCollection, render } from 'astro:content';
 import { createLangUrl } from "../../../utils/urls";
@@ -70,29 +71,6 @@ const fullArticleUrl = `${currentUrl.origin}${createLangUrl(lang, `/stories/${id
 >
   <Header lang={lang} />
   
-  <!-- Language Switcher -->
-  <div class="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 transition-colors duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
-      <div class="flex justify-end space-x-4">
-        {LOCALES.map(l => {
-          const relatedPost = relatedPosts.find(p => p.data.lang === l);
-          const href = relatedPost ? createLangUrl(l, `/blog/${relatedPost.data.id || relatedPost.id}`) : createLangUrl(l, '/blog');
-          const flag = l === 'it' ? '🇮🇹' : l === 'es' ? '🇪🇸' : '🇬🇧';
-          const label = l === 'it' ? 'Italiano' : l === 'es' ? 'Español' : 'English';
-          
-          return (
-            <a 
-              href={href} 
-              class={`text-sm transition-colors duration-200 ${lang === l ? 'font-bold text-blue-600 dark:text-blue-400' : 'text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'}`}
-            >
-              {flag} {label}
-            </a>
-          );
-        })}
-      </div>
-    </div>
-  </div>
-
   <!-- Breadcrumb -->
   <div class="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 transition-colors duration-300 overflow-hidden">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -165,6 +143,13 @@ const fullArticleUrl = `${currentUrl.origin}${createLangUrl(lang, `/stories/${id
 
       <!-- Article Footer -->
       <footer class="mt-8 pt-6">
+        <!-- Chapter Navigation -->
+        <ChapterNavigation 
+          currentStory={post}
+          lang={lang}
+          type="story"
+        />
+        
         <!-- Social Share -->
         <SocialShare 
           title={post.data.title}
@@ -176,12 +161,12 @@ const fullArticleUrl = `${currentUrl.origin}${createLangUrl(lang, `/stories/${id
         <!-- Back to Blog -->
         <div class="flex items-center justify-center mt-8">
           <a 
-            href={createLangUrl(lang, '/')}
+            href={createLangUrl(lang, '/stories')}
             class="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium transition-colors duration-200"
           >
-            ← {lang === 'it' ? 'Torna al blog' : 
-                 lang === 'es' ? 'Volver al blog' :
-                 'Back to blog'}
+            ← {lang === 'it' ? 'Torna ai racconti' : 
+                 lang === 'es' ? 'Volver a los relatos' :
+                 'Back to stories'}
           </a>
         </div>
       </footer>

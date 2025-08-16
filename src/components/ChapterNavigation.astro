@@ -1,0 +1,249 @@
+---
+import { getCollection } from 'astro:content';
+import { createLangUrl } from '../utils/urls';
+
+interface Props {
+  currentStory: any;
+  lang: string;
+  type: 'story' | 'comic';
+}
+
+const { currentStory, lang, type } = Astro.props;
+
+// Get all stories/comics of the same type and language
+const allStories = await getCollection('stories', ({ data }) => 
+  data.type === type && data.lang === lang
+);
+
+// Filter stories with the same taleid (series) - only if taleid exists
+const currentTaleid = currentStory.data.taleid;
+let showNavigation = false;
+let nextStory = null;
+let sortedSeries: any[] = [];
+
+if (currentTaleid) {
+  const seriesStories = allStories.filter(story => 
+    story.data.taleid === currentTaleid
+  );
+
+  // Sort by chapter number first, then by date
+  sortedSeries = seriesStories.sort((a, b) => {
+    // Priority 1: chapter number
+    if (a.data.chapter !== undefined && b.data.chapter !== undefined) {
+      return a.data.chapter - b.data.chapter;
+    }
+    // Priority 2: date
+    return new Date(a.data.date).getTime() - new Date(b.data.date).getTime();
+  });
+
+  // Find current story index
+  const currentIndex = sortedSeries.findIndex(story => {
+    const storyId = story.data.id || story.id;
+    const currentId = currentStory.data.id || currentStory.id;
+    return storyId === currentId;
+  });
+
+  // Get next story
+  nextStory = currentIndex !== -1 && currentIndex < sortedSeries.length - 1 
+    ? sortedSeries[currentIndex + 1] 
+    : null;
+
+  // Only show navigation if there are multiple stories in the series
+  showNavigation = sortedSeries.length > 1;
+}
+
+// Navigation labels by language
+const labels = {
+  it: {
+    nextChapter: 'Capitolo successivo',
+    nextComic: 'Fumetto successivo',
+    end: 'Fine',
+    backToSeries: 'Torna alla serie'
+  },
+  en: {
+    nextChapter: 'Next Chapter',
+    nextComic: 'Next Comic',
+    end: 'The End',
+    backToSeries: 'Back to Series'
+  },
+  es: {
+    nextChapter: 'Siguiente Capítulo',
+    nextComic: 'Siguiente Cómic',
+    end: 'Fin',
+    backToSeries: 'Volver a la Serie'
+  },
+  fr: {
+    nextChapter: 'Chapitre Suivant',
+    nextComic: 'BD Suivante',
+    end: 'Fin',
+    backToSeries: 'Retour à la Série'
+  },
+  de: {
+    nextChapter: 'Nächstes Kapitel',
+    nextComic: 'Nächster Comic',
+    end: 'Ende',
+    backToSeries: 'Zurück zur Serie'
+  },
+  zh: {
+    nextChapter: '下一章',
+    nextComic: '下一话',
+    end: '完',
+    backToSeries: '返回系列'
+  },
+  ja: {
+    nextChapter: '次の章',
+    nextComic: '次の話',
+    end: '終わり',
+    backToSeries: 'シリーズに戻る'
+  }
+};
+
+const getLabel = (key: string) => {
+  const langLabels = labels[lang as keyof typeof labels] || labels['en'];
+  return langLabels[key as keyof typeof langLabels] || labels['en'][key as keyof typeof labels['en']];
+};
+---
+
+{showNavigation && (
+  <div class="chapter-navigation">
+    <div class="nav-container">
+      {nextStory ? (
+        <a href={createLangUrl(lang, `/${type === 'story' ? 'stories' : 'comics'}/${nextStory.data.id || nextStory.id}`)} class="next-button">
+          <span class="button-text">{getLabel(type === 'story' ? 'nextChapter' : 'nextComic')}</span>
+          <svg class="next-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="m9 18 6-6-6-6"/>
+          </svg>
+        </a>
+      ) : (
+        <div class="end-container">
+          <div class="end-text">{getLabel('end')}</div>
+          <a href={createLangUrl(lang, `/${type === 'story' ? 'stories' : 'comics'}`)} class="back-to-series">
+            {getLabel('backToSeries')}
+          </a>
+        </div>
+      )}
+    </div>
+  </div>
+)}
+
+<style>
+  .chapter-navigation {
+    margin-top: 3rem;
+    padding: 2rem 0;
+    border-top: 2px solid rgb(229, 231, 235);
+    display: flex;
+    justify-content: center;
+  }
+
+  .nav-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .next-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+
+  .next-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+  }
+
+  .button-text {
+    font-size: 1.1rem;
+  }
+
+  .next-icon {
+    transition: transform 0.3s ease;
+  }
+
+  .next-button:hover .next-icon {
+    transform: translateX(4px);
+  }
+
+  .end-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .end-text {
+    font-size: 2rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: serif;
+  }
+
+  .back-to-series {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    color: rgb(107, 114, 128);
+    text-decoration: none;
+    border: 1px solid rgb(209, 213, 219);
+    border-radius: 0.375rem;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+  }
+
+  .back-to-series:hover {
+    color: rgb(55, 65, 81);
+    border-color: rgb(156, 163, 175);
+    background-color: rgb(249, 250, 251);
+  }
+
+  /* Dark mode */
+  .dark .chapter-navigation {
+    border-top-color: rgb(75, 85, 99);
+  }
+
+  .dark .back-to-series {
+    color: rgb(156, 163, 175);
+    border-color: rgb(75, 85, 99);
+  }
+
+  .dark .back-to-series:hover {
+    color: rgb(209, 213, 219);
+    border-color: rgb(107, 114, 128);
+    background-color: rgb(31, 41, 55);
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .chapter-navigation {
+      margin-top: 2rem;
+      padding: 1.5rem 0;
+    }
+
+    .next-button {
+      padding: 0.625rem 1.25rem;
+      font-size: 1rem;
+    }
+
+    .button-text {
+      font-size: 1rem;
+    }
+
+    .end-text {
+      font-size: 1.5rem;
+    }
+  }
+</style>

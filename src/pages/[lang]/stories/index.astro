@@ -2,20 +2,43 @@
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import Header from "../../../components/Header.astro";
 import Footer from "../../../components/Footer.astro";
-import FormattedDate from "../../../components/FormattedDate.astro";
+import StoryFilter from "../../../components/StoryFilter.astro";
+import FilterableStoryList from "../../../components/FilterableStoryList.astro";
 import { t, LOCALES } from "../../../i18n";
-import { getStorySeries, getStandaloneStories } from "../../../utils/series";
+import { getCollection } from 'astro:content';
 
 export function getStaticPaths() {
   return LOCALES.map((lang) => ({ params: { lang } }));
 }
 
 const { lang } = Astro.params;
-const _ = (k) => t(lang, k);
+const _ = (k: any) => t(lang, k);
 
-// Get story series and standalone stories for this language
-const storySeries = await getStorySeries(lang);
-const standaloneStories = await getStandaloneStories(lang);
+// Get all stories for this language
+const allStories = await getCollection('stories', (entry) => 
+  entry.data.lang === lang && entry.data.type === 'story'
+);
+
+// Group stories by series (taleid) for counting
+const seriesGroups = new Map<string, any[]>();
+for (const story of allStories) {
+  const taleid = story.data.taleid || story.id;
+  if (!seriesGroups.has(taleid)) {
+    seriesGroups.set(taleid, []);
+  }
+  seriesGroups.get(taleid)!.push(story);
+}
+
+const totalSeries = seriesGroups.size;
+const totalStories = allStories.length;
+
+// Get URL parameters for initial filter state
+const url = Astro.url;
+const searchParams = url.searchParams;
+const currentGenre = searchParams.get('genre') || 'all';
+const currentSort = searchParams.get('sort') || 'date';
+const currentSearch = searchParams.get('search') || '';
+const currentGrouped = searchParams.get('grouped') || 'true';
 ---
 
 <BaseLayout 
@@ -48,176 +71,85 @@ const standaloneStories = await getStandaloneStories(lang);
     
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
       <div class="text-center">
-        <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+        <h1 class="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
           {_('nav.blog')}
         </h1>
-        <p class="text-xl md:text-2xl text-purple-100 dark:text-purple-200 max-w-3xl mx-auto leading-relaxed">
-          {lang === 'it' ? 'Un mondo di storie, racconti e narrazioni che nascono dalla fantasia e dall\'esperienza' : 
-           lang === 'es' ? 'Un mundo de historias, relatos y narraciones que nacen de la fantasía y la experiencia' :
-           lang === 'fr' ? 'Un monde d\'histoires, de récits et de narrations qui naissent de l\'imagination et de l\'expérience' :
-           lang === 'de' ? 'Eine Welt voller Geschichten, Erzählungen und Narrationen aus Fantasie und Erfahrung' :
-           lang === 'zh' ? '一个充满故事、叙述和想象力的世界' :
-           lang === 'ja' ? '想像力と経験から生まれる物語とナラティブの世界' :
-           'A world of stories, tales and narratives born from imagination and experience'}
-        </p>
+        <div class="flex justify-center">
+          <div class="bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 text-white font-medium">
+            <span id="story-count">
+              {totalSeries} {lang === 'it' ? 'serie disponibili' :
+                            lang === 'es' ? 'series disponibles' :
+                            lang === 'fr' ? 'séries disponibles' :
+                            lang === 'de' ? 'verfügbare Serien' :
+                            lang === 'zh' ? '可用系列' :
+                            lang === 'ja' ? '利用可能なシリーズ' :
+                            'series available'}
+            </span>
+            <span id="story-count-individual" style="display: none;">
+              {totalStories} {lang === 'it' ? 'racconti disponibili' :
+                             lang === 'es' ? 'relatos disponibles' :
+                             lang === 'fr' ? 'récits disponibles' :
+                             lang === 'de' ? 'verfügbare Geschichten' :
+                             lang === 'zh' ? '可用故事' :
+                             lang === 'ja' ? '利用可能なストーリー' :
+                             'stories available'}
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Content Section -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <!-- Story Series -->
-    {storySeries.length > 0 && (
-      <section class="mb-20">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-12 text-center">
-          {lang === 'it' ? 'Serie di Racconti' :
-           lang === 'es' ? 'Series de Historias' :
-           lang === 'fr' ? 'Séries de Récits' :
-           lang === 'de' ? 'Geschichten-Serien' :
-           lang === 'zh' ? '故事系列' :
-           lang === 'ja' ? 'ストーリーシリーズ' :
-           'Story Series'}
-        </h2>
-        <div class="grid gap-8 md:gap-12">
-          {storySeries.map((series) => (
-            <article class="group bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-700">
-              <div class="p-8 md:p-10">
-                <div class="flex flex-col md:flex-row gap-6">
-                  <div class="flex-1">
-                    <div class="flex items-center gap-3 mb-4">
-                      <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200">
-                        {series.totalChapters} {lang === 'it' ? 'capitoli' :
-                                                lang === 'es' ? 'capítulos' :
-                                                lang === 'fr' ? 'chapitres' :
-                                                lang === 'de' ? 'Kapitel' :
-                                                lang === 'zh' ? '章节' :
-                                                lang === 'ja' ? '章' :
-                                                'chapters'}
-                      </span>
-                      <time class="text-sm text-gray-500 dark:text-gray-400">
-                        <FormattedDate date={series.lastUpdated} />
-                      </time>
-                    </div>
-                    
-                    <h3 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300">
-                      <a href={`/${lang}/series/${series.taleid}/`} class="hover:underline">
-                        {series.maintitle}
-                      </a>
-                    </h3>
-                    
-                    <p class="text-gray-600 dark:text-gray-300 mb-6 text-lg leading-relaxed">
-                      {series.maindescription}
-                    </p>
-                    
-                    <a 
-                      href={`/${lang}/series/${series.taleid}/`}
-                      class="inline-flex items-center text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-semibold transition-colors duration-300 text-lg"
-                    >
-                      {lang === 'it' ? 'Leggi la serie' :
-                       lang === 'es' ? 'Leer la serie' :
-                       lang === 'fr' ? 'Lire la série' :
-                       lang === 'de' ? 'Serie lesen' :
-                       lang === 'zh' ? '阅读系列' :
-                       lang === 'ja' ? 'シリーズを読む' :
-                       'Read series'}
-                      <svg class="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-    )}
+  <!-- Main Content -->
+  <main class="bg-white dark:bg-gray-900 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      
+      <!-- Filter Controls -->
+      <StoryFilter 
+        lang={lang}
+        currentGenre={currentGenre}
+        currentSort={currentSort}
+        currentSearch={currentSearch}
+        currentGrouped={currentGrouped}
+      />
 
-    <!-- Standalone Stories -->
-    {standaloneStories.length > 0 && (
-      <section>
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-12 text-center">
-          {lang === 'it' ? 'Racconti Singoli' :
-           lang === 'es' ? 'Historias Individuales' :
-           lang === 'fr' ? 'Récits Individuels' :
-           lang === 'de' ? 'Einzelne Geschichten' :
-           lang === 'zh' ? '单篇故事' :
-           lang === 'ja' ? '単发ストーリー' :
-           'Individual Stories'}
-        </h2>
-        <div class="grid gap-8 lg:grid-cols-2">
-          {standaloneStories.map((story) => (
-            <article class="group bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-700">
-              <div class="p-6">
-                <time class="text-sm text-gray-500 dark:text-gray-400 mb-3 block">
-                  <FormattedDate date={story.date} />
-                </time>
-                <h3 class="text-xl font-bold mb-3 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300">
-                  <a href={`/${lang}/stories/${story.id}/`} class="text-gray-900 dark:text-gray-100 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-300">
-                    {story.title}
-                  </a>
-                </h3>
-                {story.description && (
-                  <p class="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3 transition-colors duration-300">
-                    {story.description}
-                  </p>
-                )}
-                <a 
-                  href={`/${lang}/stories/${story.id}/`}
-                  class="inline-flex items-center text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium transition-colors duration-300"
-                >
-                  {_('common.readMore')}
-                  <svg class="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                  </svg>
-                </a>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-    )}
+      <!-- Stories List -->
+      <FilterableStoryList 
+        stories={allStories}
+        lang={lang}
+        showType="stories"
+      />
 
-    <!-- Empty State -->
-    {storySeries.length === 0 && standaloneStories.length === 0 && (
-      <div class="text-center py-20">
-        <div class="max-w-md mx-auto">
-          <div class="w-20 h-20 mx-auto mb-6 text-gray-400 dark:text-gray-600">
-            <svg fill="currentColor" viewBox="0 0 24 24">
-              <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+      {allStories.length === 0 && (
+        <div class="text-center py-16">
+          <div class="max-w-md mx-auto">
+            <svg class="mx-auto h-16 w-16 text-gray-400 mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
             </svg>
+            <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100 mb-2">
+              {lang === 'it' ? 'Nessun racconto disponibile' :
+               lang === 'es' ? 'No hay relatos disponibles' :
+               lang === 'fr' ? 'Aucun récit disponible' :
+               lang === 'de' ? 'Keine Geschichten verfügbar' :
+               lang === 'zh' ? '暂无故事' :
+               lang === 'ja' ? 'ストーリーがありません' :
+               'No stories available'}
+            </h3>
+            <p class="text-gray-500 dark:text-gray-400">
+              {lang === 'it' ? 'Torna presto per nuovi racconti!' :
+               lang === 'es' ? '¡Vuelve pronto para nuevos relatos!' :
+               lang === 'fr' ? 'Revenez bientôt pour de nouveaux récits!' :
+               lang === 'de' ? 'Kommen Sie bald wieder für neue Geschichten!' :
+               lang === 'zh' ? '请稍后回来查看新故事！' :
+               lang === 'ja' ? '新しいストーリーのためにまたお越しください！' :
+               'Check back soon for new stories!'}
+            </p>
           </div>
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
-            {lang === 'it' ? 'Nessun racconto ancora' :
-             lang === 'es' ? 'Aún no hay historias' :
-             lang === 'fr' ? 'Aucun récit pour le moment' :
-             lang === 'de' ? 'Noch keine Geschichten' :
-             lang === 'zh' ? '还没有故事' :
-             lang === 'ja' ? 'まだストーリーはありません' :
-             'No stories yet'}
-          </h3>
-          <p class="text-gray-600 dark:text-gray-400">
-            {lang === 'it' ? 'I racconti arriveranno presto!' :
-             lang === 'es' ? '¡Las historias llegarán pronto!' :
-             lang === 'fr' ? 'Les récits arrivent bientôt !' :
-             lang === 'de' ? 'Geschichten kommen bald!' :
-             lang === 'zh' ? '故事即将到来！' :
-             lang === 'ja' ? 'ストーリーはもうすぐ来ます！' :
-             'Stories coming soon!'}
-          </p>
         </div>
-      </div>
-    )}
+      )}
+
+    </div>
   </main>
 
   <Footer lang={lang} />
 </BaseLayout>
-
-<style>
-  .line-clamp-3 {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-</style>

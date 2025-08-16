@@ -7,6 +7,7 @@ id: "cirillo-chap-001"
 taleid: "cirillo"
 chapter: 1
 type: story
+genre: fantasy,children
 maintitle: "Cirillo"
 maindescription: "La tenera avventura di Cirillo, un piccolo orsetto che, al mercato, si perde tra la folla e impara l’importanza di restare vicino alla mamma."
 author: "Alessandro Rapiti"

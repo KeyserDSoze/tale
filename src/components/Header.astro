@@ -8,6 +8,13 @@ import { createLangUrl } from '../utils/urls';
 // Accept lang prop for multilingual support
 const { lang = 'it' } = Astro.props;
 const _ = (k) => t(lang, k);
+
+// Determine if we're on stories/comics pages
+const currentPath = Astro.url.pathname;
+const isStoriesActive = currentPath.includes('/stories') || currentPath.includes('/comics') || currentPath.includes('/series');
+const isHomeActive = currentPath === '/' || currentPath === `/${lang}` || currentPath === `/${lang}/`;
+const isStoriesPageActive = currentPath.includes('/stories');
+const isComicsPageActive = currentPath.includes('/comics');
 ---
 
 <header>
@@ -29,21 +36,21 @@ const _ = (k) => t(lang, k);
 			</a>
 		</h2>
 		<div class="internal-links">
-			<HeaderLink href={createLangUrl(lang)}>
+			<HeaderLink href={createLangUrl(lang)} class={isHomeActive ? 'active rainbow' : ''}>
 				{_('nav.home')}
 			</HeaderLink>
 			<div class="dropdown">
-				<button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">
-					{_('nav.stories')}
+				<button class={`dropdown-toggle ${isStoriesActive ? 'active' : ''}`} aria-expanded="false" aria-haspopup="true">
+					<span class={isStoriesActive ? 'rainbow' : ''}>{_('nav.stories')}</span>
 					<svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
 						<path d="M6 8.5L2.5 5h7L6 8.5z"/>
 					</svg>
 				</button>
 				<div class="dropdown-menu">
-					<a href={createLangUrl(lang, '/stories')} class="dropdown-item">
+					<a href={createLangUrl(lang, '/stories')} class={`dropdown-item ${isStoriesPageActive ? 'active rainbow' : ''}`}>
 						{_('nav.blog')}
 					</a>
-					<a href={createLangUrl(lang, '/comics')} class="dropdown-item">
+					<a href={createLangUrl(lang, '/comics')} class={`dropdown-item ${isComicsPageActive ? 'active rainbow' : ''}`}>
 						{_('nav.comics')}
 					</a>
 				</div>
@@ -147,6 +154,56 @@ const _ = (k) => t(lang, k);
 		text-decoration: none;
 		border-bottom-color: var(--accent);
 	}
+
+	/* Rainbow animation for active elements */
+	.rainbow {
+		background: linear-gradient(90deg, #ff0000, #ff8c00, #ffd700, #32cd32, #1e90ff, #8a2be2, #ff1493, #ff0000);
+		background-size: 300% 100%;
+		-webkit-background-clip: text;
+		background-clip: text;
+		color: transparent;
+		-webkit-text-fill-color: transparent;
+		animation: rainbow 2s linear infinite;
+		font-weight: 600;
+		border-bottom-color: transparent !important;
+		display: inline-block;
+	}
+
+	/* Specific rules for button elements */
+	button.rainbow {
+		background: linear-gradient(90deg, #ff0000, #ff8c00, #ffd700, #32cd32, #1e90ff, #8a2be2, #ff1493, #ff0000) !important;
+		background-size: 300% 100% !important;
+		-webkit-background-clip: text !important;
+		background-clip: text !important;
+		color: transparent !important;
+		-webkit-text-fill-color: transparent !important;
+		animation: rainbow 2s linear infinite !important;
+		font-weight: 600 !important;
+		border-bottom: none !important;
+		display: inline-flex !important;
+	}
+
+	.rainbow:hover {
+		background: linear-gradient(90deg, #ff0000, #ff8c00, #ffd700, #32cd32, #1e90ff, #8a2be2, #ff1493, #ff0000);
+		background-size: 300% 100%;
+		-webkit-background-clip: text;
+		background-clip: text;
+		color: transparent;
+		-webkit-text-fill-color: transparent;
+		border-bottom-color: transparent !important;
+	}
+
+	/* Fix for SVG icons in rainbow elements */
+	.rainbow svg,
+	.rainbow:hover svg {
+		-webkit-text-fill-color: initial;
+		color: rgb(var(--black));
+	}
+
+	:global(.dark) .rainbow svg,
+	:global(.dark) .rainbow:hover svg {
+		color: rgb(229, 231, 235);
+	}
 	
 	.nav-controls {
 		display: flex;
@@ -190,8 +247,31 @@ const _ = (k) => t(lang, k);
 		color: var(--accent);
 	}
 
-	.dropdown-toggle[aria-expanded="true"] {
+	.dropdown-toggle[aria-expanded="true"]:not(.rainbow) {
 		border-bottom-color: var(--accent);
+	}
+
+	/* Force no border for rainbow elements - highest specificity */
+	.dropdown-toggle.rainbow {
+		border-bottom: none !important;
+	}
+
+	.dropdown-toggle.rainbow[aria-expanded="true"],
+	.dropdown-toggle[aria-expanded="true"].rainbow {
+		border-bottom: none !important;
+	}
+
+	.dropdown-toggle.active {
+		border-bottom-color: transparent;
+	}
+
+	@keyframes rainbow {
+		0% {
+			background-position: 0% 50%;
+		}
+		100% {
+			background-position: 300% 50%;
+		}
 	}
 
 	.dropdown-arrow {
@@ -256,6 +336,15 @@ const _ = (k) => t(lang, k);
 
 	.dropdown-item:last-child {
 		border-radius: 0 0 0.5rem 0.5rem;
+	}
+
+	.dropdown-item.active {
+		background-color: rgb(243, 244, 246);
+		border-bottom-color: transparent;
+	}
+
+	:global(.dark) .dropdown-item.active {
+		background-color: rgb(55, 65, 81);
 	}
 
 	@media (max-width: 720px) {

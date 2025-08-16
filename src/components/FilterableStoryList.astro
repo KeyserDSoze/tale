@@ -1,0 +1,565 @@
+---
+import FormattedDate from './FormattedDate.astro';
+import { createLangUrl } from '../utils/urls';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  stories: CollectionEntry<'stories'>[];
+  lang: string;
+  showType?: 'all' | 'stories' | 'comics';
+}
+
+const { stories, lang, showType = 'all' } = Astro.props;
+
+// Filter stories by type if specified
+let filteredStories = stories;
+if (showType === 'stories') {
+  filteredStories = stories.filter(story => story.data.type === 'story');
+} else if (showType === 'comics') {
+  filteredStories = stories.filter(story => story.data.type === 'comic');
+}
+
+// Group stories by series (taleid)
+const groupedStories = new Map<string, {
+  series: CollectionEntry<'stories'>;
+  chapters: CollectionEntry<'stories'>[];
+}>();
+
+// First, collect all stories and group by taleid
+for (const story of filteredStories) {
+  const taleid = story.data.taleid || story.id;
+  
+  if (!groupedStories.has(taleid)) {
+    groupedStories.set(taleid, {
+      series: story,
+      chapters: []
+    });
+  }
+  
+  const group = groupedStories.get(taleid)!;
+  group.chapters.push(story);
+  
+  // Use the story with the lowest chapter number or date as the series representative
+  if (!story.data.chapter || (group.series.data.chapter && story.data.chapter < group.series.data.chapter)) {
+    group.series = story;
+  } else if (!group.series.data.chapter && story.data.date < group.series.data.date) {
+    group.series = story;
+  }
+}
+
+// Sort chapters within each group
+for (const group of groupedStories.values()) {
+  group.chapters.sort((a, b) => {
+    if (a.data.chapter && b.data.chapter) {
+      return a.data.chapter - b.data.chapter;
+    }
+    return a.data.date.getTime() - b.data.date.getTime();
+  });
+}
+
+// Genre labels (simplified for display)
+const genreLabels: Record<string, string> = {
+  fantasy: lang === 'it' ? 'Fantasy' : 'Fantasy',
+  sciencefiction: lang === 'it' ? 'Fantascienza' : 'Sci-Fi',
+  horror: lang === 'it' ? 'Horror' : 'Horror',
+  thriller: lang === 'it' ? 'Thriller' : 'Thriller',
+  mystery: lang === 'it' ? 'Mistero' : 'Mystery',
+  crime: lang === 'it' ? 'Crime' : 'Crime',
+  adventure: lang === 'it' ? 'Avventura' : 'Adventure',
+  romance: lang === 'it' ? 'Romance' : 'Romance',
+  comedy: lang === 'it' ? 'Commedia' : 'Comedy',
+  drama: lang === 'it' ? 'Drama' : 'Drama',
+  children: lang === 'it' ? 'Per bambini' : 'Children',
+  // Add more as needed
+};
+---
+
+<div id="stories-container">
+  <!-- Grouped View (default) -->
+  <div id="grouped-view" class="stories-grid">
+    {Array.from(groupedStories.values()).map((group) => (
+      <article class="story-card series-card" 
+               data-title={group.series.data.maintitle ? group.series.data.maintitle.toLowerCase() : group.series.data.title.toLowerCase()}
+               data-author={(group.series.data.author || '').toLowerCase()}
+               data-genre={group.series.data.genre || ''}
+               data-date={group.series.data.date?.getTime() || 0}
+               data-type={group.series.data.type}
+               data-taleid={group.series.data.taleid || group.series.id}>
+        <div class="story-content">
+          <div class="story-meta">
+            <FormattedDate date={group.chapters[group.chapters.length - 1].data.date} />
+            <div class="story-badges">
+              <span class="badge badge-chapters">
+                {group.chapters.length} {lang === 'it' ? 'capitoli' : lang === 'es' ? 'capítulos' : 'chapters'}
+              </span>
+              {group.series.data.type === 'comic' && (
+                <span class="badge badge-comic">
+                  {lang === 'it' ? 'Fumetto' : lang === 'es' ? 'Cómic' : 'Comic'}
+                </span>
+              )}
+              {group.series.data.genre && (
+                <span class="badge badge-genre">
+                  {genreLabels[group.series.data.genre] || group.series.data.genre}
+                </span>
+              )}
+            </div>
+          </div>
+          
+          <h3 class="story-title">
+            <a href={createLangUrl(lang, `/series/${group.series.data.taleid || group.series.id}`)}>
+              {group.series.data.maintitle || group.series.data.title}
+            </a>
+          </h3>
+          
+          <p class="story-description">
+            {group.series.data.maindescription || group.series.data.description}
+          </p>
+          
+          <div class="story-footer">
+            <span class="story-author">
+              {lang === 'it' ? 'di' : lang === 'es' ? 'por' : 'by'} {group.series.data.author || 'Tale'}
+            </span>
+            <a 
+              href={createLangUrl(lang, `/series/${group.series.data.taleid || group.series.id}`)}
+              class="read-more"
+            >
+              {lang === 'it' ? 'Leggi la serie' : lang === 'es' ? 'Leer serie' : 'Read series'}
+              <svg class="read-more-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 18l6-6-6-6"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+
+  <!-- Individual View -->
+  <div id="individual-view" class="stories-grid" style="display: none;">
+    {filteredStories.map((story) => (
+      <article class="story-card individual-card" 
+               data-title={story.data.title.toLowerCase()} 
+               data-author={(story.data.author || '').toLowerCase()}
+               data-genre={story.data.genre || ''}
+               data-date={story.data.date?.getTime() || 0}
+               data-type={story.data.type}
+               data-taleid={story.data.taleid || story.id}>
+        <div class="story-content">
+          <div class="story-meta">
+            <FormattedDate date={story.data.date} />
+            <div class="story-badges">
+              {story.data.chapter && (
+                <span class="badge badge-chapter">
+                  {lang === 'it' ? 'Cap.' : lang === 'es' ? 'Cap.' : 'Ch.'} {story.data.chapter}
+                </span>
+              )}
+              {story.data.type === 'comic' && (
+                <span class="badge badge-comic">
+                  {lang === 'it' ? 'Fumetto' : lang === 'es' ? 'Cómic' : 'Comic'}
+                </span>
+              )}
+              {story.data.genre && (
+                <span class="badge badge-genre">
+                  {genreLabels[story.data.genre] || story.data.genre}
+                </span>
+              )}
+            </div>
+          </div>
+          
+          {story.data.maintitle && story.data.maintitle !== story.data.title && (
+            <div class="series-title">
+              <span class="series-name">{story.data.maintitle}</span>
+            </div>
+          )}
+          
+          <h3 class="story-title">
+            <a href={createLangUrl(lang, `/${story.data.type === 'comic' ? 'comics' : 'stories'}/${story.id}`)}>
+              {story.data.title}
+            </a>
+          </h3>
+          
+          <p class="story-description">
+            {story.data.description}
+          </p>
+          
+          <div class="story-footer">
+            <span class="story-author">
+              {lang === 'it' ? 'di' : lang === 'es' ? 'por' : 'by'} {story.data.author || 'Tale'}
+            </span>
+            <a 
+              href={createLangUrl(lang, `/${story.data.type === 'comic' ? 'comics' : 'stories'}/${story.id}`)}
+              class="read-more"
+            >
+              {lang === 'it' ? 'Leggi tutto' : lang === 'es' ? 'Leer más' : 'Read more'}
+              <svg class="read-more-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 18l6-6-6-6"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+</div>
+
+<div id="no-results" class="no-results" style="display: none;">
+  <div class="no-results-content">
+    <svg class="no-results-icon" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+      <circle cx="11" cy="11" r="8"></circle>
+      <path d="m21 21-4.35-4.35"></path>
+    </svg>
+    <h3>{lang === 'it' ? 'Nessun risultato trovato' : lang === 'es' ? 'No se encontraron resultados' : 'No results found'}</h3>
+    <p>{lang === 'it' ? 'Prova a modificare i filtri di ricerca' : lang === 'es' ? 'Intenta modificar los filtros de búsqueda' : 'Try adjusting your search filters'}</p>
+  </div>
+</div>
+
+<style>
+  .stories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .story-card {
+    background: white;
+    border: 1px solid rgb(229, 231, 235);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .story-card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+  }
+
+  :global(.dark) .story-card {
+    background: rgb(31, 41, 55);
+    border-color: rgb(75, 85, 99);
+  }
+
+  .story-content {
+    padding: 1.5rem;
+  }
+
+  .story-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+
+  .story-badges {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+  }
+
+  .badge-comic {
+    background: rgb(99, 102, 241);
+    color: white;
+  }
+
+  .badge-chapters {
+    background: rgb(59, 130, 246);
+    color: white;
+  }
+
+  .badge-chapter {
+    background: rgb(34, 197, 94);
+    color: white;
+  }
+
+  .badge-genre {
+    background: rgb(245, 243, 255);
+    color: rgb(99, 102, 241);
+    border: 1px solid rgb(196, 181, 253);
+  }
+
+  :global(.dark) .badge-genre {
+    background: rgb(67, 56, 202);
+    color: rgb(199, 210, 254);
+    border-color: rgb(99, 102, 241);
+  }
+
+  .series-title {
+    margin-bottom: 0.5rem;
+  }
+
+  .series-name {
+    font-size: 0.875rem;
+    color: rgb(107, 114, 128);
+    font-weight: 500;
+    background: rgb(243, 244, 246);
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    display: inline-block;
+  }
+
+  :global(.dark) .series-name {
+    color: rgb(156, 163, 175);
+    background: rgb(55, 65, 81);
+  }
+
+  .story-title {
+    margin: 0 0 1rem 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .story-title a {
+    color: rgb(17, 24, 39);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .story-title a:hover {
+    color: rgb(147, 51, 234);
+  }
+
+  :global(.dark) .story-title a {
+    color: rgb(229, 231, 235);
+  }
+
+  :global(.dark) .story-title a:hover {
+    color: rgb(196, 181, 253);
+  }
+
+  .story-description {
+    color: rgb(107, 114, 128);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  :global(.dark) .story-description {
+    color: rgb(156, 163, 175);
+  }
+
+  .story-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .story-author {
+    font-size: 0.875rem;
+    color: rgb(107, 114, 128);
+    font-style: italic;
+  }
+
+  :global(.dark) .story-author {
+    color: rgb(156, 163, 175);
+  }
+
+  .read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgb(147, 51, 234);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+  }
+
+  .read-more:hover {
+    color: rgb(126, 34, 206);
+  }
+
+  .read-more-icon {
+    transition: transform 0.3s ease;
+  }
+
+  .read-more:hover .read-more-icon {
+    transform: translateX(2px);
+  }
+
+  .no-results {
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+
+  .no-results-content {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .no-results-icon {
+    margin: 0 auto 1rem;
+    color: rgb(156, 163, 175);
+  }
+
+  .no-results h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: rgb(17, 24, 39);
+  }
+
+  :global(.dark) .no-results h3 {
+    color: rgb(229, 231, 235);
+  }
+
+  .no-results p {
+    margin: 0;
+    color: rgb(107, 114, 128);
+  }
+
+  :global(.dark) .no-results p {
+    color: rgb(156, 163, 175);
+  }
+
+  @media (max-width: 768px) {
+    .stories-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .story-content {
+      padding: 1.25rem;
+    }
+
+    .story-footer {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+  }
+</style>
+
+<script>
+  // Client-side filtering and sorting
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('stories-container');
+    const groupedView = document.getElementById('grouped-view');
+    const individualView = document.getElementById('individual-view');
+    const noResults = document.getElementById('no-results');
+    
+    if (!container || !noResults || !groupedView || !individualView) return;
+    
+    let currentView = 'grouped';
+    
+    function toggleView(grouped: boolean) {
+      currentView = grouped ? 'grouped' : 'individual';
+      
+      if (grouped) {
+        if (groupedView) groupedView.style.display = '';
+        if (individualView) individualView.style.display = 'none';
+      } else {
+        if (groupedView) groupedView.style.display = 'none';
+        if (individualView) individualView.style.display = '';
+      }
+      
+      // Update count display
+      const groupedCount = document.getElementById('story-count') || document.getElementById('comic-count');
+      const individualCount = document.getElementById('story-count-individual') || document.getElementById('comic-count-individual');
+      
+      if (groupedCount && individualCount) {
+        if (grouped) {
+          groupedCount.style.display = '';
+          individualCount.style.display = 'none';
+        } else {
+          groupedCount.style.display = 'none';
+          individualCount.style.display = '';
+        }
+      }
+    }
+    
+    function filterAndSort(filters: { search: string; genre: string; sort: string; grouped?: boolean }) {
+      // Handle view toggle
+      if (filters.grouped !== undefined) {
+        toggleView(filters.grouped);
+      }
+      
+      const activeView = currentView === 'grouped' ? groupedView : individualView;
+      const cards = Array.from(activeView!.querySelectorAll('.story-card')) as HTMLElement[];
+      let visibleCards = 0;
+      
+      cards.forEach(card => {
+        let visible = true;
+        
+        // Search filter
+        if (filters.search) {
+          const title = card.dataset.title || '';
+          const author = card.dataset.author || '';
+          const searchTerm = filters.search.toLowerCase();
+          visible = title.includes(searchTerm) || author.includes(searchTerm);
+        }
+        
+        // Genre filter
+        if (filters.genre !== 'all') {
+          const cardGenre = card.dataset.genre || '';
+          const cardGenres = cardGenre.split(',').map(g => g.trim());
+          visible = visible && cardGenres.includes(filters.genre);
+        }
+        
+        if (visible) {
+          card.style.display = '';
+          visibleCards++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      
+      // Sort visible cards
+      const visibleCardElements = cards.filter(card => card.style.display !== 'none');
+      
+      visibleCardElements.sort((a, b) => {
+        const aData = a.dataset;
+        const bData = b.dataset;
+        
+        switch (filters.sort) {
+          case 'title':
+            return (aData.title || '').localeCompare(bData.title || '');
+          case 'author':
+            return (aData.author || '').localeCompare(bData.author || '');
+          case 'date':
+          default:
+            return (parseInt(bData.date || '0')) - (parseInt(aData.date || '0'));
+        }
+      });
+      
+      // Reorder in DOM
+      visibleCardElements.forEach(card => activeView!.appendChild(card));
+      
+      // Show/hide no results message
+      if (visibleCards === 0) {
+        noResults!.style.display = 'block';
+      } else {
+        noResults!.style.display = 'none';
+      }
+    }
+    
+    // Listen for filter changes
+    window.addEventListener('filtersChanged', (event: any) => {
+      filterAndSort(event.detail);
+    });
+    
+    // Initial filter application from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const isGrouped = urlParams.get('grouped') !== 'false';
+    
+    filterAndSort({
+      search: urlParams.get('search') || '',
+      genre: urlParams.get('genre') || 'all',
+      sort: urlParams.get('sort') || 'date',
+      grouped: isGrouped
+    });
+  });
+</script>

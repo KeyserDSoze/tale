@@ -1,6 +1,81 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
+// Story genres enum in lowercase
+const storyGenres = [
+	// Core Fiction
+	'fantasy',
+	'sciencefiction',
+	'horror',
+	'thriller',
+	'mystery',
+	'crime',
+	'adventure',
+	'romance',
+	'historicalfiction',
+	'contemporaryfiction',
+	'satire',
+	'comedy',
+	'drama',
+	'fairytale',
+	'allegory',
+
+	// Age/Target categories
+	'children',
+	'middlegrade',
+	'youngadult',
+	'newadult',
+	'adult',
+
+	// Non-Fiction
+	'biography',
+	'autobiography',
+	'memoir',
+	'essay',
+	'philosophy',
+	'science',
+	'history',
+	'politics',
+	'selfhelp',
+	'manual',
+	'poetry',
+	'diary',
+	'epistolary',
+
+	// Comics & Graphic Novels
+	'superhero',
+	'graphicnovel',
+	'sliceoflife',
+	'comedycomic',
+	'satiricalcomic',
+	'historicalcomic',
+	'fantasycomic',
+	'scificomic',
+	'mysterycomic',
+	'horrorcomic',
+	'adventurecomic',
+	'romancecomic',
+
+	// Style / Tone
+	'psychological',
+	'dark',
+	'experimental',
+	'realistic',
+	'surreal',
+	'dystopian',
+	'utopian',
+	'postapocalyptic',
+	'cyberpunk',
+	'steampunk',
+
+	// Special Formats
+	'anthology',
+	'shortstory',
+	'flashfiction',
+	'lightnovel',
+	'webcomic'
+] as const;
+
 const stories = defineCollection({
 	// Load Markdown and MDX files in the `src/content/` directory directly
 	loader: glob({ base: './src/content', pattern: '**/*.{md,mdx}' }),
@@ -21,6 +96,8 @@ const stories = defineCollection({
 			author: z.string().optional().default('Tale'),
 			// Content type: story or comic
 			type: z.enum(['story', 'comic']).default('story'),
+			// Genre classification
+			genre: z.enum(storyGenres).optional(),
 			// Series/Multi-chapter story support
 			taleid: z.string().optional(), // ID for grouping chapters
 			chapter: z.number().optional(), // Chapter number
@@ -36,3 +113,7 @@ const stories = defineCollection({
 });
 
 export const collections = { stories };
+
+// Export the genres for use in other files
+export { storyGenres };
+export type StoryGenre = typeof storyGenres[number];

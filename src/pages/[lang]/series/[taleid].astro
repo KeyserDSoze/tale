@@ -39,35 +39,6 @@ if (!serie) {
 >
   <Header lang={lang} />
   
-  <!-- Language Switcher -->
-  <div class="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 transition-colors duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
-      <div class="flex justify-end space-x-4 flex-wrap">
-        <a href={createLangUrl('it', `/series/${taleid}`)} class={`text-sm transition-colors duration-200 ${lang === 'it' ? 'font-bold text-purple-600 dark:text-purple-400' : 'text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400'}`}>
-          🇮🇹 Italiano
-        </a>
-        <a href={createLangUrl('en', `/series/${taleid}`)} class={`text-sm transition-colors duration-200 ${lang === 'en' ? 'font-bold text-purple-600 dark:text-purple-400' : 'text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400'}`}>
-          🇬🇧 English
-        </a>
-        <a href={createLangUrl('es', `/series/${taleid}`)} class={`text-sm transition-colors duration-200 ${lang === 'es' ? 'font-bold text-purple-600 dark:text-purple-400' : 'text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400'}`}>
-          🇪🇸 Español
-        </a>
-        <a href={createLangUrl('fr', `/series/${taleid}`)} class={`text-sm transition-colors duration-200 ${lang === 'fr' ? 'font-bold text-purple-600 dark:text-purple-400' : 'text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400'}`}>
-          🇫🇷 Français
-        </a>
-        <a href={createLangUrl('de', `/series/${taleid}`)} class={`text-sm transition-colors duration-200 ${lang === 'de' ? 'font-bold text-purple-600 dark:text-purple-400' : 'text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400'}`}>
-          🇩🇪 Deutsch
-        </a>
-        <a href={createLangUrl('zh', `/series/${taleid}`)} class={`text-sm transition-colors duration-200 ${lang === 'zh' ? 'font-bold text-purple-600 dark:text-purple-400' : 'text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400'}`}>
-          🇨🇳 中文
-        </a>
-        <a href={createLangUrl('ja', `/series/${taleid}`)} class={`text-sm transition-colors duration-200 ${lang === 'ja' ? 'font-bold text-purple-600 dark:text-purple-400' : 'text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400'}`}>
-          🇯🇵 日本語
-        </a>
-      </div>
-    </div>
-  </div>
-
   <main class="bg-white dark:bg-gray-900 transition-colors duration-300">
     <!-- Hero Section -->
     <section class="bg-gradient-to-br from-purple-600 to-indigo-600 dark:from-purple-700 dark:to-indigo-700 text-white py-16 transition-colors duration-300">
@@ -82,7 +53,7 @@ if (!serie) {
           </p>
           <div class="flex justify-center items-center space-x-6 text-indigo-100">
             <span class="flex items-center">
-              📖 {serie.totalChapters} {lang === 'it' ? 'capitoli' : lang === 'es' ? 'capítulos' : lang === 'fr' ? 'chapitres' : lang === 'de' ? 'Kapitel' : lang === 'zh' ? '章节' : lang === 'ja' ? '章' : 'chapters'}
+              📖 {serie.totalChapters} {_('common.chapters')}
             </span>
             <span class="flex items-center">
               📅 <FormattedDate date={serie.lastUpdated} />
@@ -96,7 +67,7 @@ if (!serie) {
     <section class="py-16 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8 text-center transition-colors duration-300">
-          {lang === 'it' ? 'Capitoli' : lang === 'es' ? 'Capítulos' : lang === 'fr' ? 'Chapitres' : lang === 'de' ? 'Kapitel' : lang === 'zh' ? '章节' : lang === 'ja' ? '章' : 'Chapters'}
+          {_('common.chapters')}
         </h2>
         
         <div class="space-y-4">
@@ -107,7 +78,7 @@ if (!serie) {
                   <div class="flex-1">
                     <div class="flex items-center mb-2">
                       <span class="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 px-3 py-1 rounded-full text-sm font-medium mr-3">
-                        {lang === 'it' ? 'Capitolo' : lang === 'es' ? 'Capítulo' : lang === 'fr' ? 'Chapitre' : lang === 'de' ? 'Kapitel' : lang === 'zh' ? '第' : lang === 'ja' ? '第' : 'Chapter'} {chapter.chapter}
+                        {_('common.chapter')} {chapter.chapter}
                       </span>
                       <FormattedDate date={chapter.date} class="text-sm text-gray-500 dark:text-gray-400" />
                     </div>
