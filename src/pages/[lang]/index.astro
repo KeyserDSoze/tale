@@ -24,32 +24,45 @@ const standaloneComics = await getStandaloneComics(lang);
 // Combine and sort by date for latest section (limit to 3)
 const allContent = [
   ...storySeries.map(s => ({ 
+    ...s,
     type: 'series', 
     contentType: 'story',
-    ...s, 
+    id: s.taleid,
     date: s.lastUpdated,
     title: s.maintitle,
     description: s.maindescription 
   })),
   ...comicSeries.map(s => ({ 
+    ...s,
     type: 'series', 
     contentType: 'comic',
-    ...s, 
+    id: s.taleid,
     date: s.lastUpdated,
     title: s.maintitle,
     description: s.maindescription 
   })),
   ...standaloneStories.map(s => ({ 
+    ...s,
     type: 'story', 
-    contentType: 'story',
-    ...s 
+    contentType: 'story'
   })),
   ...standaloneComics.map(s => ({ 
+    ...s,
     type: 'story', 
-    contentType: 'comic',
-    ...s 
+    contentType: 'comic'
   }))
 ].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, 3);
+
+// Helper function to parse genres
+const parseGenres = (genreString: string) => {
+  if (!genreString) return [];
+  return genreString.split(',').map(g => g.trim()).filter(g => g.length > 0);
+};
+
+// Helper function to get genre label
+const getGenreLabel = (genre: string) => {
+  return _(`genres.${genre}`) || genre;
+};
 ---
 
 <BaseLayout 
@@ -151,7 +164,7 @@ const allContent = [
                       )}
                       {item.type === 'series' && (
                         <span class="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 px-2 py-1 rounded-full text-xs font-medium">
-                          {item.chapters?.length || 0} {_('common.chapters')}
+                          {item.type === 'series' && (item as any).chapters?.length || 0} {_('common.chapters')}
                         </span>
                       )}
                     </div>
@@ -159,10 +172,10 @@ const allContent = [
                   <h3 class="text-xl font-semibold mb-3 line-clamp-2">
                     <a 
                       href={item.type === 'series' 
-                        ? createLangUrl(lang, `/series/${item.taleid}`) 
+                        ? createLangUrl(lang, `/series/${item.id}`) 
                         : (item.contentType === 'comic' 
-                          ? createLangUrl(lang, `/comics/${item.slug}`) 
-                          : createLangUrl(lang, `/stories/${item.slug}`))} 
+                          ? createLangUrl(lang, `/comics/${item.id}`) 
+                          : createLangUrl(lang, `/stories/${item.id}`))} 
                       class="text-gray-900 dark:text-gray-100 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200"
                     >
                       {item.title}
@@ -171,12 +184,24 @@ const allContent = [
                   <p class="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3 transition-colors duration-300">
                     {item.description}
                   </p>
+                  
+                  {/* Genre tags */}
+                  {item.genre && (
+                    <div class="mb-3">
+                      {parseGenres(item.genre).map(genre => (
+                        <span class="inline-block bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-xs px-2 py-1 rounded-full mr-2 mb-1">
+                          {getGenreLabel(genre)}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                  
                   <a 
                     href={item.type === 'series' 
-                      ? createLangUrl(lang, `/series/${item.taleid}`) 
+                      ? createLangUrl(lang, `/series/${item.id}`) 
                       : (item.contentType === 'comic' 
-                        ? createLangUrl(lang, `/comics/${item.slug}`) 
-                        : createLangUrl(lang, `/stories/${item.slug}`))}
+                        ? createLangUrl(lang, `/comics/${item.id}`) 
+                        : createLangUrl(lang, `/stories/${item.id}`))}
                     class="inline-flex items-center text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium transition-colors duration-200"
                   >
                     {item.type === 'series' 

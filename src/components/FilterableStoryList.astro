@@ -88,7 +88,6 @@ const genreLabels: Record<string, string> = {
                data-taleid={group.series.data.taleid || group.series.id}>
         <div class="story-content">
           <div class="story-meta">
-            <FormattedDate date={group.chapters[group.chapters.length - 1].data.date} />
             <div class="story-badges">
               <span class="badge badge-chapters">
                 {group.chapters.length} {_('common.chapters')}
@@ -98,13 +97,6 @@ const genreLabels: Record<string, string> = {
                   {_('common.comic')}
                 </span>
               )}
-              {group.series.data.genre && (
-                group.series.data.genre.split(',').map(genre => (
-                  <span class="badge badge-genre">
-                    {genreLabels[genre.trim()] || genre.trim()}
-                  </span>
-                ))
-              )}
             </div>
           </div>
           
@@ -113,6 +105,20 @@ const genreLabels: Record<string, string> = {
               {group.series.data.maintitle || group.series.data.title}
             </a>
           </h3>
+          
+          <div class="story-date">
+            <FormattedDate date={group.chapters[group.chapters.length - 1].data.date} />
+          </div>
+          
+          {group.series.data.genre && (
+            <div class="story-genres">
+              {group.series.data.genre.split(',').map(genre => (
+                <span class="badge badge-genre">
+                  {genreLabels[genre.trim()] || genre.trim()}
+                </span>
+              ))}
+            </div>
+          )}
           
           <p class="story-description">
             {group.series.data.maindescription || group.series.data.description}
@@ -149,7 +155,6 @@ const genreLabels: Record<string, string> = {
                data-taleid={story.data.taleid || story.id}>
         <div class="story-content">
           <div class="story-meta">
-            <FormattedDate date={story.data.date} />
             <div class="story-badges">
               {story.data.chapter && (
                 <span class="badge badge-chapter">
@@ -160,13 +165,6 @@ const genreLabels: Record<string, string> = {
                 <span class="badge badge-comic">
                   {_('common.comic')}
                 </span>
-              )}
-              {story.data.genre && (
-                story.data.genre.split(',').map(genre => (
-                  <span class="badge badge-genre">
-                    {genreLabels[genre.trim()] || genre.trim()}
-                  </span>
-                ))
               )}
             </div>
           </div>
@@ -182,6 +180,20 @@ const genreLabels: Record<string, string> = {
               {story.data.title}
             </a>
           </h3>
+          
+          <div class="story-date">
+            <FormattedDate date={story.data.date} />
+          </div>
+          
+          {story.data.genre && (
+            <div class="story-genres">
+              {story.data.genre.split(',').map(genre => (
+                <span class="badge badge-genre">
+                  {genreLabels[genre.trim()] || genre.trim()}
+                </span>
+              ))}
+            </div>
+          )}
           
           <p class="story-description">
             {story.data.description}
@@ -318,7 +330,7 @@ const genreLabels: Record<string, string> = {
   }
 
   .story-title {
-    margin: 0 0 1rem 0;
+    margin: 0 0 0.75rem 0;
     font-size: 1.25rem;
     font-weight: 600;
     line-height: 1.4;
@@ -336,6 +348,23 @@ const genreLabels: Record<string, string> = {
 
   :global(.dark) .story-title a {
     color: rgb(229, 231, 235);
+  }
+
+  .story-date {
+    margin-bottom: 0.75rem;
+    font-size: 0.875rem;
+    color: rgb(107, 114, 128);
+  }
+
+  :global(.dark) .story-date {
+    color: rgb(156, 163, 175);
+  }
+
+  .story-genres {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
   }
 
   :global(.dark) .story-title a:hover {
