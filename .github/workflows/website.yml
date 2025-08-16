@@ -1,0 +1,101 @@
+# Simple workflow for deploying Astro static site to GitHub Pages
+name: Deploy static content to Pages
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["main"]   # <— se il branch è main, cambia qui in "main"
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      # Imposta automaticamente SITE/BASE_URL per catenaccio.net
+      - name: Compute SITE and BASE_URL
+        run: |
+          # Controlla se esiste un file CNAME o usa la variabile CUSTOM_DOMAIN
+          if [ -f "public/CNAME" ]; then
+            CUSTOM_DOMAIN=$(cat public/CNAME)
+            echo "SITE=https://${CUSTOM_DOMAIN}" >> $GITHUB_ENV
+            echo "BASE_URL=/" >> $GITHUB_ENV
+            echo "Using custom domain from CNAME: ${CUSTOM_DOMAIN}"
+          elif [ -n "${{ vars.CUSTOM_DOMAIN }}" ]; then
+            echo "SITE=https://${{ vars.CUSTOM_DOMAIN }}" >> $GITHUB_ENV
+            echo "BASE_URL=/" >> $GITHUB_ENV
+            echo "Using custom domain from variable: ${{ vars.CUSTOM_DOMAIN }}"
+          else
+            OWNER="${{ github.repository_owner }}"
+            REPO="${{ github.event.repository.name }}"
+            echo "SITE=https://${OWNER}.github.io" >> $GITHUB_ENV
+            if [ "$REPO" = "${OWNER}.github.io" ]; then
+              echo "BASE_URL=/" >> $GITHUB_ENV
+            else
+              echo "BASE_URL=/${REPO}/" >> $GITHUB_ENV
+            fi
+            echo "Using GitHub Pages default: ${OWNER}.github.io/${REPO}"
+          fi
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Astro
+        env:
+          SITE: ${{ env.SITE }}
+          BASE_URL: ${{ env.BASE_URL }}
+        run: |
+          echo "Building with SITE=${{ env.SITE }} and BASE_URL=${{ env.BASE_URL }}"
+          npm run build
+
+      - name: Verify build output
+        run: |
+          echo "Build completed. Contents of dist:"
+          ls -la dist/
+          if [ -f "dist/CNAME" ]; then
+            echo "CNAME file found in dist:"
+            cat dist/CNAME
+          else
+            echo "Warning: CNAME file not found in dist directory"
+          fi
+
+      # Preparazione Pages (consigliato da GitHub)
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      # Carica l'artefatto generato da Astro
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
