@@ -1,9 +1,8 @@
 {
   "nav": {
     "home": "ホーム",
-    "about": "私について",
     "blog": "物語",
-    "stories": "ストーリー"
+    "stories": "物語"
   },
   "common": {
     "tagline": "物語、ストーリー、そして思考",
@@ -40,5 +39,10 @@
       "title": "最新のストーリー",
       "noStories": "この言語ではストーリーはありません。"
     }
+  },
+  "footer": {
+    "description": "情熱を込めて書かれたストーリーと物語",
+    "copyright": "Tale. 全著作権所有。",
+    "madeWith": "❤️ で作成"
   }
 }

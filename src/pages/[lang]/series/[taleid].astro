@@ -1,0 +1,176 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Header from "../../../components/Header.astro";
+import Footer from "../../../components/Footer.astro";
+import FormattedDate from "../../../components/FormattedDate.astro";
+import { t, LOCALES } from "../../../i18n";
+import { createLangUrl } from "../../../utils/urls";
+import { getSeriesById, getSeriesByLang } from "../../../utils/series";
+
+export async function getStaticPaths() {
+  const paths = [];
+  
+  for (const lang of LOCALES) {
+    const series = await getSeriesByLang(lang);
+    for (const serie of series) {
+      paths.push({
+        params: { lang, taleid: serie.taleid },
+        props: { serie }
+      });
+    }
+  }
+  
+  return paths;
+}
+
+const { lang, taleid } = Astro.params;
+const { serie } = Astro.props;
+const _ = (k: string) => t(lang, k);
+
+if (!serie) {
+  return Astro.redirect('/404');
+}
+---
+
+<BaseLayout 
+  title={`${serie.maintitle} — Tale`}
+  description={serie.maindescription}
+  lang={lang}
+>
+  <Header lang={lang} />
+  
+  <!-- Language Switcher -->
+  <div class="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
+      <div class="flex justify-end space-x-4 flex-wrap">
+        <a href={createLangUrl('it', `/series/${taleid}`)} class={`text-sm transition-colors duration-200 ${lang === 'it' ? 'font-bold text-purple-600 dark:text-purple-400' : 'text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400'}`}>
+          🇮🇹 Italiano
+        </a>
+        <a href={createLangUrl('en', `/series/${taleid}`)} class={`text-sm transition-colors duration-200 ${lang === 'en' ? 'font-bold text-purple-600 dark:text-purple-400' : 'text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400'}`}>
+          🇬🇧 English
+        </a>
+        <a href={createLangUrl('es', `/series/${taleid}`)} class={`text-sm transition-colors duration-200 ${lang === 'es' ? 'font-bold text-purple-600 dark:text-purple-400' : 'text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400'}`}>
+          🇪🇸 Español
+        </a>
+        <a href={createLangUrl('fr', `/series/${taleid}`)} class={`text-sm transition-colors duration-200 ${lang === 'fr' ? 'font-bold text-purple-600 dark:text-purple-400' : 'text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400'}`}>
+          🇫🇷 Français
+        </a>
+        <a href={createLangUrl('de', `/series/${taleid}`)} class={`text-sm transition-colors duration-200 ${lang === 'de' ? 'font-bold text-purple-600 dark:text-purple-400' : 'text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400'}`}>
+          🇩🇪 Deutsch
+        </a>
+        <a href={createLangUrl('zh', `/series/${taleid}`)} class={`text-sm transition-colors duration-200 ${lang === 'zh' ? 'font-bold text-purple-600 dark:text-purple-400' : 'text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400'}`}>
+          🇨🇳 中文
+        </a>
+        <a href={createLangUrl('ja', `/series/${taleid}`)} class={`text-sm transition-colors duration-200 ${lang === 'ja' ? 'font-bold text-purple-600 dark:text-purple-400' : 'text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400'}`}>
+          🇯🇵 日本語
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main class="bg-white dark:bg-gray-900 transition-colors duration-300">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-purple-600 to-indigo-600 dark:from-purple-700 dark:to-indigo-700 text-white py-16 transition-colors duration-300">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <div class="text-6xl mb-6">📚</div>
+          <h1 class="text-3xl md:text-5xl font-bold mb-4 leading-tight">
+            {serie.maintitle}
+          </h1>
+          <p class="text-lg md:text-xl text-purple-100 mb-6">
+            {serie.maindescription}
+          </p>
+          <div class="flex justify-center items-center space-x-6 text-indigo-100">
+            <span class="flex items-center">
+              📖 {serie.totalChapters} {lang === 'it' ? 'capitoli' : lang === 'es' ? 'capítulos' : lang === 'fr' ? 'chapitres' : lang === 'de' ? 'Kapitel' : lang === 'zh' ? '章节' : lang === 'ja' ? '章' : 'chapters'}
+            </span>
+            <span class="flex items-center">
+              📅 <FormattedDate date={serie.lastUpdated} />
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapters List -->
+    <section class="py-16 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8 text-center transition-colors duration-300">
+          {lang === 'it' ? 'Capitoli' : lang === 'es' ? 'Capítulos' : lang === 'fr' ? 'Chapitres' : lang === 'de' ? 'Kapitel' : lang === 'zh' ? '章节' : lang === 'ja' ? '章' : 'Chapters'}
+        </h2>
+        
+        <div class="space-y-4">
+          {serie.chapters.map((chapter, index) => (
+            <article class="bg-white dark:bg-gray-700 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden">
+              <div class="p-6">
+                <div class="flex items-start justify-between">
+                  <div class="flex-1">
+                    <div class="flex items-center mb-2">
+                      <span class="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 px-3 py-1 rounded-full text-sm font-medium mr-3">
+                        {lang === 'it' ? 'Capitolo' : lang === 'es' ? 'Capítulo' : lang === 'fr' ? 'Chapitre' : lang === 'de' ? 'Kapitel' : lang === 'zh' ? '第' : lang === 'ja' ? '第' : 'Chapter'} {chapter.chapter}
+                      </span>
+                      <FormattedDate date={chapter.date} class="text-sm text-gray-500 dark:text-gray-400" />
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">
+                      <a 
+                        href={createLangUrl(lang, `/blog/${chapter.id}`)}
+                        class="text-gray-900 dark:text-gray-100 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200"
+                      >
+                        {chapter.title}
+                      </a>
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4 transition-colors duration-300">
+                      {chapter.description}
+                    </p>
+                  </div>
+                  <div class="ml-4">
+                    <a 
+                      href={createLangUrl(lang, `/blog/${chapter.id}`)}
+                      class="inline-flex items-center text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium transition-colors duration-200"
+                    >
+                      {_('common.readMore')}
+                      <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <!-- Navigation -->
+        <div class="mt-12 text-center">
+          <a 
+            href={createLangUrl(lang, '/')}
+            class="inline-flex items-center text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium transition-colors duration-200"
+          >
+            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            {lang === 'it' ? 'Torna alla Home' : lang === 'es' ? 'Volver al Inicio' : lang === 'fr' ? 'Retour à l\'accueil' : lang === 'de' ? 'Zurück zur Startseite' : lang === 'zh' ? '返回首页' : lang === 'ja' ? 'ホームに戻る' : 'Back to Home'}
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer lang={lang} />
+</BaseLayout>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

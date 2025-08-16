@@ -6,6 +6,7 @@ import FormattedDate from "../../components/FormattedDate.astro";
 import { t, LOCALES } from "../../i18n";
 import { getCollection } from 'astro:content';
 import { createLangUrl } from "../../utils/urls";
+import { getSeriesByLang, getStandaloneStoriesByLang } from "../../utils/series";
 
 export function getStaticPaths() {
   return LOCALES.map((lang) => ({ params: { lang } }));
@@ -14,14 +15,24 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 const _ = (k) => t(lang, k);
 
-// Get all posts for this language and sort by date
-const allPosts = await getCollection('blog', ({ data }) => data.lang === lang);
-const sortedPosts = allPosts.sort((a, b) => 
-  new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
-);
+// Get series and standalone stories for this language
+const series = await getSeriesByLang(lang);
+const standaloneStories = await getStandaloneStoriesByLang(lang);
 
-// Get latest posts for preview section (limit to 3)
-const latestPosts = sortedPosts.slice(0, 3);
+// Combine and sort by date for latest section (limit to 3)
+const allContent = [
+  ...series.map(s => ({ 
+    type: 'series', 
+    ...s, 
+    date: s.lastUpdated,
+    title: s.maintitle,
+    description: s.maindescription 
+  })),
+  ...standaloneStories.map(s => ({ 
+    type: 'story', 
+    ...s 
+  }))
+].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, 3);
 ---
 
 <BaseLayout 
@@ -138,29 +149,42 @@ const latestPosts = sortedPosts.slice(0, 3);
           </h2>
         </div>
         
-        {latestPosts.length > 0 ? (
+        {allContent.length > 0 ? (
           <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {latestPosts.map((post) => (
+            {allContent.map((item) => (
               <article class="bg-white dark:bg-gray-700 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden">
                 <div class="p-6">
-                  <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-3 transition-colors duration-300">
-                    <FormattedDate date={post.data.date} />
+                  <div class="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400 mb-3 transition-colors duration-300">
+                    <FormattedDate date={item.date} />
+                    {item.type === 'series' && (
+                      <span class="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 px-2 py-1 rounded-full text-xs font-medium">
+                        {item.totalChapters} {lang === 'it' ? 'capitoli' : lang === 'es' ? 'capítulos' : lang === 'fr' ? 'chapitres' : lang === 'de' ? 'Kapitel' : lang === 'zh' ? '章节' : lang === 'ja' ? '章' : 'chapters'}
+                      </span>
+                    )}
                   </div>
                   <h3 class="text-xl font-semibold mb-3 line-clamp-2">
-                    <a href={createLangUrl(lang, `/blog/${post.data.id || post.id}`)} class="text-gray-900 dark:text-gray-100 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200">
-                      {post.data.title}
+                    <a 
+                      href={item.type === 'series' 
+                        ? createLangUrl(lang, `/series/${item.taleid}`) 
+                        : createLangUrl(lang, `/blog/${item.id}`)} 
+                      class="text-gray-900 dark:text-gray-100 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200"
+                    >
+                      {item.title}
                     </a>
                   </h3>
-                  {post.data.description && (
-                    <p class="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3 transition-colors duration-300">
-                      {post.data.description}
-                    </p>
-                  )}
+                  <p class="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3 transition-colors duration-300">
+                    {item.description}
+                  </p>
                   <a 
-                    href={createLangUrl(lang, `/blog/${post.data.id || post.id}`)}
+                    href={item.type === 'series' 
+                      ? createLangUrl(lang, `/series/${item.taleid}`) 
+                      : createLangUrl(lang, `/blog/${item.id}`)}
                     class="inline-flex items-center text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium transition-colors duration-200"
                   >
-                    {_('common.readMore')}
+                    {item.type === 'series' 
+                      ? (lang === 'it' ? 'Leggi la serie' : lang === 'es' ? 'Leer la serie' : lang === 'fr' ? 'Lire la série' : lang === 'de' ? 'Serie lesen' : lang === 'zh' ? '阅读系列' : lang === 'ja' ? 'シリーズを読む' : 'Read series')
+                      : _('common.readMore')
+                    }
                     <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                     </svg>
@@ -211,7 +235,7 @@ const latestPosts = sortedPosts.slice(0, 3);
     
   </main>
 
-  <Footer />
+  <Footer lang={lang} />
 </BaseLayout>
 
 <style>

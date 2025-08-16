@@ -14,7 +14,7 @@ const { lang } = Astro.params;
 const _ = (k) => t(lang, k);
 
 // Get all articles for this language
-const allPosts = await getCollection('blog', ({ data }) => data.lang === lang);
+const allPosts = await getCollection('stories', ({ data }) => data.lang === lang);
 const sortedPosts = allPosts
   .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 ---
@@ -89,7 +89,7 @@ const sortedPosts = allPosts
                   </div>
                 </div>
                 <h2 class="text-xl font-semibold mb-3 line-clamp-2">
-                  <a href={`/${lang}/blog/${post.data.id || post.slug}/`} class="text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">
+                  <a href={`/${lang}/blog/${post.id}/`} class="text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">
                     {post.data.title}
                   </a>
                 </h2>
@@ -99,7 +99,7 @@ const sortedPosts = allPosts
                   </p>
                 )}
                 <a 
-                  href={`/${lang}/blog/${post.data.id || post.slug}/`}
+                  href={`/${lang}/blog/${post.id}/`}
                   class="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium transition-colors duration-300"
                 >
                   {_('common.readMore')}
@@ -131,7 +131,7 @@ const sortedPosts = allPosts
     </div>
   </main>
 
-  <Footer />
+  <Footer lang={lang} />
 </BaseLayout>
 
 <style>

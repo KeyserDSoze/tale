@@ -13,7 +13,7 @@ const _ = (k) => t(lang, k);
 	<nav>
 		<h2>
 			<a href={createLangUrl(lang)} class="logo-link">
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 64" width="40" height="18" class="logo" role="img" aria-labelledby="t">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 64" width="56" height="25" class="logo" role="img" aria-labelledby="t">
 					<title id="t">Logo: Penna & Parentesi Francesi Compatte</title>
 					<!-- Parentesi francesi -->
 					<text x="65" y="38" font-size="28" text-anchor="middle" font-family="serif" fill="currentColor">«</text>
@@ -30,9 +30,6 @@ const _ = (k) => t(lang, k);
 		<div class="internal-links">
 			<HeaderLink href={createLangUrl(lang)}>
 				{_('nav.home')}
-			</HeaderLink>
-			<HeaderLink href={createLangUrl(lang, '/about')}>
-				{_('nav.about')}
 			</HeaderLink>
 			<HeaderLink href={createLangUrl(lang, '/blog')}>
 				{_('nav.blog')}

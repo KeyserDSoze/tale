@@ -1,7 +1,6 @@
 {
   "nav": {
     "home": "Accueil",
-    "about": "À propos de moi",
     "blog": "Récits",
     "stories": "Histoires"
   },
@@ -40,5 +39,10 @@
       "title": "Derniers Récits",
       "noStories": "Aucun récit disponible dans cette langue."
     }
+  },
+  "footer": {
+    "description": "Récits et histoires écrits avec passion",
+    "copyright": "Tale. Tous droits réservés.",
+    "madeWith": "Fait avec ❤️"
   }
 }

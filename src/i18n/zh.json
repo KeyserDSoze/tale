@@ -1,9 +1,8 @@
 {
   "nav": {
     "home": "首页",
-    "about": "关于我",
     "blog": "故事",
-    "stories": "传说"
+    "stories": "故事"
   },
   "common": {
     "tagline": "故事、传说和思考",
@@ -40,5 +39,10 @@
       "title": "最新故事",
       "noStories": "此语言暂无故事。"
     }
+  },
+  "footer": {
+    "description": "用热情书写的故事和传说",
+    "copyright": "Tale. 版权所有。",
+    "madeWith": "用 ❤️ 制作"
   }
 }

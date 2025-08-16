@@ -1,9 +1,8 @@
 {
   "nav": {
     "home": "Home",
-    "about": "About me",
     "blog": "Stories",
-    "stories": "Tales"
+    "stories": "Stories"
   },
   "common": {
     "tagline": "Stories, tales and thoughts",
@@ -40,5 +39,10 @@
       "title": "Latest Stories",
       "noStories": "No stories available in this language."
     }
+  },
+  "footer": {
+    "description": "Stories and tales written with passion",
+    "copyright": "Tale. All rights reserved.",
+    "madeWith": "Made with ❤️"
   }
 }

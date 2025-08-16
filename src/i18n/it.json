@@ -1,7 +1,6 @@
 {
   "nav": {
     "home": "Home",
-    "about": "Chi sono",
     "blog": "Racconti",
     "stories": "Storie"
   },
@@ -40,5 +39,10 @@
       "title": "Ultimi Racconti",
       "noStories": "Nessun racconto disponibile in questa lingua."
     }
+  },
+  "footer": {
+    "description": "Racconti e storie scritte con passione",
+    "copyright": "Tale. Tutti i diritti riservati.",
+    "madeWith": "Fatto con ❤️"
   }
 }

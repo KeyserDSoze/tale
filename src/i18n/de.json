@@ -1,7 +1,6 @@
 {
   "nav": {
     "home": "Startseite",
-    "about": "Über mich",
     "blog": "Erzählungen",
     "stories": "Geschichten"
   },
@@ -40,5 +39,10 @@
       "title": "Neueste Erzählungen",
       "noStories": "Keine Erzählungen in dieser Sprache verfügbar."
     }
+  },
+  "footer": {
+    "description": "Erzählungen und Geschichten mit Leidenschaft geschrieben",
+    "copyright": "Tale. Alle Rechte vorbehalten.",
+    "madeWith": "Gemacht mit ❤️"
   }
 }
