@@ -91,48 +91,48 @@ export async function getStoryMetadataFromItalian(storyId: string, taleid: strin
 }
 
 export async function getSeriesMetadataFromItalian(taleid: string, currentLang?: string) {
-  // Get metadata from Italian chapter 1 for author, type, genre
-  const italianChapter1 = await getCollection('stories', ({ data }) => 
+  // Get all stories for this series in Italian to find chapter 1
+  const italianStories = await getCollection('stories', ({ data }) => 
     data.lang === 'it' && 
-    data.taleid === taleid && 
-    data.chapter === 1
+    data.taleid === taleid
   );
 
-  // Get maintitle and maindescription from current language chapter 1
-  let localizedData = null;
-  if (currentLang && currentLang !== 'it') {
-    // Find chapter 1 in the current language
-    const localChapter1 = await getCollection('stories', ({ data }) => 
-      data.lang === currentLang && 
-      data.taleid === taleid && 
-      data.chapter === 1
-    );
-    
-    localizedData = localChapter1.length > 0 ? localChapter1[0].data : null;
-  }
+  // Find chapter 1 in Italian
+  const italianChapter1 = italianStories.find(story => story.data.chapter === 1);
 
-  if (italianChapter1.length > 0) {
-    const italianMetadata = italianChapter1[0].data;
-    const sourceForTitles = localizedData || italianMetadata;
-    
+  if (!italianChapter1) {
+    // Fallback if no Italian chapter 1 found
     return {
-      author: italianMetadata.author || 'Unknown',
-      type: italianMetadata.type || 'story',
-      genre: italianMetadata.genre || '',
-      chapter: italianMetadata.chapter || 1,
-      maintitle: sourceForTitles.maintitle || sourceForTitles.title,
-      maindescription: sourceForTitles.maindescription || sourceForTitles.description,
+      author: 'Unknown',
+      type: 'story',
+      genre: '',
+      chapter: 1,
+      maintitle: '',
+      maindescription: '',
     };
   }
 
-  // Fallback if no Italian chapter 1 found
+  // Get maintitle and maindescription from current language story with same ID as Italian chapter 1
+  let localizedData = null;
+  if (currentLang && currentLang !== 'it') {
+    const localizedStory = await getCollection('stories', ({ data }) => 
+      data.lang === currentLang && 
+      data.id === italianChapter1.data.id
+    );
+    
+    localizedData = localizedStory.length > 0 ? localizedStory[0].data : null;
+  }
+
+  const italianMetadata = italianChapter1.data;
+  const sourceForTitles = localizedData || italianMetadata;
+  
   return {
-    author: 'Unknown',
-    type: 'story',
-    genre: '',
-    chapter: 1,
-    maintitle: '',
-    maindescription: '',
+    author: italianMetadata.author || 'Unknown',
+    type: italianMetadata.type || 'story',
+    genre: italianMetadata.genre || '',
+    chapter: italianMetadata.chapter || 1,
+    maintitle: sourceForTitles.maintitle || sourceForTitles.title,
+    maindescription: sourceForTitles.maindescription || sourceForTitles.description,
   };
 }
 
