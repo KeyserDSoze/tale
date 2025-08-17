@@ -1,12 +1,31 @@
 ---
-import { createLangUrl } from '../utils/urls';
+import { createLangUrl, getBasePath } from '../utils/urls';
 import { LOCALES } from '../i18n';
 
 const { lang } = Astro.props;
 
-// Get the current path without the language prefix
+// Get the current path without the language prefix and base path
 const currentPath = Astro.url.pathname;
-const pathWithoutLang = currentPath.replace(/^\/[a-z]{2}(\/|$)/, '/').replace(/\/$/, '') || '/';
+const basePath = getBasePath();
+
+// Remove base path first (if exists), then remove language code
+let pathWithoutLang = currentPath;
+
+// Remove base path if it exists
+if (basePath && pathWithoutLang.startsWith(basePath)) {
+  pathWithoutLang = pathWithoutLang.substring(basePath.length);
+}
+
+// Ensure we start with /
+if (!pathWithoutLang.startsWith('/')) {
+  pathWithoutLang = '/' + pathWithoutLang;
+}
+
+// Remove language code (e.g., /it/ or /en/)
+pathWithoutLang = pathWithoutLang.replace(/^\/[a-z]{2}(\/|$)/, '/');
+
+// Clean up the path
+pathWithoutLang = pathWithoutLang.replace(/\/$/, '') || '/';
 
 const languages = [
   { code: 'it', flag: '🇮🇹', name: 'Italiano' },
