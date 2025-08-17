@@ -165,7 +165,7 @@ export async function getSeriesByLang(lang: string, type?: 'story' | 'comic'): P
       const sortedChapters = posts
         .sort((a, b) => (a.data.chapter || 0) - (b.data.chapter || 0))
         .map(post => ({
-          id: post.data.id || post.id,
+          id: post.data.id,
           title: post.data.title,
           description: post.data.description,
           chapter: post.data.chapter || 1,

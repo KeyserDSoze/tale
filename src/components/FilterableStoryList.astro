@@ -222,7 +222,7 @@ const genreLabels: Record<string, string> = {
           )}
           
           <h3 class="story-title">
-            <a href={createLangUrl(lang, `/${story.data.type === 'comic' ? 'comics' : 'stories'}/${story.id}`)}>
+            <a href={createLangUrl(lang, `/${story.data.type === 'comic' ? 'comics' : 'stories'}/${story.data.id}`)}>
               {story.data.title}
             </a>
           </h3>
@@ -250,7 +250,7 @@ const genreLabels: Record<string, string> = {
               {_('common.by')} {story.data.author || 'Tale'}
             </span>
             <a 
-              href={createLangUrl(lang, `/${story.data.type === 'comic' ? 'comics' : 'stories'}/${story.id}`)}
+              href={createLangUrl(lang, `/${story.data.type === 'comic' ? 'comics' : 'stories'}/${story.data.id}`)}
               class="read-more"
             >
               {_('common.readMore')}

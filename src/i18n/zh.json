@@ -5,6 +5,7 @@
     "comics": "漫画",
     "backToStories": "返回故事列表",
     "backToSeries": "返回系列",
+    "backToSerie": "返回系列",
     "backToComics": "返回漫画列表",
     "backToHome": "返回首页"
   },
@@ -34,6 +35,14 @@
     "copyLink": "复制链接",
     "linkCopied": "链接已复制！",
     "close": "关闭"
+  },
+  "chapter": {
+    "nextChapter": "下一章",
+    "previousChapter": "上一章",
+    "nextComic": "下一话",
+    "previousComic": "上一话",
+    "end": "完",
+    "backToSeries": "返回系列"
   },
   "sort": {
     "date": "日期",

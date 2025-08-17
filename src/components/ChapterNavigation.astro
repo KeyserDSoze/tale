@@ -1,14 +1,17 @@
 ---
 import { getCollection } from 'astro:content';
 import { createLangUrl } from '../utils/urls';
+import { t } from '../i18n';
 
 interface Props {
   currentStory: any;
   lang: string;
   type: 'story' | 'comic';
+  isLastChapter?: boolean;
 }
 
-const { currentStory, lang, type } = Astro.props;
+const { currentStory, lang, type, isLastChapter = false } = Astro.props;
+const _ = (k: string) => t(lang as any, k);
 
 // Get all stories/comics of the same type and language
 const allStories = await getCollection('stories', ({ data }) => 
@@ -19,6 +22,7 @@ const allStories = await getCollection('stories', ({ data }) =>
 const currentTaleid = currentStory.data.taleid;
 let showNavigation = false;
 let nextStory = null;
+let previousStory = null;
 let sortedSeries: any[] = [];
 
 if (currentTaleid) {
@@ -43,85 +47,67 @@ if (currentTaleid) {
     return storyId === currentId;
   });
 
-  // Get next story
+  // Get next and previous stories
   nextStory = currentIndex !== -1 && currentIndex < sortedSeries.length - 1 
     ? sortedSeries[currentIndex + 1] 
+    : null;
+    
+  previousStory = currentIndex !== -1 && currentIndex > 0 
+    ? sortedSeries[currentIndex - 1] 
     : null;
 
   // Only show navigation if there are multiple stories in the series
   showNavigation = sortedSeries.length > 1;
 }
-
-// Navigation labels by language
-const labels = {
-  it: {
-    nextChapter: 'Capitolo successivo',
-    nextComic: 'Fumetto successivo',
-    end: 'Fine',
-    backToSeries: 'Torna alla serie'
-  },
-  en: {
-    nextChapter: 'Next Chapter',
-    nextComic: 'Next Comic',
-    end: 'The End',
-    backToSeries: 'Back to Series'
-  },
-  es: {
-    nextChapter: 'Siguiente Capítulo',
-    nextComic: 'Siguiente Cómic',
-    end: 'Fin',
-    backToSeries: 'Volver a la Serie'
-  },
-  fr: {
-    nextChapter: 'Chapitre Suivant',
-    nextComic: 'BD Suivante',
-    end: 'Fin',
-    backToSeries: 'Retour à la Série'
-  },
-  de: {
-    nextChapter: 'Nächstes Kapitel',
-    nextComic: 'Nächster Comic',
-    end: 'Ende',
-    backToSeries: 'Zurück zur Serie'
-  },
-  zh: {
-    nextChapter: '下一章',
-    nextComic: '下一话',
-    end: '完',
-    backToSeries: '返回系列'
-  },
-  ja: {
-    nextChapter: '次の章',
-    nextComic: '次の話',
-    end: '終わり',
-    backToSeries: 'シリーズに戻る'
-  }
-};
-
-const getLabel = (key: string) => {
-  const langLabels = labels[lang as keyof typeof labels] || labels['en'];
-  return langLabels[key as keyof typeof langLabels] || labels['en'][key as keyof typeof labels['en']];
-};
 ---
 
 {showNavigation && (
-  <div class="chapter-navigation">
+  <div class="chapter-navigation border-t border-gray-200 dark:border-gray-700">
     <div class="nav-container">
-      {nextStory ? (
-        <a href={createLangUrl(lang, `/${type === 'story' ? 'stories' : 'comics'}/${nextStory.data.id || nextStory.id}`)} class="next-button">
-          <span class="button-text">{getLabel(type === 'story' ? 'nextChapter' : 'nextComic')}</span>
-          <svg class="next-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="m9 18 6-6-6-6"/>
-          </svg>
-        </a>
-      ) : (
-        <div class="end-container">
-          <div class="end-text">{getLabel('end')}</div>
-          <a href={createLangUrl(lang, `/${type === 'story' ? 'stories' : 'comics'}`)} class="back-to-series">
-            {getLabel('backToSeries')}
+      <div class="navigation-row">
+       
+
+        {/* Right side - Previous/Next chapter navigation */}
+        <div class="nav-right">
+          <div class="chapter-buttons">
+            {previousStory && (
+              <a href={createLangUrl(lang, `/${type === 'story' ? 'stories' : 'comics'}/${(previousStory as any).data.id || (previousStory as any).id}`)} class="prev-button">
+                <svg class="prev-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="m15 18-6-6 6-6"/>
+                </svg>
+                <span class="button-text">{_(type === 'story' ? 'chapter.previousChapter' : 'chapter.previousComic')}</span>
+              </a>
+            )}
+            {nextStory ? (
+              <a href={createLangUrl(lang, `/${type === 'story' ? 'stories' : 'comics'}/${(nextStory as any).data.id || (nextStory as any).id}`)} class="next-button">
+                <span class="button-text">{_(type === 'story' ? 'chapter.nextChapter' : 'chapter.nextComic')}</span>
+                <svg class="next-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="m9 18 6-6-6-6"/>
+                </svg>
+              </a>
+            ) : (
+              <div class="end-text"></div>
+            )}
+          </div>
+        </div>
+         {/* Left side - Back links */}
+        <div class="nav-left">
+          {currentStory.data.taleid && (
+            <a 
+              href={createLangUrl(lang, `/series/${currentStory.data.taleid}`)}
+              class="nav-link"
+            >
+              📚 {_('nav.backToSerie')}
+            </a>
+          )}
+          <a 
+            href={createLangUrl(lang, `/${type === 'story' ? 'stories' : 'comics'}`)}
+            class="nav-link"
+          >
+            🔖 {_(`nav.backTo${type === 'story' ? 'Stories' : 'Comics'}`)}
           </a>
         </div>
-      )}
+      </div>
     </div>
   </div>
 )}
@@ -130,18 +116,73 @@ const getLabel = (key: string) => {
   .chapter-navigation {
     margin-top: 3rem;
     padding: 2rem 0;
-    border-top: 2px solid rgb(229, 231, 235);
-    display: flex;
-    justify-content: center;
   }
 
   .nav-container {
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .navigation-row {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+  }
+
+  .chapter-buttons {
+    display: flex;
     align-items: center;
     gap: 1rem;
   }
 
+  .nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    font-size: 0.95rem;
+    min-height: 44px;
+    justify-content: center;
+  }
+
+  .nav-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+    color: white;
+  }
+
+  .dark .nav-link {
+    color: white;
+  }
+
+  .dark .nav-link:hover {
+    color: white;
+  }
+
+  .prev-button,
   .next-button {
     display: inline-flex;
     align-items: center;
@@ -149,101 +190,107 @@ const getLabel = (key: string) => {
     padding: 0.75rem 1.5rem;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
-    text-decoration: none;
     border-radius: 0.5rem;
-    font-weight: 600;
-    font-size: 1.1rem;
+    text-decoration: none;
+    font-weight: 500;
     transition: all 0.3s ease;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    font-size: 0.95rem;
+    min-height: 44px;
+    justify-content: center;
   }
 
+  .prev-button:hover,
   .next-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
   }
 
   .button-text {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
+    white-space: nowrap;
   }
 
+  .prev-icon,
   .next-icon {
-    transition: transform 0.3s ease;
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+  }
+
+  .prev-button:hover .prev-icon {
+    transform: translateX(-2px);
   }
 
   .next-button:hover .next-icon {
-    transform: translateX(4px);
-  }
-
-  .end-container {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    transform: translateX(2px);
   }
 
   .end-text {
-    font-size: 2rem;
-    font-weight: bold;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-family: serif;
+    color: rgb(107 114 128);
+    font-style: italic;
+    font-size: 0.95rem;
   }
 
-  .back-to-series {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.5rem 1rem;
-    color: rgb(107, 114, 128);
-    text-decoration: none;
-    border: 1px solid rgb(209, 213, 219);
-    border-radius: 0.375rem;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
+  .dark .end-text {
+    color: rgb(156 163 175);
   }
 
-  .back-to-series:hover {
-    color: rgb(55, 65, 81);
-    border-color: rgb(156, 163, 175);
-    background-color: rgb(249, 250, 251);
-  }
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .navigation-row {
+      flex-direction: column;
+      text-align: center;
+      gap: 1.5rem;
+    }
 
-  /* Dark mode */
-  .dark .chapter-navigation {
-    border-top-color: rgb(75, 85, 99);
-  }
+    .nav-left {
+      justify-content: center;
+      gap: 1rem;
+    }
 
-  .dark .back-to-series {
-    color: rgb(156, 163, 175);
-    border-color: rgb(75, 85, 99);
-  }
-
-  .dark .back-to-series:hover {
-    color: rgb(209, 213, 219);
-    border-color: rgb(107, 114, 128);
-    background-color: rgb(31, 41, 55);
-  }
-
-  /* Responsive */
-  @media (max-width: 640px) {
-    .chapter-navigation {
-      margin-top: 2rem;
-      padding: 1.5rem 0;
+    .nav-link {
+      font-size: 0.9rem;
     }
 
     .next-button {
-      padding: 0.625rem 1.25rem;
-      font-size: 1rem;
+      padding: 0.65rem 1.25rem;
+    }
+
+    .nav-link {
+      font-size: 0.9rem;
+      padding: 0.65rem 1.25rem;
+      min-height: 40px;
+    }
+
+    .prev-button,
+    .next-button {
+      padding: 0.65rem 1.25rem;
+      font-size: 0.9rem;
+      min-height: 40px;
+    }
+
+    .chapter-buttons {
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
     }
 
     .button-text {
-      font-size: 1rem;
+      font-size: 0.9rem;
     }
 
-    .end-text {
-      font-size: 1.5rem;
+    .button-text {
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .nav-left {
+      flex-direction: column;
+      gap: 0.75rem;
     }
   }
 </style>

@@ -5,13 +5,14 @@
     "comics": "Bandes dessinées",
     "backToStories": "Retour aux histoires",
     "backToSeries": "Retour aux séries",
+    "backToSerie": "Retour à la série",
     "backToComics": "Retour aux bandes dessinées",
     "backToHome": "Retour à l'accueil"
   },
   "common": {
     "tagline": "Histoires, contes et réflexions",
-    "readMore": "Lire l’histoire complète",
-    "seeMore": "Voir plus d’histoires",
+    "readMore": "Lire l'histoire complète",
+    "seeMore": "Voir plus d'histoires",
     "shareOn": "Partager sur",
     "chapters": "Chapitres",
     "chapter": "Chapitre",
@@ -34,6 +35,14 @@
     "copyLink": "Copier le lien",
     "linkCopied": "Lien copié !",
     "close": "Fermer"
+  },
+  "chapter": {
+    "nextChapter": "Chapitre Suivant",
+    "previousChapter": "Chapitre Précédent",
+    "nextComic": "BD Suivante",
+    "previousComic": "BD Précédente",
+    "end": "Fin",
+    "backToSeries": "Retour à la Série"
   },
   "sort": {
     "date": "Date",
@@ -118,7 +127,7 @@
     "hero": {
       "title": "Tale",
       "subtitle": "Mon espace personnel pour des histoires de tous genres",
-      "description": "Bienvenue dans mon univers d’histoires, où je partage des contes, des pensées et des réflexions nés de l’imagination et de l’expérience"
+      "description": "Bienvenue dans mon univers d'histoires, où je partage des contes, des pensées et des réflexions nés de l'imagination et de l'expérience"
     },
     "features": {
       "title": "Ce que vous trouverez ici",
@@ -137,7 +146,7 @@
     },
     "about": {
       "title": "À propos de moi",
-      "description": "Je suis un écrivain passionné par la narration. Dans cet espace, je partage mes histoires de tous genres : de la fantaisie à la réalité, du drame à la comédie. Chaque récit naît du désir d’explorer des émotions, des situations et des personnages qui vivent dans mon imagination."
+      "description": "Je suis un écrivain passionné par la narration. Dans cet espace, je partage mes histoires de tous genres : de la fantaisie à la réalité, du drame à la comédie. Chaque récit naît du désir d'explorer des émotions, des situations et des personnages qui vivent dans mon imagination."
     },
     "latestStories": {
       "title": "Dernières histoires",

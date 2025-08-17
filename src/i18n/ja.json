@@ -5,8 +5,17 @@
     "comics": "コミック",
     "backToStories": "ストーリー一覧に戻る",
     "backToSeries": "シリーズに戻る",
+    "backToSerie": "シリーズに戻る",
     "backToComics": "コミック一覧に戻る",
     "backToHome": "ホームに戻る"
+  },
+  "chapter": {
+    "nextChapter": "次の章",
+    "previousChapter": "前の章",
+    "nextComic": "次の話",
+    "previousComic": "前の話",
+    "end": "完",
+    "backToSeries": "シリーズに戻る"
   },
   "common": {
     "tagline": "物語、物語、そして思索",

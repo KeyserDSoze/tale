@@ -5,12 +5,13 @@
     "comics": "Fumetti",
     "backToStories": "Torna alle storie",
     "backToSeries": "Torna alle serie",
+    "backToSerie": "Torna alla serie",
     "backToComics": "Torna ai fumetti",
     "backToHome": "Torna alla Home"
   },
   "common": {
     "tagline": "Storie, racconti e riflessioni",
-    "readMore": "Leggi l’intera storia",
+    "readMore": "Leggi l'intera storia",
     "seeMore": "Vedi altre storie",
     "shareOn": "Condividi su",
     "chapters": "Capitoli",
@@ -34,6 +35,14 @@
     "copyLink": "Copia link",
     "linkCopied": "Link copiato!",
     "close": "Chiudi"
+  },
+  "chapter": {
+    "nextChapter": "Capitolo successivo",
+    "previousChapter": "Capitolo precedente",
+    "nextComic": "Fumetto successivo",
+    "previousComic": "Fumetto precedente",
+    "end": "Fine",
+    "backToSeries": "Torna alla serie"
   },
   "sort": {
     "date": "Data",

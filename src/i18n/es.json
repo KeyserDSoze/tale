@@ -4,6 +4,7 @@
     "stories": "Historias",
     "comics": "Cómics",
     "backToStories": "Volver a las historias",
+    "backToSerie": "Volver a la serie",
     "backToSeries": "Volver a las series",
     "backToComics": "Volver a los cómics",
     "backToHome": "Volver al Inicio"
@@ -34,6 +35,14 @@
     "copyLink": "Copiar enlace",
     "linkCopied": "¡Enlace copiado!",
     "close": "Cerrar"
+  },
+  "chapter": {
+    "nextChapter": "Siguiente Capítulo",
+    "previousChapter": "Capítulo Anterior",
+    "nextComic": "Siguiente Cómic",
+    "previousComic": "Cómic Anterior",
+    "end": "Fin",
+    "backToSeries": "Volver a la Serie"
   },
   "sort": {
     "date": "Fecha",

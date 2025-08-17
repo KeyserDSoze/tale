@@ -4,12 +4,12 @@
     "stories": "Stories",
     "comics": "Comics",
     "backToStories": "Back to stories",
-    "backToSeries": "Back to series",
+    "backToSerie": "Back to serie",
     "backToComics": "Back to comics",
     "backToHome": "Back to Home"
   },
   "common": {
-    "tagline": "Stories, tales and thoughts",
+    "tagline": "Stories, tales and reflections",
     "readMore": "Read full story",
     "seeMore": "See more stories",
     "shareOn": "Share on",
@@ -34,6 +34,14 @@
     "copyLink": "Copy link",
     "linkCopied": "Link copied!",
     "close": "Close"
+  },
+  "chapter": {
+    "nextChapter": "Next Chapter",
+    "previousChapter": "Previous Chapter",
+    "nextComic": "Next Comic",
+    "previousComic": "Previous Comic",
+    "end": "The End",
+    "backToSeries": "Back to Series"
   },
   "sort": {
     "date": "Date",

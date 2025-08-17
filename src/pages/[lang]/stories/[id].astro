@@ -8,6 +8,7 @@ import ChapterNavigation from "../../../components/ChapterNavigation.astro";
 import { t, LOCALES } from "../../../i18n";
 import { getCollection, render } from 'astro:content';
 import { createLangUrl } from "../../../utils/urls";
+import { getStoryMetadataFromItalian } from "../../../utils/series";
 
 export async function getStaticPaths() {
   const allPosts = await getCollection('stories');
@@ -39,7 +40,7 @@ export async function getStaticPaths() {
 }
 
 const { lang, id } = Astro.params;
-const _ = (k) => t(lang, k);
+const _ = (k: string) => t(lang as any, k);
 
 // Get the actual post object from the collection
 const allPosts = await getCollection('stories');
@@ -53,45 +54,44 @@ if (!post) {
   return Astro.redirect('/404');
 }
 
-// Find posts with the same ID in other languages for language switching
-const currentId = post.data.id || post.id;
-const relatedPosts = allPosts.filter(p => (p.data.id || p.id) === currentId);
-
-// If this post is part of a series, find the first chapter to get maintitle and maindescription
-let seriesMainTitle = post.data.maintitle;
-let seriesMainDescription = post.data.maindescription;
-
-if (post.data.taleid && !seriesMainTitle) {
-  // Find the first chapter of the series (lowest chapter number, or earliest date if no chapter)
-  const seriesChapters = allPosts.filter(p => 
-    p.data.taleid === post.data.taleid && 
-    p.data.lang === lang &&
-    p.data.type === post.data.type
-  );
-  
-  const firstChapter = seriesChapters.sort((a, b) => {
-    // Sort by chapter number if available, otherwise by date
-    const aChapter = a.data.chapter || 0;
-    const bChapter = b.data.chapter || 0;
-    if (aChapter !== bChapter) {
-      return aChapter - bChapter;
-    }
-    return a.data.date.getTime() - b.data.date.getTime();
-  })[0];
-  
-  if (firstChapter) {
-    seriesMainTitle = firstChapter.data.maintitle || post.data.taleid;
-    seriesMainDescription = firstChapter.data.maindescription;
+// Enrich post with centralized metadata from Italian chapters
+let enrichedPost = post;
+if (post.data.taleid) {
+  const storyId = post.data.id || post.id;
+  const metadata = await getStoryMetadataFromItalian(storyId, post.data.taleid, lang);
+  if (metadata) {
+    enrichedPost = {
+      ...post,
+      data: {
+        ...post.data,
+        author: metadata.author,
+        genre: metadata.genre,
+        chapter: metadata.chapter,
+        maintitle: metadata.maintitle,
+        maindescription: metadata.maindescription,
+        type: metadata.type,
+        title: metadata.title || post.data.title,
+        description: metadata.description || post.data.description
+      }
+    };
   }
 }
 
+// Find posts with the same ID in other languages for language switching
+const currentId = enrichedPost.data.id || enrichedPost.id;
+const relatedPosts = allPosts.filter(p => (p.data.id || p.id) === currentId);
+
+// If this post is part of a series, use the enriched metadata
+let seriesMainTitle = enrichedPost.data.maintitle;
+let seriesMainDescription = enrichedPost.data.maindescription;
+
 // Check if this is the last chapter in the series
 let isLastChapter = false;
-if (post.data.taleid) {
+if (enrichedPost.data.taleid) {
   const seriesChapters = allPosts.filter(p => 
-    p.data.taleid === post.data.taleid && 
+    p.data.taleid === enrichedPost.data.taleid && 
     p.data.lang === lang &&
-    p.data.type === post.data.type
+    p.data.type === enrichedPost.data.type
   );
   
   const sortedChapters = seriesChapters.sort((a, b) => {
@@ -105,14 +105,14 @@ if (post.data.taleid) {
   
   const currentIndex = sortedChapters.findIndex(story => {
     const storyId = story.data.id || story.id;
-    const currentId = post.data.id || post.id;
+    const currentId = enrichedPost.data.id || enrichedPost.id;
     return storyId === currentId;
   });
   
   isLastChapter = currentIndex === sortedChapters.length - 1;
 }
 
-const { Content } = await render(post);
+const { Content } = await render(enrichedPost);
 
 // Costruisci l'URL completo dell'articolo per la condivisione social
 const currentUrl = new URL(Astro.request.url);
@@ -120,8 +120,8 @@ const fullArticleUrl = `${currentUrl.origin}${createLangUrl(lang, `/stories/${id
 ---
 
 <BaseLayout 
-  title={`${post.data.title} — Tale`} 
-  description={post.data.description}
+  title={`${enrichedPost.data.title} — Tale`} 
+  description={enrichedPost.data.description}
   lang={lang}
 >
   <Header lang={lang} />
@@ -146,7 +146,7 @@ const fullArticleUrl = `${currentUrl.origin}${createLangUrl(lang, `/stories/${id
               {_('nav.stories')}
             </a>
           </li>
-          {post.data.taleid && (
+          {enrichedPost.data.taleid && (
             <>
               <li class="flex-shrink-0">
                 <svg class="flex-shrink-0 h-5 w-5 text-gray-400 dark:text-gray-500" fill="currentColor" viewBox="0 0 20 20">
@@ -154,8 +154,8 @@ const fullArticleUrl = `${currentUrl.origin}${createLangUrl(lang, `/stories/${id
                 </svg>
               </li>
               <li class="flex-shrink-0">
-                <a href={createLangUrl(lang, `/series/${post.data.taleid}`)} class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors duration-200 whitespace-nowrap">
-                  {seriesMainTitle || post.data.taleid}
+                <a href={createLangUrl(lang, `/series/${enrichedPost.data.taleid}`)} class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors duration-200 whitespace-nowrap">
+                  {seriesMainTitle || enrichedPost.data.taleid}
                 </a>
               </li>
             </>
@@ -166,8 +166,8 @@ const fullArticleUrl = `${currentUrl.origin}${createLangUrl(lang, `/stories/${id
             </svg>
           </li>
           <li class="text-gray-900 dark:text-gray-100 font-medium min-w-0 flex-shrink-0">
-            <span class="whitespace-nowrap" title={post.data.title}>
-              {post.data.title}
+            <span class="whitespace-nowrap" title={enrichedPost.data.title}>
+              {enrichedPost.data.title}
             </span>
           </li>
         </ol>
@@ -185,21 +185,21 @@ const fullArticleUrl = `${currentUrl.origin}${createLangUrl(lang, `/stories/${id
               <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
               </svg>
-              <span>{post.data.author}</span>
+              <span>{enrichedPost.data.author}</span>
             </div>
             <div class="flex items-center">
               <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
               </svg>
-              <FormattedDate date={post.data.date} />
+              <FormattedDate date={enrichedPost.data.date} />
             </div>
           </div>
           <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6 leading-tight transition-colors duration-300">
-            {post.data.title}
+            {enrichedPost.data.title}
           </h1>
-          {post.data.description && (
+          {enrichedPost.data.description && (
             <p class="text-xl text-gray-600 dark:text-gray-300 leading-relaxed transition-colors duration-300">
-              {post.data.description}
+              {enrichedPost.data.description}
             </p>
           )}
         </div>
@@ -214,36 +214,19 @@ const fullArticleUrl = `${currentUrl.origin}${createLangUrl(lang, `/stories/${id
       <footer class="mt-8 pt-6">
         <!-- Chapter Navigation -->
         <ChapterNavigation 
-          currentStory={post}
+          currentStory={enrichedPost}
           lang={lang}
           type="story"
+          isLastChapter={isLastChapter}
         />
         
         <!-- Social Share -->
         <SocialShare 
-          title={post.data.title}
-          description={post.data.description}
+          title={enrichedPost.data.title}
+          description={enrichedPost.data.description}
           url={fullArticleUrl}
           lang={lang}
         />
-        
-        <!-- Navigation Links -->
-        <div class="flex items-center justify-center mt-8 space-x-6">
-          {post.data.taleid && !isLastChapter && (
-            <a 
-              href={createLangUrl(lang, `/series/${post.data.taleid}`)}
-              class="inline-flex items-center text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 font-medium transition-colors duration-200"
-            >
-              ← {_('nav.backToSeries')}
-            </a>
-          )}
-          <a 
-            href={createLangUrl(lang, '/stories')}
-            class="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium transition-colors duration-200"
-          >
-            ← {_('nav.backToStories')}
-          </a>
-        </div>
       </footer>
     </article>
   </main>
