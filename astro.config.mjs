@@ -5,13 +5,14 @@ import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import { defineConfig } from 'astro/config';
 
-// Configurazione per "Tale" - Racconti su tale.ws
+// Configurazione per "Tale" - Racconti su tale.ws, tales.ws, tale.mobi, tales.mobi
 const forceGitHubPages = process.env.DEPLOY_TARGET === 'github';
-const useGitHubConfig = forceGitHubPages || (process.env.CI && !process.env.CUSTOM_DOMAIN);
+const forceCustomDomain = process.env.DEPLOY_TARGET === 'custom';
+const useGitHubConfig = forceGitHubPages || (process.env.CI && !process.env.CUSTOM_DOMAIN && !forceCustomDomain);
 
-// Dominio principale: tale.ws
-const siteUrl = useGitHubConfig ? 'https://keyserdsoze.github.io' : 'https://tale.ws';
-const baseUrl = useGitHubConfig ? '/tale' : '';
+// Dominio principale: tale.mobi
+const siteUrl = forceCustomDomain ? 'https://tale.mobi' : (useGitHubConfig ? 'https://keyserdsoze.github.io' : 'https://tale.mobi');
+const baseUrl = (useGitHubConfig && !forceCustomDomain) ? '/tale' : '';
 
 // https://astro.build/config
 export default defineConfig({

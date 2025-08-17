@@ -32,7 +32,7 @@ jobs:
           node-version: 20
           cache: "npm"
 
-      # Imposta automaticamente SITE/BASE_URL per catenaccio.net
+      # Imposta automaticamente SITE/BASE_URL e DEPLOY_TARGET
       - name: Compute SITE and BASE_URL
         run: |
           # Controlla se esiste un file CNAME o usa la variabile CUSTOM_DOMAIN
@@ -40,15 +40,18 @@ jobs:
             CUSTOM_DOMAIN=$(cat public/CNAME)
             echo "SITE=https://${CUSTOM_DOMAIN}" >> $GITHUB_ENV
             echo "BASE_URL=/" >> $GITHUB_ENV
+            echo "DEPLOY_TARGET=custom" >> $GITHUB_ENV
             echo "Using custom domain from CNAME: ${CUSTOM_DOMAIN}"
           elif [ -n "${{ vars.CUSTOM_DOMAIN }}" ]; then
             echo "SITE=https://${{ vars.CUSTOM_DOMAIN }}" >> $GITHUB_ENV
             echo "BASE_URL=/" >> $GITHUB_ENV
+            echo "DEPLOY_TARGET=custom" >> $GITHUB_ENV
             echo "Using custom domain from variable: ${{ vars.CUSTOM_DOMAIN }}"
           else
             OWNER="${{ github.repository_owner }}"
             REPO="${{ github.event.repository.name }}"
             echo "SITE=https://${OWNER}.github.io" >> $GITHUB_ENV
+            echo "DEPLOY_TARGET=github" >> $GITHUB_ENV
             if [ "$REPO" = "${OWNER}.github.io" ]; then
               echo "BASE_URL=/" >> $GITHUB_ENV
             else
@@ -64,9 +67,17 @@ jobs:
         env:
           SITE: ${{ env.SITE }}
           BASE_URL: ${{ env.BASE_URL }}
+          DEPLOY_TARGET: ${{ env.DEPLOY_TARGET }}
         run: |
           echo "Building with SITE=${{ env.SITE }} and BASE_URL=${{ env.BASE_URL }}"
-          npm run build
+          echo "DEPLOY_TARGET=${{ env.DEPLOY_TARGET }}"
+          if [ "${{ env.DEPLOY_TARGET }}" = "custom" ]; then
+            echo "Building for custom domain..."
+            npm run build:custom
+          else
+            echo "Building for GitHub Pages..."
+            npm run build:github
+          fi
 
       - name: Verify build output
         run: |

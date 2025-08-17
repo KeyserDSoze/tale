@@ -2,26 +2,36 @@
 
 /**
  * Get the base path for the current environment
- * Returns '/tale' for GitHub Pages, '' for custom domain
+ * Returns '/tale' for GitHub Pages, '' for custom domains (tale.ws, tales.ws, tale.mobi, tales.mobi)
  */
 export function getBasePath(): string {
   // Check if we're in the browser or server
   if (typeof window !== 'undefined') {
     // Browser environment - check the current hostname
     const hostname = window.location.hostname;
-    // If we're on the custom domain, don't use base path
-    if (hostname === 'tale.ws' || hostname === 'www.tale.ws') {
+    // If we're on any of the custom domains, don't use base path
+    const customDomains = ['tale.ws', 'www.tale.ws', 'tales.ws', 'www.tales.ws', 'tale.mobi', 'www.tale.mobi', 'tales.mobi', 'www.tales.mobi'];
+    if (customDomains.includes(hostname)) {
       return '';
     }
     // If we're on GitHub Pages, use base path
     if (hostname.includes('github.io')) {
       return '/tale';
     }
-    // Default to no base path
+    // Default to no base path for custom domains
     return '';
   } else {
     // Server environment - check environment variables
-    const isGitHubPages = process.env.GITHUB_PAGES === 'true' || process.env.CI;
+    // Force custom domain build
+    if (process.env.DEPLOY_TARGET === 'custom') {
+      return '';
+    }
+    // Force GitHub Pages build
+    if (process.env.DEPLOY_TARGET === 'github') {
+      return '/tale';
+    }
+    // Legacy logic
+    const isGitHubPages = process.env.GITHUB_PAGES === 'true' || (process.env.CI && !process.env.CUSTOM_DOMAIN);
     return isGitHubPages ? '/tale' : '';
   }
 }

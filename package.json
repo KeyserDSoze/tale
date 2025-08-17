@@ -2,10 +2,12 @@
   "name": "tale",
   "type": "module",
   "version": "1.0.0",
-  "description": "A personal blog for stories and tales on tale.ws",
+  "description": "A personal blog for stories and tales on tale.ws, tales.ws, tale.mobi, tales.mobi",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "build:custom": "cross-env DEPLOY_TARGET=custom astro build",
+    "build:github": "cross-env DEPLOY_TARGET=github astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -19,6 +21,7 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.16",
+    "cross-env": "^10.0.0",
     "tailwindcss": "^3.0.24"
   }
 }
