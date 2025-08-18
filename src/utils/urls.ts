@@ -2,7 +2,7 @@
 
 /**
  * Get the base path for the current environment
- * Returns '/tale' for GitHub Pages, '' for custom domains (tale.ws, tales.ws, tale.mobi, tales.mobi)
+ * Returns '/tale' for GitHub Pages, '' for custom domains (tale.mobi, tales.ws, tale.mobi, tales.mobi)
  */
 export function getBasePath(): string {
   // Check if we're in the browser or server
@@ -10,7 +10,7 @@ export function getBasePath(): string {
     // Browser environment - check the current hostname
     const hostname = window.location.hostname;
     // If we're on any of the custom domains, don't use base path
-    const customDomains = ['tale.ws', 'www.tale.ws', 'tales.ws', 'www.tales.ws', 'tale.mobi', 'www.tale.mobi', 'tales.mobi', 'www.tales.mobi'];
+    const customDomains = ['tale.mobi', 'www.tale.mobi', 'tales.ws', 'www.tales.ws', 'tale.mobi', 'www.tale.mobi', 'tales.mobi', 'www.tales.mobi'];
     if (customDomains.includes(hostname)) {
       return '';
     }
