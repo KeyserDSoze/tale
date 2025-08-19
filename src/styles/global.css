@@ -88,9 +88,11 @@ a:hover {
 }
 p {
 	margin-bottom: 1em;
+	text-align: justify;
 }
 .prose p {
 	margin-bottom: 2em;
+	text-align: justify;
 }
 textarea {
 	width: 100%;
@@ -124,6 +126,7 @@ blockquote {
 	padding: 0 0 0 20px;
 	margin: 0px;
 	font-size: 1.333em;
+	text-align: justify;
 }
 hr {
 	border: none;
@@ -154,4 +157,107 @@ hr {
 	clip-path: inset(50%);
 	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
 	white-space: nowrap;
+}
+
+/* Giustifica tutto il testo del contenuto markdown */
+.prose,
+.prose p,
+.prose-lg p,
+.prose-blue p,
+article .content,
+.story-content,
+.markdown-content,
+article .prose p,
+.prose .prose-p {
+	text-align: justify !important;
+}
+
+/* Giustifica anche altri elementi di testo */
+.prose blockquote,
+.prose-lg blockquote,
+.prose-blue blockquote {
+  text-align: justify !important;
+}
+
+/* Make images take full width of container */
+.prose img,
+.prose-lg img,
+.prose-blue img {
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100% !important;
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* More aggressive image targeting */
+article img,
+main img,
+.prose * img,
+.prose-lg * img,
+.prose-blue * img,
+div[class*="prose"] img {
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100% !important;
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  object-fit: contain !important;
+}
+
+/* Nuclear option - target ALL images except specific ones */
+img:not([src*="favicon"]):not(.hero-image img) {
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100% !important;
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  object-fit: contain !important;
+}
+
+/* Override any Tailwind classes */
+.prose img[class*="w-"],
+.prose img[class*="h-"],
+.prose img[class*="max-w-"],
+.prose-lg img[class*="w-"],
+.prose-lg img[class*="h-"],
+.prose-lg img[class*="max-w-"],
+.prose-blue img[class*="w-"],
+.prose-blue img[class*="h-"],
+.prose-blue img[class*="max-w-"] {
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100% !important;
+}/* Giustifica liste e elementi inline */
+.prose li,
+.prose-lg li,
+.prose-blue li,
+.prose ul li,
+.prose ol li {
+	text-align: justify !important;
+}
+
+/* Mantieni centrati i titoli */
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6,
+.prose-lg h1,
+.prose-lg h2,
+.prose-lg h3,
+.prose-lg h4,
+.prose-lg h5,
+.prose-lg h6,
+article .content h1,
+article .content h2,
+article .content h3,
+article .content h4,
+article .content h5,
+article .content h6 {
+	text-align: left !important;
 }

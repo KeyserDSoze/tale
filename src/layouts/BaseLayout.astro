@@ -110,6 +110,66 @@ const faviconUrl = `${basePath}/favicon.svg`;
         document.documentElement.classList.add('dark');
       }
     </script>
+    
+    <!-- Force image styles with JavaScript -->
+    <script is:inline>
+      function forceImageStyles() {
+        const images = document.querySelectorAll('img');
+        images.forEach(function(img) {
+          // Skip images that are specifically sized (like hero images or favicons)
+          if (!img.closest('.hero-image') && !img.src.includes('favicon') && img.naturalWidth > 0) {
+            // Remove any existing width/height attributes that might interfere
+            img.removeAttribute('width');
+            img.removeAttribute('height');
+            
+            // Force styles with maximum priority
+            img.style.cssText = 'width: 100% !important; height: auto !important; max-width: 100% !important; display: block !important; margin-left: auto !important; margin-right: auto !important; object-fit: contain !important;';
+            
+            // Also set as attributes in case CSS is overridden
+            img.setAttribute('style', img.style.cssText);
+          }
+        });
+      }
+      
+      // Run immediately
+      forceImageStyles();
+      
+      // Run when DOM is loaded
+      document.addEventListener('DOMContentLoaded', forceImageStyles);
+      
+      // Run when window is loaded (for lazy loaded images)
+      window.addEventListener('load', forceImageStyles);
+      
+      // Monitor for new images being added to the DOM
+      const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          mutation.addedNodes.forEach(function(node) {
+            if (node.nodeType === 1) { // Element node
+              if (node.tagName === 'IMG') {
+                forceImageStyles();
+              } else if (node.querySelectorAll) {
+                const images = node.querySelectorAll('img');
+                if (images.length > 0) {
+                  forceImageStyles();
+                }
+              }
+            }
+          });
+        });
+      });
+      
+      // Start observing
+      if (document.body) {
+        observer.observe(document.body, { childList: true, subtree: true });
+      } else {
+        document.addEventListener('DOMContentLoaded', function() {
+          observer.observe(document.body, { childList: true, subtree: true });
+        });
+      }
+      
+      // Also run periodically as a fallback
+      setInterval(forceImageStyles, 2000);
+    </script>
   </head>
   <body class="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
     <slot />

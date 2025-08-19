@@ -52,6 +52,78 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 			.last-updated-on {
 				font-style: italic;
 			}
+			
+			/* Text justification for all prose content */
+			.prose p {
+				text-align: justify !important;
+			}
+			
+			.prose div {
+				text-align: justify !important;
+			}
+			
+			.prose li {
+				text-align: justify !important;
+			}
+			
+			.prose blockquote {
+				text-align: justify !important;
+			}
+			
+			/* Make images take full width of container */
+			.prose img {
+				width: 100% !important;
+				height: auto !important;
+				max-width: 100% !important;
+				display: block !important;
+				margin-left: auto !important;
+				margin-right: auto !important;
+			}
+			
+			/* More aggressive targeting for all images */
+			.prose img,
+			.prose p img,
+			.prose div img,
+			.prose figure img,
+			.prose * img,
+			article img,
+			main img {
+				width: 100% !important;
+				height: auto !important;
+				max-width: 100% !important;
+				display: block !important;
+				margin-left: auto !important;
+				margin-right: auto !important;
+				object-fit: contain !important;
+			}
+			
+			/* Universal image override */
+			img {
+				width: 100% !important;
+				height: auto !important;
+				max-width: 100% !important;
+			}
+			
+			/* Astro component image targeting */
+			:global(img) {
+				width: 100% !important;
+				height: auto !important;
+				max-width: 100% !important;
+				display: block !important;
+				margin-left: auto !important;
+				margin-right: auto !important;
+			}
+			
+			/* Force all images inside slot content */
+			slot img,
+			:global(slot img) {
+				width: 100% !important;
+				height: auto !important;
+				max-width: 100% !important;
+				display: block !important;
+				margin-left: auto !important;
+				margin-right: auto !important;
+			}
 		</style>
 	</head>
 
@@ -77,7 +149,9 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 						<h1>{title}</h1>
 						<hr />
 					</div>
-					<slot />
+					<div style="width: 100%; text-align: justify;">
+						<slot />
+					</div>
 				</div>
 			</article>
 		</main>

@@ -206,8 +206,10 @@ const fullArticleUrl = `${currentUrl.origin}${createLangUrl(lang, `/stories/${id
       </header>
 
       <!-- Article Content -->
-      <div class="prose prose-lg prose-blue dark:prose-invert max-w-3xl mx-auto transition-colors duration-300 prose-headings:text-gray-900 dark:prose-headings:text-white prose-strong:text-gray-900 dark:prose-strong:text-white prose-em:text-gray-800 dark:prose-em:text-gray-100 prose-code:text-gray-900 dark:prose-code:text-white prose-pre:bg-gray-100 dark:prose-pre:bg-gray-800 prose-blockquote:text-gray-700 dark:prose-blockquote:text-gray-200 prose-p:text-gray-900 dark:prose-p:text-gray-100 prose-li:text-gray-900 dark:prose-li:text-gray-100">
-        <Content />
+      <div class="prose prose-lg prose-blue dark:prose-invert max-w-3xl mx-auto transition-colors duration-300 prose-headings:text-gray-900 dark:prose-headings:text-white prose-strong:text-gray-900 dark:prose-strong:text-white prose-em:text-gray-800 dark:prose-em:text-gray-100 prose-code:text-gray-900 dark:prose-code:text-white prose-pre:bg-gray-100 dark:prose-pre:bg-gray-800 prose-blockquote:text-gray-700 dark:prose-blockquote:text-gray-200 prose-p:text-gray-900 dark:prose-p:text-gray-100 prose-li:text-gray-900 dark:prose-li:text-gray-100" style="text-align: justify;">
+        <div style="width: 100%;">
+          <Content />
+        </div>
       </div>
 
       <!-- Article Footer -->
@@ -345,5 +347,75 @@ const fullArticleUrl = `${currentUrl.origin}${createLangUrl(lang, `/stories/${id
   /* Prevenzione overflow per elementi con padding/margin */
   * {
     box-sizing: border-box;
+  }
+  
+  /* Text justification for all prose content */
+  .prose p {
+    text-align: justify !important;
+  }
+  
+  .prose div {
+    text-align: justify !important;
+  }
+  
+  .prose li {
+    text-align: justify !important;
+  }
+  
+  .prose blockquote {
+    text-align: justify !important;
+  }
+  
+  .prose-lg p {
+    text-align: justify !important;
+  }
+  
+  .prose-blue p {
+    text-align: justify !important;
+  }
+  
+  /* Make images take full width of container */
+  .prose img {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  
+  .prose-lg img {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+  }
+  
+  .prose-blue img {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+  }
+  
+  /* More aggressive image targeting */
+  article img,
+  main img,
+  .prose * img,
+  .prose-lg * img,
+  .prose-blue * img,
+  div[class*="prose"] img {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    object-fit: contain !important;
+  }
+  
+  /* Universal image rule */
+  img {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
   }
 </style>
