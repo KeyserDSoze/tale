@@ -36,7 +36,7 @@ Uscì molto lentamente dal carro con le mani ed i palmi bene in vista.\
 Guardando intorno, notò che le guardie avevano circondato tutti i carri. Prese un respiro profondo e a voce molto alta disse:\
 *«Veniamo in pace… I Magi di Ahura Mazda sono finalmente giunti! Chiediamo udienza immediata ad Erode il grande».*
 
-![Herodion](../../../assets/g/001/001.png)
+![L'arrivo](../../../assets/g/001/001.png)
 
 Le massicce porte dell'Herodion iniziarono a muoversi con uno stridio metallico che echeggiò per tutta la vallata. Simeone corse alla finestra, scostò la tenda in pelle e afferrò le sbarre talmente forte che le sue mani divennero rosse.\
 *«Chi può essere a quest'ora? Che siano arrivati i babilonesi?» mormorò, scrutando l'orizzonte.*\
@@ -110,7 +110,7 @@ Le lacrime le rigarono il viso. Zaccaria le sfiorò la guancia con le dita.\
 *«Un figlio…»*\
 La stanza sprofondò nella quiete, mentre presto il ritmo regolare dei loro respiri riempì l’aria.
 
-![House](../../../assets/g/001/002.png)
+![Da Simeone](../../../assets/g/001/002.png)
 
 #### 2 Febbraio 6 A.C. (4 Adar I 3754)
 
@@ -206,7 +206,7 @@ Elisabetta, pur non essendo esperta di scritture sacre, fu coinvolta nel dibatti
 Simeone, animato dall’emozione della scrittura, rispose con convinzione.\
 *«Elisabetta, il tuo desiderio non solo si avvererà, ma tuo figlio supererà ogni nostra aspettativa, ne sono più che sicuro».*
 
-![Herodion](../../../assets/g/001/003.png)
+![Un cantico](../../../assets/g/001/003.png)
 
 Dopo un breve riposo, Simeone si alzò, prese il sacchetto con il mezzo talento e lo nascose accuratamente sotto la tunica, legandoselo al petto.\
 *«Ora, perdonatemi, ma devo andare. Non uscite per nessun motivo».*\
@@ -361,5 +361,7 @@ Simeone divenne paonazzo, senza rispondere. Malachia, irritato, avanzò oltrepas
 *«Entrate pure, mia signora. Tutto in regola».*\
 Poi si voltò verso Josiah e Rahel.\
 *«Montate la guardia all'esterno».*\
-Simeone fu l’ultimo a entrare e vide subito i suoi amici, Zaccaria ed Elisabetta, immobili nell'angolo. Il terrore nei loro occhi era palpabile. Chiuse la porta e si girò lentamente verso Malachia, che con un movimento fluido estrasse il pugnale. Lo afferrò per il colletto e gli puntò la lama alla gola.\
-*«Perché sono qui?»* ringhiò.
+Simeone fu l’ultimo a entrare e vide subito i suoi amici, Zaccaria ed Elisabetta, immobili nell'angolo. Il terrore nei loro occhi era palpabile. Chiuse la porta e si girò lentamente verso Malachia, che con un movimento fluido estrasse il pugnale. Lo afferrò e gli puntò la lama alla gola.\
+*«Perché sono qui?»* ringhiò con voce sommessa.
+
+![Perché sono qui?](../../../assets/g/001/005.png)
