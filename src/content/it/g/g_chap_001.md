@@ -114,56 +114,60 @@ La stanza sprofondò nella quiete, mentre presto il ritmo regolare dei loro resp
 
 #### 2 Febbraio 6 A.C. (4 Adar I 3754)
 
-Simeone spalancò gli occhi nel cuore della notte, un sussultò nel petto lo fece trasalire. Era ancora buio ma notò Elisabetta vicino al focolare, infagottata nelle coperte. Il suo sguardo era ipnotizzato dalle fiamme, come se meditasse su una decisione ardua. Preoccupato, si alzò e si avvicinò a lei.\
-*«Elisabetta, tutto bene?»* chiese con voce sommessa, quasi a timor di spezzare la quiete notturna.\
-*«Ho paura»* rispose con un filo di voce.\
+Simeone spalancò gli occhi nel cuore della notte, un sussulto nel petto lo fece trasalire. Era ancora buio ma notò Elisabetta vicino al focolare, infagottata nelle coperte. Il suo sguardo non si staccava dalle fiamme danzanti, le mani stringevano il tessuto fino a sbiancare le nocche. Si alzò, i suoi piedi nudi scivolarono sul pavimento freddo fino ad arrivare vicino a lei.\
+*«Elisabetta, tutto bene?»* sussurrò.\
+Lei non lo guardò e rispose con un filo di voce: *«Ho paura»*.\
 *«Vedo Zaccaria molto agitato per questa mia... questa nostra impresa. Temo di aver sconvolto le nostre vite».*\
-Simeone tirò a sé un'altra coperta e si sedette vicino, offrendole un sorriso incoraggiante.\
-*«Non posso dirti di non preoccuparti»*, iniziò con voce calma e rassicurante.\
+Simeone tirò a sé un'altra coperta e si sedette vicino, le sue mani trovarono le sue.\
+*«Non posso dirti di non preoccuparti»*, iniziò, la voce bassa per non svegliare Zaccaria.\
 *«Ma ricorda. Quando avrete vostro figlio tra le braccia, ogni dubbio svanirà».*\
-Elisabetta continuò a fissare il fuoco.
-*«Hai visto Zaccaria oggi? Era più preoccupato per le monete che per altro. Capisco il suo timore. Dovremo ripartire da zero e non sarà facile».* Si voltò verso suo marito. *«Ha rovinato tutto. Siamo diventati lo zimbello di Gerusalemme. Ha inventato quella storia ridicola solo per vantarsi con gli altri sacerdoti. Dovevamo essere per forza i prescelti secondo lui».* Simeone annuì ma non professò parole. *«E poi ha finto di essere muto. Così, senza poter officiare, lo hanno allontanato dal tempio e abbiamo perso l'unica nostra entrata. Ora si preoccupa dei soldi? Avrebbe dovuto pensarci prima».*\
+Elisabetta continuò a fissare le braci che si consumavano.
+*«Hai visto Zaccaria oggi? Era più preoccupato per le monete che per altro. Capisco i suoi timori. Dovremo ripartire da zero e non sarà facile».* Lanciò uno sguardo verso suo marito. *«Ha rovinato tutto. Siamo diventati lo zimbello di Gerusalemme. Ha inventato quella storia ridicola solo per vantarsi con gli altri sacerdoti. Dovevamo essere per forza i prescelti secondo lui».* Sotto la coperta, la mano di Simeone si chiuse a pugno, ma non parlò. *«E poi ha finto di essere muto. Così, senza poter officiare, lo hanno allontanato dal tempio e abbiamo perso l'unica nostra entrata. Ora si preoccupa dei soldi? Avrebbe dovuto pensarci prima».*\
 Simeone posò una mano sulla sua spalla.\
-«Elisabetta, cerca di calmarti. Conosco Zaccaria da anni, l’ho visto crescere. È ambizioso e impulsivo, ma ha un cuore grande. Si rende conto dei suoi errori, anche se non sempre lì ammette, e farà di tutto per rimediare».*\
-Elisabetta appoggiò la testa sulla spalla di Simeone e iniziò a piangere.\
+«Cerca di calmarti. Conosco Zaccaria da anni, l’ho visto crescere. È ambizioso e impulsivo, ma ha un cuore grande. Si rende conto dei suoi errori, anche se non sempre lì ammette, e farà di tutto per rimediare».*\
+Lei si lasciò cadere contro di lui, la fronte sulla sua spalla. Le lacrime scesero copiose.\
 *«E per Erode, che ci insegue... Cosa faremo? Se ci portasse via nostro figlio? A quale scopo avremmo fatto tutti questi sacrifici?»*\
-*«Elisabetta, non dobbiamo trovare tutte le risposte ora. Io so solo che c’è sempre un modo… Se ci pensi bene, siete riusciti a sfuggirgli fino ad oggi senza saperlo».*\
-*«Però siamo dovuti fuggire dalla nostra casa…»*\
+*«Elisabetta! Non dobbiamo trovare tutte le risposte ora. Un modo c'è sempre… Se ci pensi bene, siete riusciti a sfuggirgli fino ad oggi e neanche sapevate di essere ricercati».*\
+*«Non potremo tornare a casa nostra…»*\
 *«Questo probabilmente è lo scotto che dovrete pagare. Per ora cerca di stare tranquilla. Pensa a tuo figlio e stai vicina a tuo marito».*\
-Elisabetta rivolse nuovamente lo sguardo a Zaccaria, il suo respiro profondo era l’unico suono nella stanza.\
-*«È esausto… Non si è accorto né della nostra chiacchierata né che mi ero alzata».*\
+Elisabetta rivolse nuovamente lo sguardo verso Zaccaria, il suo respiro profondo era l’unico suono nella stanza.\
+*«È esausto… Non si è accorto né della nostra chiacchierata né che mi sono alzata».*\
 Simeone annuì.\
 *«Torna a dormire e cerca di rilassarti. La vostra avventura è appena iniziata, vi servirà ogni briciolo di forza per portarla avanti».*\
-Elisabetta si asciugò le lacrime e tornò a sdraiarsi.\
-*«Che succede? Sei sveglia?»* chiese Zaccaria con la voce roca senza neanche aprire gli occhi.\
-*«Niente, mi sono solo girata bruscamente, stringimi forte».*\
-Lui sollevò la coperta e la strinse in un abbraccio più caldo che mai. Intanto, Simeone, conscio che il riposo notturno gli era sfuggito, decise di andare a preparare del pane.\
-Quando tornò, l’alba stava già tingendo il cielo di rosa. Portò con sé il frutto del suo lavoro, cipolle e lenticchie. Varcando la soglia, notò i suoi ospiti già svegli.\
+Elisabetta si asciugò con la coperta le lacrime e si sdraiò accanto al marito.\
+*«Che succede? Sei sveglia?»* borbottò Zaccaria con voce roca senza aprire gli occhi.\
+*«Niente, mi sono girata bruscamente, ho fatto un brutto sogno, stringimi forte».*\
+Lui sollevò la coperta e la strinse in un abbraccio più caldo che mai. Intanto, Simeone, ormai desto, decise di uscire per andare a preparare il pane.\
+Quando tornò, il cielo si era già tinto di rosa. Portava con sé pagnotte calde, cipolle e lenticchie. Aprì la porta e li trovò svegli.\
 *«Ben alzati, la notte è stata serena?»*\
-Elisabetta si avvicinò a Simeone e protese le mani verso di lui.\
-*«Passami ciò che hai portato. Vi preparerò una zuppa. Nel frattempo, potete dedicarvi alle vostre conversazioni da uomini».*\
-*«Le zuppe di Elisabetta sono uniche»*, commentò Zaccaria.\
-*«E quella di lenticchie è insuperabile».*\
-*«Allora possiamo discutere tranquillamente, sapendo di essere in buone mani»*, rispose Simeone, strofinandosi le mani.\
-*«Stanotte ho avuto un'idea. Potrai tornare a parlare! Hai mai scritto un inno di lode a Dio?»*\
-Zaccaria aggrottò la fronte, perplesso.\
-*«Qualcosa ho scritto, ma non sono mai riuscito a cantarlo».*\
-*«Partiamo da lì».*\
-Zaccaria restò in silenzio per un attimo, poi scosse il capo.\
-*«E come aiuterebbe col mio mutismo?»*\
-Simeone sorrise in modo malizioso.\
-*«Hai detto a tutti che è un miracolo; rendiamolo tale. Dichiarerai che l’angelo Gabriele ti ha ridato la voce durante la circoncisione al tempio, cantando l'inno più sublime mai scritto».*\
-*«E con Erode, come faremo? Al tempio mi riconosceranno sicuramente».*\
-*«Dopo il tuo canto, ti nasconderai a Qumran presso il tuo amico per qualche anno. Ti farò sapere io quando sarà sicuro tornare».*\
-*«Ma ci saranno le guardie…»*\
-*«Non ce ne saranno se lo farai durante un consiglio erodiano. Tutti i figli di Erode, il Sommo Sacerdote e le tante truppe al seguito saranno qui all’Herodion e te avrai la libertà di circoncidere tuo figlio al tempio e poi fuggire».*\
-Zaccaria rimase interdetto.\
-*«Ma… sai già quando sarà…»*\
-Simeone sfoggiò un sorriso ampio e radioso.\
+Elisabetta si avvicinò a lui e protese le mani.\
+*«Passami ciò che hai portato. Vi preparerò un'ottima zuppa».*\
+*«Le zuppe di Elisabetta sono uniche»*, commentò Zaccaria. *«E quella di lenticchie è insuperabile».*\
+*«Allora, nel mentre, possiamo discutere tranquillamente»*, rispose Simeone, strofinandosi le mani. *«Stanotte ho avuto un'idea. Potrai tornare a parlare! Hai mai scritto un inno di lode a Dio?»*\
+Zaccaria aggrottò la fronte.\
+*«Qualcosa ho scritto, ma non capisco come aiuterebbe con la mia voce».*\
+Simeone sorrise.\
+*«Hai detto a tutti che è un miracolo; rendiamolo tale. Dichiarerai che l’angelo Gabriele ti ha ridato la voce durante la circoncisione al tempio, e canterai l'inno più sublime mai scritto».*\
+*«E le guardie? Erode? Mi riconosceranno».*\
+*«Se lo farai durante un consiglio erodiano, nessuno baderà a te. Tutti saranno all’Herodion. Tu circonciderai tuo figlio, canterai, e poi sparirai a Qumran dal tuo amico. Ti dirò io quando sarà sicuro tornare».*\
+Zaccaria rimase in silenzio, gli occhi fissi.
+*«Ma… sai già quando…»*\
+Gli angoli della bocca di Simeone si sollevarono ancora di più, le rughe attorno agli occhi si accentuarono.\
 *«Secondo te? ...»* Prese una pergamena dal tavolo. *«Allora, come iniziamo?»*\
-Per tutta la mattina, i due amici si dedicarono al cantico, perdendosi tra le parole, fino a quando il profumo della zuppa di Elisabetta li richiamò alla realtà.\
-Anche a pranzo, la discussione continuò senza sosta: “questo verso è cruciale, spostiamolo alla fine”, “questo ha un significato speciale, accostiamolo a quest'altro”, “questo concetto è fondamentale, ma va riformulato per evitare fraintendimenti”.\
-Elisabetta, pur non essendo esperta di scritture sacre, fu coinvolta nel dibattito. Era raro che un sacerdote chiedesse il parere della moglie su un inno, e lei ne fu piacevolmente sorpresa, offrendo il suo contributo con dedizione. Passò qualche altra ora e finalmente Zaccaria poté intonarla:
+Zaccaria si sporse sulla pergamena, la penna tremava leggermente tra le dita. *«Benedetto il Signore... no, aspetta»*. Cancellò con un gesto brusco. *«Benedetto sia il Signore...»*\
+*«Meglio il primo»*, intervenne Simeone, appoggiando il gomito sul tavolo. *«Suona più diretto».*\
+Le ore scivolarono via tra correzioni e riscritture. Elisabetta si avvicinò portando tre ciotole fumanti.\
+*«La zuppa si raffredda. Mangiate!»*\
+*«Un momento»*, mormorò Zaccaria senza alzare lo sguardo. *«Questo verso... "salvezza dai nostri nemici"... non dovrebbe venire dopo?»*\
+Simeone masticò una cucchiaiata di lenticchie. *«Spostiamolo alla fine. Così il ritmo è migliore».*\
+Elisabetta sedette accanto a loro, sbirciando la pergamena. *«Questo "d'un tempo"... suona strano»*.\
+Zaccaria alzò la testa di scatto. *«Cosa proponi?»*\
+*«Non so... "dai tempi antichi"?»*\
+*«No, "d'un tempo" è perfetto»*, replicò Simeone. *«Ha la solennità che serve».*\
+Il sole era già alto quando Elisabetta posò la mano sulla pergamena. *«E per il bambino? Dovete dire qualcosa di lui»*.\
+Zaccaria si grattò la barba. *«"E tu, bambino, sarai chiamato profeta..."»*. Scrisse in fretta. *«Così?»*\
+*«Magnifico»*, sussurrò Simeone.\
+Zaccaria si alzò, la pergamena stretta tra le mani. Il respiro si fece profondo. Poi aprì la bocca e lasciò uscire la voce:
 
 > Benedetto il Signore, Dio di Israele,\
 > perché ha visitato\
@@ -203,7 +207,7 @@ Elisabetta, pur non essendo esperta di scritture sacre, fu coinvolta nel dibatti
 
 *«È meraviglioso»* Elisabetta ascoltò con occhi lucidi.\
 *«Sarebbe una benedizione avere un figlio che lodi il Signore con tanto ardore! È il sogno più grande che possiamo avere».*\
-Simeone, animato dall’emozione della scrittura, rispose con convinzione.\
+Simeone balzò in piedi, le mani si aprirono verso il cielo. I suoi occhi brillavano.\
 *«Elisabetta, il tuo desiderio non solo si avvererà, ma tuo figlio supererà ogni nostra aspettativa, ne sono più che sicuro».*
 
 ![Un cantico](../../../assets/g/001/003.png)
