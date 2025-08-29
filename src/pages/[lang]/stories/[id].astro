@@ -117,6 +117,11 @@ const { Content } = await render(enrichedPost);
 // Costruisci l'URL completo dell'articolo per la condivisione social
 const currentUrl = new URL(Astro.request.url);
 const fullArticleUrl = `${currentUrl.origin}${createLangUrl(lang, `/stories/${id}`)}`;
+
+// Logica per immagine capitolo
+
+const storyFolder = enrichedPost.data.taleid || enrichedPost.data.id || '';
+const chapterFile = enrichedPost.data.id || enrichedPost.id || '';
 ---
 
 <BaseLayout 
@@ -209,6 +214,15 @@ const fullArticleUrl = `${currentUrl.origin}${createLangUrl(lang, `/stories/${id
       <div class="prose prose-lg prose-blue dark:prose-invert max-w-3xl mx-auto transition-colors duration-300 prose-headings:text-gray-900 dark:prose-headings:text-white prose-strong:text-gray-900 dark:prose-strong:text-white prose-em:text-gray-800 dark:prose-em:text-gray-100 prose-code:text-gray-900 dark:prose-code:text-white prose-pre:bg-gray-100 dark:prose-pre:bg-gray-800 prose-blockquote:text-gray-700 dark:prose-blockquote:text-gray-200 prose-p:text-gray-900 dark:prose-p:text-gray-100 prose-li:text-gray-900 dark:prose-li:text-gray-100" style="text-align: justify;">
         <div style="width: 100%;">
           <Content />
+              <img
+                src={`../../../assets/${storyFolder}/${chapterFile}.png`}
+                alt=""
+                aria-hidden="true"
+                class="mt-8 rounded shadow"
+                loading="lazy"
+                onerror="this.parentNode && this.parentNode.removeChild(this);" 
+                style="display: block;"
+              />
         </div>
       </div>
 

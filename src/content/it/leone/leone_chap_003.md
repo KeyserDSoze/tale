@@ -3,7 +3,7 @@ title: "La fuga"
 description: "Di fronte al ritorno degli uomini, il leone cede al terrore e fugge. Ma nell’eco delle grida della bambina, scopre che la paura non può essere più forte della parola data."
 date: "2025-08-29"
 lang: "it"
-id: "leone-chap-003"
+id: "leone_chap_003"
 taleid: "leone"
 chapter: 3
 type: story

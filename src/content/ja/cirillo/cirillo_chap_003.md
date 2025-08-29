@@ -3,7 +3,7 @@ title: "チリッロは迷子になった"
 description: "必死のお母さんグマは屋台の間で息子を探す。チリッロは悪い熊に抵抗し、やがてお母さんに見つけられ、安堵と愛に満ちた抱擁に包まれる。"
 date: "2025-08-15"
 lang: "ja"
-id: "cirillo-chap-003"
+id: "cirillo_chap_003"
 taleid: "cirillo"
 ---
 

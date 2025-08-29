@@ -3,7 +3,7 @@ title: "Cirillo hat sich verirrt"
 description: "Mama Bärin sucht verzweifelt ihren Sohn zwischen den Ständen; Cirillo widersteht dem bösen Bären, bis seine Mutter ihn wiederfindet und ihn in eine Umarmung voller Erleichterung und Liebe schließt."
 date: "2025-08-15"
 lang: "de"
-id: "cirillo-chap-003"
+id: "cirillo_chap_003"
 taleid: "cirillo"
 ---
 

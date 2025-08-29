@@ -4,7 +4,7 @@ description: "Mamma Orsa, disperata, cerca il figlio tra le bancarelle; Cirillo 
 date: "2025-08-15"
 lang: "it"
 type: story
-id: "cirillo-chap-003"
+id: "cirillo_chap_003"
 taleid: "cirillo"
 chapter: 3
 author: "Alessandro Rapiti"

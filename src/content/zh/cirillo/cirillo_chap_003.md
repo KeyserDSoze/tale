@@ -3,7 +3,7 @@ title: "奇里洛走丢了"
 description: "熊妈妈绝望地在摊位间寻找儿子；奇里洛抵抗坏熊，直到妈妈找到他，并将他抱在怀里，满是安慰与爱。"
 date: "2025-08-15"
 lang: "zh"
-id: "cirillo-chap-003"
+id: "cirillo_chap_003"
 taleid: "cirillo"
 ---
 

@@ -3,7 +3,7 @@ title: "Cirillo se ha perdido"
 description: "Mamá Osa, desesperada, busca a su hijo entre los puestos; Cirillo resiste al oso malo, hasta que su mamá lo encuentra y lo estrecha en un abrazo lleno de alivio y amor."
 date: "2025-08-15"
 lang: "es"
-id: "cirillo-chap-003"
+id: "cirillo_chap_003"
 taleid: "cirillo"
 ---
 

@@ -3,7 +3,7 @@ title: "Il dubbio"
 description: "Solo nella radura, il leone sente le voci dei genitori che lo invitano a diffidare dell’uomo. Ma per la prima volta osa mettere in discussione ciò che ha sempre creduto, e da questo dubbio nasce il coraggio di agire."
 date: "2025-08-29"
 lang: "it"
-id: "leone-chap-004"
+id: "leone_chap_004"
 taleid: "leone"
 chapter: 4
 type: story

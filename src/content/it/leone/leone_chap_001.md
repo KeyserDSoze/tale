@@ -3,7 +3,7 @@ title: "La bambina e il cammino"
 description: "In un villaggio lontano, una bambina dal cuore pieno di sogni viene strappata al suo cammino. Le sue lacrime diventano un richiamo che la foresta non può ignorare."
 date: "2025-08-29"
 lang: "it"
-id: "leone-chap-001"
+id: "leone_chap_001"
 taleid: "leone"
 chapter: 1
 type: story

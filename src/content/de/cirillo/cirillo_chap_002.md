@@ -3,7 +3,7 @@ title: "Cirillo zwischen den Ständen"
 description: "Der Markt ist ein Wirbel aus Farben und Düften; Cirillo, von den Spielzeugen angezogen, lässt die Pfote seiner Mutter los und verirrt sich in der Menge, bis er einem großen Bären mit unfreundlichem Aussehen begegnet."
 date: "2025-08-15"
 lang: "de"
-id: "cirillo-chap-002"
+id: "cirillo_chap_002"
 taleid: "cirillo"
 ---
 

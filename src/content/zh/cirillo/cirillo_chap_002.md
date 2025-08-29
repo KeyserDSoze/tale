@@ -3,7 +3,7 @@ title: "奇里洛在摊位之间"
 description: "集市是色彩与香气的漩涡；奇里洛被玩具吸引，松开妈妈的手，在人群中迷失，直到遇到一只神情不太友善的大熊。"
 date: "2025-08-15"
 lang: "zh"
-id: "cirillo-chap-002"
+id: "cirillo_chap_002"
 taleid: "cirillo"
 ---
 

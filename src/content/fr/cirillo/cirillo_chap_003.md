@@ -3,7 +3,7 @@ title: "Cirillo s’est perdu"
 description: "Maman Ourse, désespérée, cherche son fils parmi les étals ; Cirillo résiste au mauvais ours, jusqu’à ce que sa maman le retrouve et le serre dans une étreinte pleine de soulagement et d’amour."
 date: "2025-08-15"
 lang: "fr"
-id: "cirillo-chap-003"
+id: "cirillo_chap_003"
 taleid: "cirillo"
 ---
 

@@ -3,7 +3,7 @@ title: "Cirillo parmi les étals"
 description: "Le marché est un tourbillon de couleurs et de parfums ; Cirillo, attiré par les jouets, lâche la patte de sa maman et se perd dans la foule, jusqu’à rencontrer un grand ours à l’air peu amical."
 date: "2025-08-15"
 lang: "fr"
-id: "cirillo-chap-002"
+id: "cirillo_chap_002"
 taleid: "cirillo"
 ---
 

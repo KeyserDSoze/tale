@@ -3,7 +3,7 @@ title: "Cirillo e il mercato dei sogni"
 description: "Un piccolo orsetto color miele, con sciarpa azzurra e cappellino, sogna di andare al mercato con la mamma, immaginando bancarelle piene di giochi e avventure."
 date: "2025-08-15"
 lang: "it"
-id: "cirillo-chap-001"
+id: "cirillo_chap_001"
 taleid: "cirillo"
 chapter: 1
 type: story

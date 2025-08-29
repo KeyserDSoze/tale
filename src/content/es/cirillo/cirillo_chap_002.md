@@ -3,7 +3,7 @@ title: "Cirillo entre los puestos"
 description: "El mercado es un torbellino de colores y aromas; Cirillo, atraído por los juguetes, se suelta de su mamá y se pierde entre la multitud, hasta encontrarse con un gran oso de aspecto poco amistoso."
 date: "2025-08-15"
 lang: "es"
-id: "cirillo-chap-002"
+id: "cirillo_chap_002"
 taleid: "cirillo"
 ---
 

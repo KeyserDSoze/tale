@@ -3,7 +3,7 @@ title: "Cirillo Among the Stalls"
 description: "The market is a whirl of colors and scents; Cirillo, drawn to the toys, lets go of his mom and gets lost in the crowd, until he meets a big bear with an unfriendly look."
 date: "2025-08-15"
 lang: "en"
-id: "cirillo-chap-002"
+id: "cirillo_chap_002"
 taleid: "cirillo"
 ---
 

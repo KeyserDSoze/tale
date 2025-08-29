@@ -3,7 +3,7 @@ title: "チリッロと屋台のあいだで"
 description: "市場は色と香りの渦。チリッロはおもちゃに惹かれてお母さんの手を離し、人ごみに迷い込んでしまう。そこで出会ったのは、どこか愛想のない大きな熊だった。"
 date: "2025-08-15"
 lang: "ja"
-id: "cirillo-chap-002"
+id: "cirillo_chap_002"
 taleid: "cirillo"
 ---
 

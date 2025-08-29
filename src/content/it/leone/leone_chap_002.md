@@ -3,7 +3,7 @@ title: "L'incontro segreto"
 description: "Nella notte silenziosa, un giovane leone si avvicina alla bambina. Tra paura e meraviglia nasce una promessa: la promessa di un aiuto che ancora non sa come mantenere."
 date: "2025-08-29"
 lang: "it"
-id: "leone-chap-002"
+id: "leone_chap_002"
 taleid: "leone"
 chapter: 2
 type: story

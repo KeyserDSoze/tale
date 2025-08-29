@@ -3,7 +3,7 @@ title: "Cirillo is Lost"
 description: "Mama Bear, desperate, searches for her son among the stalls; Cirillo resists the bad bear until his mom finds him and holds him in an embrace full of relief and love."
 date: "2025-08-15"
 lang: "en"
-id: "cirillo-chap-003"
+id: "cirillo_chap_003"
 taleid: "cirillo"
 ---
 

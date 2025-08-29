@@ -4,7 +4,7 @@ description: "Il mercato è un vortice di colori e profumi; Cirillo, attratto da
 date: "2025-08-15"
 lang: "it"
 type: story
-id: "cirillo-chap-002"
+id: "cirillo_chap_002"
 taleid: "cirillo"
 chapter: 2
 author: "Alessandro Rapiti"

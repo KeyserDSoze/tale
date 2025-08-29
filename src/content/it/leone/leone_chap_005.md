@@ -3,7 +3,7 @@ title: "Il piano astuto"
 description: "Con l’astuzia di tre gatti e la forza di una promessa mantenuta, il leone libera la bambina. Così la paura diventa alleata, l’amicizia diventa salvezza, e il destino si trasforma in leggenda."
 date: "2025-08-29"
 lang: "it"
-id: "leone-chap-005"
+id: "leone_chap_005"
 taleid: "leone"
 chapter: 5
 type: story
