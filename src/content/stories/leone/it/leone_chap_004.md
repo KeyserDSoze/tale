@@ -32,20 +32,20 @@ Mentre rifletteva, udì tre miagolii sottili. Si voltò e vide, sotto un grande 
 Erano **Merlino, Morgana e Artù**.
 Tre fratelli che abitavano nella foresta, conosciuti da tutti gli animali per la loro intelligenza e la loro astuzia.
 
-— Che ti tormenta, giovane leone? — chiese Merlino, il più anziano, con voce calma e saggia.
-— Perché i tuoi occhi sono pieni di tempesta? — aggiunse Morgana, sinuosa e misteriosa come la notte stessa.
+— Che ti tormenta, giovane leone? — chiese Morgana, la più anziana, con voce calma e saggia.
+— Perché i tuoi occhi sono pieni di tempesta? — aggiunse Merlino, sinuoso e misterioso come la notte stessa.
 E infine Artù, il più vivace dei tre, saltò su un ramo e disse:
 — Dimmi che si tratta di un’avventura!
 
 Il leone abbassò lo sguardo, poi lo rialzò con fermezza.
 — C’è una bambina in pericolo. È stata presa dagli uomini e rinchiusa. Ho promesso di salvarla… e sono fuggito. Ma non voglio più fuggire. Ho bisogno del vostro aiuto.
 
-I tre gatti si scambiarono uno sguardo complice. Poi Merlino annuì lentamente.
+I tre gatti si scambiarono uno sguardo complice. Poi Morgana annuì lentamente.
 — Gli uomini sono avidi e distratti. Possiamo ingannarli. Noi faremo da esca: ci mostreremo e li porteremo lontano. Mentre loro ci inseguono, tu andrai dalla bambina e la libererai.
 
 Gli occhi del leone brillarono di gratitudine.
 — Davvero lo fareste? —
-— Certo — miagolò Morgana con un sorriso sottile. — Non si abbandona chi è in difficoltà.
+— Certo — miagolò Merlino con un sorriso sottile. — Non si abbandona chi è in difficoltà.
 — E poi — aggiunse Artù, facendo una capriola nell’erba — sarà divertente prenderli in giro!
 
 Il giovane leone sentì un’ondata di forza nuova. Non era più solo.

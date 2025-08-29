@@ -16,9 +16,9 @@ Amara, con gli occhi stanchi e pieni di paura, venne trascinata per un braccio l
 Ma da dietro un cespuglio, tre paia di occhi brillavano.
 Merlino, Morgana e Artù erano pronti.
 
-— Ora — sussurrò Merlino, e i tre gatti balzarono fuori all’improvviso.
+— Ora — sussurrò Morgana, e i tre gatti balzarono fuori all’improvviso.
 
-Con movimenti agili e veloci, si misero a correre davanti agli uomini, la coda alta e lo sguardo provocatorio. Morgana lanciava miagolii lunghi e misteriosi, Artù si fermava e ripartiva come per sfidarli, mentre Merlino guidava i fratelli con astuzia.
+Con movimenti agili e veloci, si misero a correre davanti agli uomini, la coda alta e lo sguardo provocatorio. Merlino lanciava miagolii lunghi e misteriosi, Artù si fermava e ripartiva come per sfidarli, mentre Morgana guidava i fratelli con astuzia.
 
 — Guardate! Dei gatti grossi e ben pasciuti! — gridò uno dei rapitori. — Se li prendiamo, avremo carne per giorni!
 E senza pensarci due volte, i tre uomini si misero a inseguire le piccole ombre scattanti.
@@ -47,8 +47,6 @@ Amara si gettò in ginocchio e abbracciò il collo del leone, stringendolo forte
 
 Il giovane leone chiuse gli occhi, sentendo quelle parole scaldargli il cuore.
 Aveva avuto paura, sì. Aveva persino abbandonato. Ma aveva saputo tornare, aveva saputo cambiare, e aveva trovato il coraggio di agire con la sua testa e con i suoi amici.
-
-E da quel giorno, la foresta custodì una nuova leggenda: la storia di un giovane leone che trasformò la sua paura in coraggio, e che con l’aiuto di tre gatti astuti e di una bambina piena di speranza riuscì a cambiare il destino.
 
 Perché il coraggio non è non avere paura.
 Il coraggio è sentire la paura… e scegliere comunque di fare la cosa giusta.
