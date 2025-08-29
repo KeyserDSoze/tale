@@ -57,7 +57,7 @@
     "clearFilters": "Limpiar filtros"
   },
   "site": {
-    "name": "Tale",
+    "name": "Narrarium",
     "description": "Historias, cuentos y pensamientos"
   },
   "genres": {
@@ -125,7 +125,7 @@
   },
   "home": {
     "hero": {
-      "title": "Tale",
+      "title": "Narrarium",
       "subtitle": "Mi espacio personal para historias de todo tipo",
       "description": "Bienvenido a mi mundo de historias, donde comparto cuentos, pensamientos y reflexiones nacidos de la imaginación y la experiencia."
     },
@@ -164,7 +164,7 @@
   },
   "footer": {
     "description": "Historias y cuentos escritos con pasión",
-    "copyright": "Tale. Todos los derechos reservados.",
+    "copyright": "Narrarium. Todos los derechos reservados.",
     "madeWith": "Hecho con ❤️"
   }
 }

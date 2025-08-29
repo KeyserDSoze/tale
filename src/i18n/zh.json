@@ -57,7 +57,7 @@
     "clearFilters": "清除过滤器"
   },
   "site": {
-    "name": "Tale",
+    "name": "Narrarium",
     "description": "故事、传说与思考"
   },
   "genres": {
@@ -125,7 +125,7 @@
   },
   "home": {
     "hero": {
-      "title": "Tale",
+      "title": "Narrarium",
       "subtitle": "我的个人空间，分享各种故事",
       "description": "欢迎来到我的故事世界，在这里我分享源于想象与经验的故事、思考与感悟。"
     },

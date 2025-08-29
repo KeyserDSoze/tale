@@ -9,11 +9,7 @@ const {
   alternates = ['it', 'en', 'es', 'fr', 'de', 'zh', 'ja'],
 } = Astro.props;
 
-// Logica per il titolo:
-// - Se non è fornito un titolo, usa solo "Tale"
-// - Se è fornito un titolo e contiene "—", lo usa così com'è
-// - Altrimenti usa solo "Tale"
-const siteName = t(lang as any, 'site.name'); // "Tale"
+const siteName = t(lang as any, 'site.name'); // "Narrarium"
 const finalTitle = title ? (title.includes('—') ? title : title === siteName ? siteName : `${title} — ${siteName}`) : siteName;
 
 const siteUrl = Astro.site?.origin || 'http://localhost:4321';
@@ -28,7 +24,7 @@ const faviconUrl = `${basePath}/favicon.svg`;
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <meta name="robots" content="index, follow" />
-    <meta name="author" content="Tale" />
+    <meta name="author" content="Narrarium" />
     <meta name="language" content={lang} />
     <meta name="theme-color" content="#1f2937" />
     <meta name="msapplication-TileColor" content="#1f2937" />
@@ -54,8 +50,8 @@ const faviconUrl = `${basePath}/favicon.svg`;
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={finalTitle} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:site" content="@tale" />
-    <meta name="twitter:creator" content="@tale" />
+    <meta name="twitter:site" content="@narrarium" />
+    <meta name="twitter:creator" content="@narrarium" />
     
     <!-- Hreflang for SEO -->
     {alternates.map((l: string) => (
@@ -77,18 +73,18 @@ const faviconUrl = `${basePath}/favicon.svg`;
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        "name": "Tale",
-        "alternateName": "Tale - Stories and Thoughts",
+        "name": "Narrarium",
+        "alternateName": "Narrarium - Stories and Thoughts",
         "url": `${siteUrl}`,
         "description": `${description}`,
         "inLanguage": `${lang}`,
         "author": {
           "@type": "Person",
-          "name": "Tale"
+          "name": "Narrarium"
         },
         "publisher": {
           "@type": "Organization",
-          "name": "Tale"
+          "name": "Narrarium"
         }
       }
     </script>

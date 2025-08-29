@@ -10,7 +10,7 @@ export function getBasePath(): string {
     // Browser environment - check the current hostname
     const hostname = window.location.hostname;
     // If we're on any of the custom domains, don't use base path
-    const customDomains = ['tale.mobi', 'www.tale.mobi', 'tales.ws', 'www.tales.ws', 'tale.mobi', 'www.tale.mobi', 'tales.mobi', 'www.tales.mobi'];
+    const customDomains = ['narrarium.com', 'www.narrarium.com', 'tale.mobi', 'www.tale.mobi', 'tales.ws', 'www.tales.ws', 'tale.mobi', 'www.tale.mobi', 'tales.mobi', 'www.tales.mobi'];
     if (customDomains.includes(hostname)) {
       return '';
     }

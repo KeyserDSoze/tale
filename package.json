@@ -1,8 +1,8 @@
 {
-  "name": "tale",
+  "name": "narrarium",
   "type": "module",
   "version": "1.0.0",
-  "description": "A personal blog for stories and tales on tale.mobi, tales.ws, tale.mobi, tales.mobi",
+  "description": "A personal blog for stories and tales on narrarium.com",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",

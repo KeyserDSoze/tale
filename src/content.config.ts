@@ -93,7 +93,7 @@ const stories = defineCollection({
 			// Custom ID for consistent routing across languages
 			id: z.string().optional(),
 			// Author information
-			author: z.string().optional().default('Tale'),
+			author: z.string().optional().default('Narrarium'),
 			// Content type: story or comic
 			type: z.enum(['story', 'comic']).default('story'),
 			// Genre classification - can be a single genre or multiple genres separated by comma

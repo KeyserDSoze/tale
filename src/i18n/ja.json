@@ -57,7 +57,7 @@
     "clearFilters": "フィルターをクリア"
   },
   "site": {
-    "name": "Tale",
+    "name": "Narrarium",
     "description": "物語、物語、そして思索"
   },
   "genres": {
@@ -125,7 +125,7 @@
   },
   "home": {
     "hero": {
-      "title": "Tale",
+      "title": "Narrarium",
       "subtitle": "あらゆるジャンルの物語を綴る私の個人的な空間",
       "description": "私の物語の世界へようこそ。ここでは、想像力と経験から生まれた物語、思索、そして感情を共有しています。"
     },
@@ -164,7 +164,7 @@
   },
   "footer": {
     "description": "情熱を込めて綴った物語とストーリー",
-    "copyright": "Tale. 無断転載禁止。",
+    "copyright": "Narrarium. 無断転載禁止。",
     "madeWith": "❤️ を込めて制作"
   }
 }
