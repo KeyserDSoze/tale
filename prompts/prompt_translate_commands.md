@@ -10,7 +10,7 @@ Hai una struttura di cartelle per i racconti in `src/content/stories/{name}/{lan
 ## Cosa deve fare l'agent
 
 1. **Itera tutti i file nella cartella italiana**
-   - Per ogni file in `src/content/stories/{name}/it/` con pattern `{chaptername}_chap_{chapterNumber}.md`.
+   - Per ogni file in `src/content/stories/{name}/it/` con pattern `{name}_chap_{chapterNumber}.md`.
 2. **Per ogni lingua di destinazione**
    - Se il file esiste già in `src/content/stories/{name}/{lang}/`, sovrascrivi.
    - Altrimenti crea il file.
@@ -22,12 +22,17 @@ Hai una struttura di cartelle per i racconti in `src/content/stories/{name}/{lan
    - Tutto il contenuto markdown dopo il frontmatter.
 4. **Non tradurre**
    - `date`, `lang`, `id`, `taleid`, `chapter`, `type`, `genre`, `author` (mantieni invariati).
-5. **Per ogni iterazione**
+5. **Rimuovi i tag superflui**
+   - `chapter`, `type`, `genre`, `author` devono essere rimossi, oltre che non tradotti devo anche essere omessi in tutte la traduzioni.
+6. **Traduci il corpo del file markdown**
+7. **Per ogni iterazione**
    - Lavora su un solo file e una sola lingua per volta.
    - Non processare più file o lingue nella stessa iterazione.
-6. **Output**
+8. **Output**
    - Il file tradotto deve avere lo stesso frontmatter, con le chiavi tradotte dove richiesto, e il contenuto markdown tradotto.
-   - Il file va salvato in `src/content/stories/{name}/{lang}/{chaptername}_chap_{chapterNumber}.md`.
+   - Il file va salvato in `src/content/stories/{name}/{lang}/{name}_chap_{chapterNumber}.md`.
+   - Non mettere in chat nulla, scrivi soltanto nel file creandolo nuovo o facendo override.
+   - Non chiedere se continuare o meno, fai tutte le traduzioni fino a che trovi il chapter in italiano. Ad esempio, se parti dalla storia che si chiama leone con leone/it/leone_chap_001.md farai tutte le lingue del capitolo 1, leone/de/leone_chap_001.md e così via, poi a fine lingue controllerai se c'è leone/it/leone_chap_002.md e se c'è farai la stessa cosa, fino a che trovi il file in italiano. La numerazione sarà sempre 001, 002, 003 e così via.
 
 ## Esempio di frontmatter da tradurre
 ```markdown
