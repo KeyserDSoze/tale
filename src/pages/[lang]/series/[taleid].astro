@@ -93,11 +93,22 @@ if (!serie) {
                     <p class="text-gray-600 dark:text-gray-300 mb-4 transition-colors duration-300">
                       {chapter.description}
                     </p>
-                  </div>
-                  <div class="ml-4">
+                    {/* Link readMore solo su mobile */}
                     <a 
                       href={createLangUrl(lang, `/stories/${chapter.id}`)}
-                      class="inline-flex items-center text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium transition-colors duration-200"
+                      class="block md:hidden mt-2 text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium transition-colors duration-200"
+                    >
+                      {_('common.readMore')}
+                      <svg class="w-4 h-4 ml-1 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                      </svg>
+                    </a>
+                  </div>
+                  <div class="ml-4">
+                    {/* Link readMore solo su desktop */}
+                    <a 
+                      href={createLangUrl(lang, `/stories/${chapter.id}`)}
+                      class="hidden md:inline-flex items-center text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium transition-colors duration-200"
                     >
                       {_('common.readMore')}
                       <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
