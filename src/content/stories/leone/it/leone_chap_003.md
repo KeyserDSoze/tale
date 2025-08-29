@@ -23,7 +23,7 @@ Si sentiva piccolo, più piccolo di quanto fosse mai stato.
 Un codardo.
 
 Chiuse gli occhi, e nell’oscurità della sua mente sentì la voce di sua madre:
-— Non fidarti mai degli uomini, figlio mio. Sono pericolosi. Fuggili sempre. —
+— Non fidarti mai degli uomini, figlio mio. Sono pericolosi. Fuggi sempre. —
 Poi la voce severa di suo padre:
 — Un leone saggio non rischia per gli uomini. Il loro cuore è oscuro. Non dimenticarlo mai. —
 

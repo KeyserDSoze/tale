@@ -40,7 +40,7 @@ Amara lo guardò stupita, con un barlume di speranza nel cuore. Per un attimo, d
 — Lo prometti? — chiese con voce tremante.
 
 Il giovane leone fece un passo indietro, alzò lo sguardo verso la luna e poi tornò a fissarla negli occhi.
-— Lo prometto — disse con decisione. — Ma non ora. Devo capire come. Devo trovare il coraggio.
+— Lo prometto — disse con decisione.
 
 Poi un fruscio improvviso lo fece sobbalzare: erano i passi dei rapitori che tornavano verso la capanna.
 Il leone si irrigidì, il cuore che gli batteva forte. Con uno scatto veloce, scomparve tra gli alberi, inghiottito dal buio della foresta.
