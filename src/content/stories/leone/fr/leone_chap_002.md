@@ -5,42 +5,44 @@ date: "2025-08-29"
 lang: "fr"
 id: "leone_chap_002"
 taleid: "leone"
+chapter: 2
+author: "Alessandro Rapiti"
 ---
 
 La nuit tomba rapidement sur la forêt.
-La cabane où Amara était enfermée s'enfonça dans l'obscurité, et dehors, les ombres des arbres s'étendirent comme de grands gardiens silencieux. Le vent faisait bruisser les feuilles, et dans cette atmosphère mystérieuse, on entendait des appels lointains : le chant d'une chouette, le craquement de branches brisées par un animal, la respiration profonde de la nuit.
+La cabane où Amara était enfermée s’enfonça dans l’obscurité et, dehors, les ombres des arbres s’allongèrent comme de grands gardiens silencieux. Le vent faisait bruisser les feuilles et, dans cette atmosphère mystérieuse, on entendait des appels lointains : le chant d’une chouette, le craquement de branches brisées par quelque animal, la respiration profonde de la nuit.
 
-Amara se recroquevilla dans un coin, serrant ses genoux contre elle. Elle était fatiguée de pleurer, mais ne pouvait s'empêcher de trembler.
-— Maman... Papa... où êtes-vous ? — murmura-t-elle doucement, d'une voix à peine audible.
+Amara se recroquevilla dans un coin, les genoux serrés contre elle. Elle était fatiguée de pleurer, mais elle ne pouvait s’empêcher de trembler.
+— Maman… Papa… où êtes-vous ? — murmura-t-elle doucement, d’une voix à peine audible.
 
-C'est alors qu'elle entendit un bruit différent. Pas des pas lourds comme ceux des hommes, mais une démarche douce, feutrée, qui s'approchait lentement.
-Un bruissement dans l'herbe.
+C’est alors qu’elle perçut un bruit différent. Pas de lourds pas d’hommes, mais une démarche souple, feutrée, qui s’approchait lentement.
+Un froissement dans l’herbe.
 Une ombre qui se mouvait avec élégance.
 
-Amara retint son souffle, les yeux écarquillés. Puis, dans la pénombre, apparurent deux yeux brillants, couleur or fondu. Des yeux qu'elle n'avait jamais vus auparavant, des yeux qui brillaient comme deux petites lunes.
+Amara retint son souffle, les yeux écarquillés. Puis, de la pénombre, surgirent deux yeux lumineux, dorés comme du métal en fusion. Des yeux qu’elle n’avait jamais vus, des yeux qui brillaient comme deux petites lunes.
 
-De l'obscurité émergea un jeune lion. Sa crinière était courte et douce, ses pattes fortes mais encore juvéniles, et son regard... son regard n'était pas féroce, mais curieux.
+De l’obscurité émergea un jeune lion. Sa crinière était courte et douce, ses pattes fortes mais encore juvéniles, et son regard… son regard n’était pas féroce, mais curieux.
 
-Amara se figea : elle savait que les lions étaient les rois de la forêt, puissants et terrifiants. Mais celui-ci ne semblait pas être un monstre affamé. Il s'approcha lentement, jusqu'à ce que son museau soit près de la fente de la cabane.
+Amara se figea : elle savait que les lions étaient les rois de la forêt, puissants et redoutables. Mais celui-ci ne ressemblait pas à un monstre affamé. Il s’approcha doucement, jusqu’à ce que son museau effleure la fente de la cabane.
 
 Et, comme dans un rêve, il parla.
-— Pourquoi pleures-tu, petite ? — demanda-t-il d'une voix profonde mais douce.
+— Pourquoi pleures-tu, petite ? — demanda-t-il d’une voix profonde mais bienveillante.
 
-La bouche d'Amara s'ouvrit : un lion qui parlait ! Elle croyait que c'était le fruit de son imagination, et pourtant ces mots étaient vrais, chauds comme une brise sur son visage.
-— Ils m'ont emmenée... — répondit-elle entre deux sanglots. — Ils m'ont enfermée ici... je ne reverrai plus ma famille.
+Amara ouvrit grand la bouche : un lion qui parlait ! Elle pensa que c’était son imagination, et pourtant ces mots étaient réels, chauds comme un souffle de vent sur son visage.
+— Ils m’ont emmenée… — répondit-elle en sanglotant. — Ils m’ont enfermée ici… je ne reverrai plus ma famille.
 
-Le lion pencha la tête, comme s'il réfléchissait. Il n'avait jamais parlé à un humain. Dans son esprit, les hommes avaient toujours été vus comme dangereux et cruels. C'est ce que son père et sa mère lui avaient appris, et c'est ce qu'il avait toujours cru. Mais cette fillette ne semblait pas mauvaise. Elle était fragile, perdue, les yeux pleins de larmes.
+Le lion inclina la tête, comme s’il réfléchissait. Il n’avait jamais parlé à un être humain. Dans son esprit, les hommes avaient toujours été considérés comme dangereux et cruels. C’est ce que son père et sa mère lui avaient appris, et c’est ce qu’il avait toujours cru. Mais cette petite fille ne paraissait pas mauvaise. Elle était fragile, perdue, avec les yeux pleins de larmes.
 
-— Je... je t'aiderai — murmura-t-il enfin, presque surpris par ses propres mots.
+— Je… je vais t’aider — murmura-t-il enfin, presque surpris de ses propres paroles.
 
-Amara le regarda, stupéfaite, une lueur d'espoir dans le cœur. Un instant, elle oublia sa peur.
-— Tu le promets ? — demanda-t-elle d'une voix tremblante.
+Amara le regarda, stupéfaite, une lueur d’espoir dans le cœur. Un instant, elle oublia sa peur.
+— Tu le promets ? — demanda-t-elle d’une voix tremblante.
 
-Le jeune lion fit un pas en arrière, leva les yeux vers la lune puis les reposa sur elle.
-— Je le promets — dit-il avec détermination. — Mais pas maintenant. Je dois comprendre comment. Je dois trouver le courage.
+Le jeune lion fit un pas en arrière, leva les yeux vers la lune puis les replongea dans les siens.
+— Je le promets — dit-il avec fermeté.
 
-Puis un bruissement soudain le fit sursauter : c'étaient les pas des ravisseurs qui revenaient vers la cabane.
-Le lion se raidit, le cœur battant fort. D'un bond rapide, il disparut entre les arbres, englouti par l'obscurité de la forêt.
+Puis un bruissement soudain le fit sursauter : c’étaient les pas des ravisseurs qui revenaient vers la cabane.
+Le lion se raidit, le cœur battant fort. D’un bond rapide, il disparut parmi les arbres, englouti par l’obscurité de la forêt.
 
-Amara resta là, le cœur battant dans sa poitrine. Elle ne savait pas si c'était un rêve ou la réalité, mais quelque chose en elle avait changé. Pour la première fois depuis son enlèvement, elle sentait qu'elle n'était plus seule.
-Quelque part, là dehors, un jeune lion avait promis de revenir.
+Amara resta là, le cœur tambourinant dans sa poitrine. Elle ne savait pas si cela avait été un rêve ou la réalité, mais quelque chose avait changé en elle. Pour la première fois depuis son enlèvement, elle sentait qu’elle n’était plus seule.
+Quelque part, là-bas, un jeune lion avait promis de revenir.

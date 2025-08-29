@@ -35,3 +35,19 @@ Ein Schrei.
 Es war die Stimme des Mädchens.
 
 Der junge Löwe spitzte die Ohren. Sein Herz machte einen Sprung. Jede Träne, die das Mädchen vergoss, schien wie Feuer in ihn hineinzufallen.
+
+Er konnte sie nicht aus seinen Gedanken vertreiben: das Bild ihres tränenüberströmten Gesichts, die zitternden Hände, die sich nach Freiheit streckten, die Augen, die ihn voller Vertrauen angesehen hatten, als er versprach, sie zu retten.
+
+Und doch war er geflohen.
+
+Er sank zu Boden, biss sich auf die Lippe und kratzte mit den Pfoten die Erde.
+"Feigling! Ich habe ein Kind allein gelassen... Und wofür? Aus Angst?"
+
+Er blickte zur Mondin auf, die riesig über dem Wald leuchtete.
+Sein Atem war schwer, seine Gedanken ein Wirbel. Doch inmitten dieser Verwirrung entstand etwas Neues.
+
+Die Angst war nicht mehr eine Mauer, die ihn aufhielt. Sie wurde zu einer Last, die er abschütteln wollte, ein Antrieb, der ihm sagte:
+"Du kannst sie nicht dort lassen. Du kannst dein Versprechen nicht brechen."
+
+Der Löwe wusste noch nicht wie, aber er verstand, dass er sich ändern musste.
+Und in dieser Nacht würde er entscheiden, wer er wirklich war: ein Flüchtender... oder ein Mutiger.

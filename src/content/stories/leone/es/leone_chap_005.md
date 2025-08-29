@@ -35,3 +35,15 @@ El león se acercó despacio, tomó las cuerdas con los dientes y, de un mordisc
 Juntos se adentraron en el bosque, lejos del sendero. Los árboles parecían abrirse a su paso, como para protegerlos. El aire olía a libertad, y cada paso los alejaba más de la oscuridad del cautiverio.
 
 Más adelante, entre las ramas, los tres gatos los esperaban, jadeantes pero felices.
+— Los llevamos lejos — maulló Morgana. — No volverán pronto.
+— Y — rió Arturo — ¡creo que ya se han perdido!
+Merlín asintió serio, pero con los ojos llenos de luz: — Ahora sois libres.
+
+Amara se arrodilló y abrazó el cuello del león, apretándolo fuerte. Sus lágrimas ya no eran de miedo, sino de alegría.
+— Gracias — susurró. — Eres mi héroe.
+
+El joven león cerró los ojos, sintiendo cómo esas palabras le calentaban el corazón.
+Había tenido miedo, sí. Incluso había abandonado. Pero supo volver, supo cambiar y encontró el valor de actuar con su propia cabeza y con sus amigos.
+
+Porque el coraje no es no tener miedo.
+El coraje es sentir miedo... y elegir igualmente hacer lo correcto.

@@ -35,3 +35,15 @@ Le lion s'approcha doucement, attrapa les cordes avec ses dents et, d'une morsur
 Ensemble, ils s'enfoncèrent dans la forêt, loin du sentier. Les arbres semblaient s'ouvrir à leur passage, comme pour les protéger. L'air sentait la liberté, et chaque pas les éloignait de l'obscurité de la captivité.
 
 Plus loin, parmi les branches, les trois chats les attendaient, haletants mais heureux.
+— Nous les avons menés loin — miaula Morgane. — Ils ne reviendront pas de sitôt.
+— Et — rit Arthur — je crois qu'ils sont déjà perdus !
+Merlin acquiesça sérieusement, mais ses yeux brillaient : — Maintenant vous êtes libres.
+
+Amara tomba à genoux et serra le cou du lion, le serrant fort. Ses larmes n'étaient plus de peur, mais de joie.
+— Merci — murmura-t-elle. — Tu es mon héros.
+
+Le jeune lion ferma les yeux, sentant ces mots réchauffer son cœur.
+Il avait eu peur, oui. Il avait même abandonné. Mais il avait su revenir, changer, et trouver le courage d'agir avec sa tête et avec ses amis.
+
+Car le courage n'est pas l'absence de peur.
+Le courage, c'est sentir la peur... et choisir quand même de faire ce qui est juste.

@@ -35,3 +35,15 @@ Der Löwe näherte sich langsam, packte die Seile mit den Zähnen und biss entsc
 Gemeinsam liefen sie in den Wald, weg vom Pfad. Die Bäume schienen sich für sie zu öffnen, als wollten sie sie beschützen. Die Luft roch nach Freiheit, und jeder Schritt entfernte sie weiter von der Dunkelheit der Gefangenschaft.
 
 Weiter vorne, zwischen den Ästen, warteten die drei Katzen auf sie, keuchend, aber glücklich.
+— Wir haben sie weit weg gelockt — miaute Morgana. — Sie werden so schnell nicht zurückkommen.
+— Und — lachte Artus — ich glaube, sie haben sich schon verirrt!
+Merlin nickte ernst, aber seine Augen leuchteten: — Jetzt seid ihr frei.
+
+Amara fiel auf die Knie und umarmte den Löwen am Hals, hielt ihn fest. Ihre Tränen waren nicht mehr aus Angst, sondern aus Freude.
+— Danke — flüsterte sie. — Du bist mein Held.
+
+Der junge Löwe schloss die Augen und spürte, wie diese Worte sein Herz erwärmten.
+Er hatte Angst gehabt, ja. Er hatte sogar aufgegeben. Aber er hatte die Kraft gefunden zurückzukehren, sich zu ändern und mit seinem eigenen Kopf und mit seinen Freunden zu handeln.
+
+Denn Mut bedeutet nicht, keine Angst zu haben.
+Mut bedeutet, Angst zu spüren... und trotzdem das Richtige zu tun.

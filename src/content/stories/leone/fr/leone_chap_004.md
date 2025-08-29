@@ -35,3 +35,18 @@ Et enfin Arthur, le plus vif des trois, sauta sur une branche et dit :
 — Dis-moi qu'il s'agit d'une aventure !
 
 Le lion baissa les yeux, puis les releva avec détermination.
+— Il y a une fillette en danger. Elle a été prise par des hommes et enfermée. J'ai promis de la sauver... et j'ai fui. Mais je ne veux plus fuir. J'ai besoin de votre aide.
+
+Les trois chats échangèrent un regard complice. Puis Morgane acquiesça lentement.
+— Les hommes sont avides et distraits. Nous pouvons les tromper. Nous servirons d'appât : nous nous montrerons et les emmènerons loin. Pendant qu'ils nous poursuivent, tu iras vers la fillette et tu la libéreras.
+
+Les yeux du lion brillèrent de gratitude.
+— Vous le feriez vraiment ? —
+— Bien sûr — miaula Merlin avec un sourire subtil. — On n'abandonne pas ceux qui sont en difficulté.
+— Et puis — ajouta Arthur, faisant une cabriole dans l'herbe — ce sera amusant de les berner !
+
+Le jeune lion sentit une vague de force nouvelle. Il n'était plus seul.
+La peur n'avait pas disparu, mais maintenant elle n'était plus un obstacle : elle était devenue le feu qui le poussait à agir.
+
+Cette nuit-là, sous la lune qui illuminait la forêt, naquit un plan de courage.
+Un plan qui allait tout changer.

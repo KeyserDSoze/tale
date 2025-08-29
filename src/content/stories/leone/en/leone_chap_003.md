@@ -35,3 +35,18 @@ A cry.
 It was the girl's voice.
 
 The young lion perked up his ears. His heart leapt. Every tear the little girl shed seemed to fall inside him like drops of fire.
+He couldn't shake her from his mind: the image of her tear-streaked face, trembling hands reaching for freedom, the eyes that had looked at him with trust when he promised to save her.
+
+And yet he had run away.
+
+He collapsed to the ground, biting his lip and scratching the earth with his paws.
+"Coward! I left a child alone... And for what? For fear?"
+
+He looked up at the moon, shining immense above the forest.
+His breath was heavy, his thoughts a whirlwind. Yet, amid that confusion, something new was being born.
+
+Fear was no longer a wall that stopped him. It was becoming a weight he wanted to shake off, a push that told him:
+"You can't leave her there. You can't go back on your promise."
+
+The lion didn't know how yet, but he understood he had to change.
+And that night he would decide who he really was: a runaway... or someone courageous.

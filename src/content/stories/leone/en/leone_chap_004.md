@@ -35,3 +35,18 @@ And finally Arthur, the liveliest of the three, jumped onto a branch and said:
 — Tell me it's an adventure!
 
 The lion lowered his gaze, then raised it again with determination.
+— There is a girl in danger. She was taken by men and locked away. I promised to save her... and I ran away. But I don't want to run anymore. I need your help.
+
+The three cats exchanged a knowing look. Then Morgana nodded slowly.
+— Men are greedy and distracted. We can trick them. We'll act as bait: we'll show ourselves and lead them far away. While they chase us, you go to the girl and free her.
+
+The lion's eyes shone with gratitude.
+— Would you really do that? —
+— Of course — meowed Merlin with a subtle smile. — You don't abandon those in need.
+— And — added Arthur, doing a somersault in the grass — it'll be fun to fool them!
+
+The young lion felt a wave of new strength. He was no longer alone.
+The fear hadn't disappeared, but now it was no longer an obstacle: it had become the fire that pushed him to act.
+
+That night, under the moon that lit up the forest, a plan of courage was born.
+A plan that would change everything.

@@ -35,3 +35,19 @@ Un cri.
 C'était la voix de la fillette.
 
 Le jeune lion dressa les oreilles. Son cœur bondit. Chaque larme versée par la petite semblait tomber en lui comme des gouttes de feu.
+
+Il ne parvenait pas à chasser son image de son esprit : son visage baigné de larmes, ses mains tremblantes tendues vers la liberté, ses yeux qui l'avaient regardé avec confiance lorsqu'il avait promis de la sauver.
+
+Et pourtant, il avait fui.
+
+Il s'effondra au sol, se mordant les lèvres et griffant la terre de ses pattes.
+« Lâche ! J'ai laissé une enfant seule... Et pour quoi ? Par peur ? »
+
+Il leva les yeux vers la lune, immense, qui brillait au-dessus de la forêt.
+Son souffle était lourd, ses pensées en tourbillon. Pourtant, au milieu de cette confusion, quelque chose de nouveau naissait.
+
+La peur n'était plus un mur qui le bloquait. Elle devenait un poids qu'il voulait secouer, une impulsion qui lui disait :
+« Tu ne peux pas la laisser là. Tu ne peux pas revenir sur ta promesse. »
+
+Le lion ne savait pas encore comment, mais il comprit qu'il devait changer.
+Et cette nuit-là, il déciderait qui il était vraiment : un fuyard... ou un courageux.

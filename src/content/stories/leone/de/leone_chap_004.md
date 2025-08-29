@@ -35,3 +35,18 @@ Und schließlich sprang Artus, der Lebhafteste der drei, auf einen Ast und sagte
 — Sag mir, dass es ein Abenteuer ist!
 
 Der Löwe senkte den Blick, dann hob er ihn wieder entschlossen.
+— Es gibt ein Mädchen in Gefahr. Sie wurde von Menschen gefangen genommen und eingesperrt. Ich habe versprochen, sie zu retten... und bin geflohen. Aber ich will nicht mehr fliehen. Ich brauche eure Hilfe.
+
+Die drei Katzen tauschten einen verschwörerischen Blick. Dann nickte Morgana langsam.
+— Menschen sind gierig und unaufmerksam. Wir können sie täuschen. Wir werden als Köder dienen: Wir zeigen uns und locken sie weit weg. Während sie uns jagen, gehst du zum Mädchen und befreist sie.
+
+Die Augen des Löwen leuchteten vor Dankbarkeit.
+— Würdet ihr das wirklich tun? —
+— Natürlich — miaute Merlin mit einem feinen Lächeln. — Man lässt niemanden in Not zurück.
+— Und — fügte Artus hinzu, während er einen Purzelbaum im Gras machte — es wird Spaß machen, sie zu narren!
+
+Der junge Löwe spürte eine Welle neuer Kraft. Er war nicht mehr allein.
+Die Angst war nicht verschwunden, aber jetzt war sie kein Hindernis mehr: Sie war das Feuer, das ihn zum Handeln trieb.
+
+In dieser Nacht, unter dem Mond, der den Wald erleuchtete, entstand ein mutiger Plan.
+Ein Plan, der alles verändern würde.

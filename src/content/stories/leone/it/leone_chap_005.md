@@ -48,5 +48,5 @@ Amara si gettò in ginocchio e abbracciò il collo del leone, stringendolo forte
 Il giovane leone chiuse gli occhi, sentendo quelle parole scaldargli il cuore.
 Aveva avuto paura, sì. Aveva persino abbandonato. Ma aveva saputo tornare, aveva saputo cambiare, e aveva trovato il coraggio di agire con la sua testa e con i suoi amici.
 
-Perché il coraggio non è non avere paura.
+Perché il coraggio non è assenza di paura.
 Il coraggio è sentire la paura… e scegliere comunque di fare la cosa giusta.

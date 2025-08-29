@@ -35,3 +35,18 @@ Y finalmente Arturo, el más vivaz de los tres, saltó a una rama y dijo:
 — ¡Dime que se trata de una aventura!
 
 El león bajó la mirada, luego la levantó con firmeza.
+— Hay una niña en peligro. Ha sido capturada por los hombres y encerrada. Prometí salvarla... y huí. Pero ya no quiero huir. Necesito vuestra ayuda.
+
+Los tres gatos se miraron cómplices. Luego Morgana asintió lentamente.
+— Los hombres son codiciosos y distraídos. Podemos engañarlos. Nosotros seremos el señuelo: nos mostraremos y los llevaremos lejos. Mientras nos persiguen, tú irás con la niña y la liberarás.
+
+Los ojos del león brillaron de gratitud.
+— ¿De verdad lo haríais? —
+— Por supuesto — maulló Merlín con una sonrisa sutil. — No se abandona a quien está en apuros.
+— Y además — añadió Arturo, haciendo una voltereta en la hierba — ¡será divertido burlarlos!
+
+El joven león sintió una oleada de nueva fuerza. Ya no estaba solo.
+El miedo no había desaparecido, pero ahora ya no era un obstáculo: se había convertido en el fuego que lo impulsaba a actuar.
+
+Aquella noche, bajo la luna que iluminaba el bosque, nació un plan de coraje.
+Un plan que lo cambiaría todo.

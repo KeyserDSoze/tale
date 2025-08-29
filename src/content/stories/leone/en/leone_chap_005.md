@@ -35,3 +35,15 @@ The lion approached slowly, grabbed the ropes with his teeth and, with a determi
 Together they ventured into the forest, away from the path. The trees seemed to open to their passage, as if to protect them. The air smelled of freedom, and every step took them further from the darkness of captivity.
 
 Further ahead, among the branches, the three cats awaited them, panting but happy.
+— We led them far away — meowed Morgana. — They won't be back soon.
+— And — laughed Arthur — I think they're already lost!
+Merlin nodded seriously, but his eyes were full of light: — Now you are free.
+
+Amara dropped to her knees and hugged the lion's neck tightly. Her tears were no longer of fear, but of joy.
+— Thank you — she whispered. — You are my hero.
+
+The young lion closed his eyes, feeling those words warm his heart.
+He had been afraid, yes. He had even abandoned. But he had found the strength to return, to change, and to act with his own mind and with his friends.
+
+Because courage is not the absence of fear.
+Courage is feeling fear... and choosing to do the right thing anyway.
